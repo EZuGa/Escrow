@@ -33,3 +33,10 @@ button{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;     background: #161825;}
+
+
+ul{
+    list-style-type: none;
+    cursor: pointer;
+    white-space: nowrap;
+}

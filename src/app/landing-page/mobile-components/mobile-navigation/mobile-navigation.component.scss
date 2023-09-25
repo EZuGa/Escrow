@@ -1,0 +1,50 @@
+.container{
+    // padding-top: 18px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    #closeNav{
+        align-self:flex-end;
+        cursor: pointer;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+
+    nav{
+        // text-align: center;
+        ul{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            li:not(:first-of-type){
+                width: 115px;
+            }
+
+            li:last-of-type{
+                border-bottom: 1px solid white;
+            }
+    
+            li{
+                text-align: center;
+                padding: 20px 0px;
+            }
+
+        }
+    }
+
+    ul.language{
+        li{
+            margin: 24px;
+            opacity: 0.5;
+            &.active{
+                opacity: 1;
+                color: #0131F5;
+            }
+        }
+        margin-bottom: 36px;
+    }
+}
+
