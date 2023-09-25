@@ -5,16 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingHeaderComponent } from './landing-page/landing-header/landing-header.component';
 import { WhyUsComponent } from './landing-page/why-us/why-us.component';
+import { LandingPageModule } from './landing-page/landing-page/landing-page.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LandingHeaderComponent,
-    WhyUsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LandingPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
