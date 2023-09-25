@@ -2,7 +2,7 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-                <img src="assets/header.webp" alt="Escrow">
+                <img src="assets/icons/logo.svg" alt="Escrow">
                 <!-- <h1>Escrow</h1> -->
             </div>
             <div class="header--main">
@@ -21,11 +21,7 @@
                 <button>Login</button>
             </div>
 
-            <div class="hamburger" [ngClass]="hamburgerActive ? 'active' : ''" (click)="toggleHamburger()">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-              </div>
+            <img routerLink="/navigation" class="menu" src="assets/icons/menu.svg" alt="">
         </div>
     </div>
 </header> 

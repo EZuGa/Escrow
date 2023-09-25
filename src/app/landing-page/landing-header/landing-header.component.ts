@@ -7,10 +7,5 @@ import { Component } from '@angular/core';
 })
 export class LandingHeaderComponent {
 
-  hamburgerActive = false;
-
-  toggleHamburger(){
-    this.hamburgerActive =  !this.hamburgerActive;
-  }
 
 }
