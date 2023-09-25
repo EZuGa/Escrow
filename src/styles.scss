@@ -9,8 +9,25 @@
     margin: 0;
     font-family: Comfortea;
     font-size: 1rem;
+    color: white;
 }
 
 .container{
-    
+    width: min(1200px, 100% - 2 * 1rem);
+    margin-inline: auto;
+}
+
+button{
+    width: 112px;
+    height: 44px;
+    border-radius: 6px;
+    border: 1px solid white;
+    background-color: transparent;
+    transition: all 500ms;
+    cursor: pointer;
+
+    &:hover{
+        background: #0131F5;
+        border: 1px solid #0131F5;
+    }
 }

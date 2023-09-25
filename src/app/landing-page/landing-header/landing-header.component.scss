@@ -1,0 +1,101 @@
+header {
+    .container {
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+
+        .header{
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            .logo{
+                img{
+                    @media screen and (max-width: 950px) {
+                        width: 157px;
+                    }
+                }
+                h1{
+                    visibility: hidden;
+                }
+            }
+
+            .header--main{
+                display: flex;
+                align-items: center;
+                @media screen and (max-width: 950px) {
+                    display: none;
+                }
+
+                ul{
+                    list-style-type: none;
+                    display: flex;
+                    li{
+                        padding: 10px;
+                        margin-right: 12px;
+                        white-space: nowrap;
+                        cursor: pointer;
+                        transition: all 500ms;
+                        border-bottom: 1px solid transparent;
+
+                        @media screen and (max-width: 1050px) {
+                            margin-right: 0px;
+                        }
+
+
+
+                        &:hover{
+                            border-bottom: 1px solid #0131F5;
+                            color: #0131F5;
+                        }
+                    }
+                }
+
+
+                .languagePicker{
+                    cursor: pointer;
+                    span{
+                        margin-right: 4px;
+                    }
+
+                    margin: 0px 70px;
+                    white-space: nowrap;
+
+                    @media screen and (max-width: 1050px) {
+                        margin: 0px 35px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.hamburger{
+    height: fit-content;
+    cursor: pointer;
+    display: none;
+    @media screen and (max-width: 950px) {
+        display: block;
+    }
+
+    .bar{
+      display: block;
+      width: 35px;
+      height: 4px;
+      margin: 6px auto;
+      -webkit-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+      background-color: white;
+    }
+  }
+  
+  .hamburger.active .bar:nth-child(2){
+    opacity: 0;
+  }
+  .hamburger.active .bar:nth-child(1){
+    transform: translateY(10px) rotate(45deg);
+  }
+  .hamburger.active .bar:nth-child(3){
+    transform: translateY(-10px) rotate(-45deg);
+  }

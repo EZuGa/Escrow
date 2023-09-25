@@ -1,0 +1,32 @@
+.landing-page {
+    background: #161825;
+
+
+    .welcome-wrapper{
+        height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        h4{
+            font-size: 3.75rem;
+            margin-bottom: 1.5rem;
+            span{
+                color: #0131F5;
+                font-size: inherit;
+            }
+        }
+        p{
+            max-width: 788px;
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+
+        @media screen and (max-width: 950px) {
+            h4{
+                font-size: 2rem;
+            }
+            p{
+                font-size: 1rem;
+            }
+        }
+    }
+}

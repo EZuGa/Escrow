@@ -1,0 +1,31 @@
+<header>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="assets/header.webp" alt="Escrow">
+                <!-- <h1>Escrow</h1> -->
+            </div>
+            <div class="header--main">
+                <ul>
+                    <li>About us</li>
+                    <li>Our services</li>
+                    <li>Our benefits</li>
+                    <li>Contact</li>
+                </ul>
+
+                <p class="languagePicker">
+                    <span>EN</span>
+                    <img src="assets/icons/dropdown.svg" alt="">
+                </p>
+
+                <button>Login</button>
+            </div>
+
+            <div class="hamburger" [ngClass]="hamburgerActive ? 'active' : ''" (click)="toggleHamburger()">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+        </div>
+    </div>
+</header> 
