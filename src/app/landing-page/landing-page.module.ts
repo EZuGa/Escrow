@@ -8,6 +8,7 @@ import { MobileNavigationComponent } from './mobile-components/mobile-navigation
 import { MobileLoginComponent } from './mobile-components/mobile-login/mobile-login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { OutBenefitsComponent } from './out-benefits/out-benefits.component';
 
 const components = [
   LandingHeaderComponent,
@@ -15,19 +16,19 @@ const components = [
   LandingPageComponent,
   MobileNavigationComponent,
   MobileLoginComponent,
+  AboutUsComponent,
+  OutBenefitsComponent,
 ];
 
 @NgModule({
   declarations: [
     ...components,
-    AboutUsComponent,
   ],
   imports: [
     CommonModule,
     LandingPageRoutingModule
   ],
   exports:[
-    ...components
   ]
 })
 export class LandingPageModule { }
