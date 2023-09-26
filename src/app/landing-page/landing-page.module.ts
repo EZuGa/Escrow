@@ -11,6 +11,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { OutBenefitsComponent } from './out-benefits/out-benefits.component';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { OurServicesCellComponent } from './our-services/our-services-cell/our-services-cell.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const components = [
   LandingHeaderComponent,
@@ -20,13 +21,14 @@ const components = [
   MobileLoginComponent,
   AboutUsComponent,
   OutBenefitsComponent,
-  OurServicesComponent
+  OurServicesComponent,
+  OurServicesCellComponent,
+  ContactUsComponent,
 ];
 
 @NgModule({
   declarations: [
     ...components,
-    OurServicesCellComponent,
   ],
   imports: [
     CommonModule,
