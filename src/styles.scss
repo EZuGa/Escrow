@@ -40,3 +40,12 @@ ul{
     cursor: pointer;
     white-space: nowrap;
 }
+
+h5{
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    span{
+        color: #0131F5;
+        font-size: inherit;
+    }
+}
