@@ -12,6 +12,7 @@ import { OutBenefitsComponent } from './out-benefits/out-benefits.component';
 import { OurServicesComponent } from './our-services/our-services.component';
 import { OurServicesCellComponent } from './our-services/our-services-cell/our-services-cell.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { FooterComponent } from './footer/footer.component';
 
 const components = [
   LandingHeaderComponent,
@@ -24,6 +25,7 @@ const components = [
   OurServicesComponent,
   OurServicesCellComponent,
   ContactUsComponent,
+  FooterComponent
 ];
 
 @NgModule({
