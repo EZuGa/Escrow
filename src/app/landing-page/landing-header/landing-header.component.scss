@@ -30,19 +30,20 @@ header {
                 ul{
                     display: flex;
                     li{
-                        padding: 10px;
                         margin-right: 12px;
-                        transition: all 500ms;
-                        border-bottom: 1px solid transparent;
-
                         @media screen and (max-width: 1050px) {
                             margin-right: 0px;
                         }
 
+                        a{
+                            padding: 10px;
+                            transition: all 500ms;
+                            border-bottom: 1px solid transparent;
 
-                        &:hover{
-                            border-bottom: 1px solid #0131F5;
-                            color: #0131F5;
+                            &:hover{
+                                border-bottom: 1px solid #0131F5;
+                                color: #0131F5;
+                            }
                         }
                     }
                 }
