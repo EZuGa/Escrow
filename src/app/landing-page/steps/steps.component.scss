@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    gap: 36px;
+    padding: 40px 0px;
+
+    @media screen and (max-width: 1050px) {
+        flex-direction: column;
+    }
+
+    .step--cell{
+        padding: 45px 64px;
+        text-align: center;
+        border-radius: 10px;
+        background: linear-gradient(46deg, #203351 1.01%, #171C37 96.06%), #FFF;
+        flex: 1 0 0;
+        img{
+            height: 100px;
+        }
+    }
+}
