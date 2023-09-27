@@ -13,6 +13,7 @@ import { OurServicesComponent } from './our-services/our-services.component';
 import { OurServicesCellComponent } from './our-services/our-services-cell/our-services-cell.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
+import { StepsComponent } from './steps/steps.component';
 
 const components = [
   LandingHeaderComponent,
@@ -25,7 +26,8 @@ const components = [
   OurServicesComponent,
   OurServicesCellComponent,
   ContactUsComponent,
-  FooterComponent
+  FooterComponent,
+  StepsComponent
 ];
 
 @NgModule({
