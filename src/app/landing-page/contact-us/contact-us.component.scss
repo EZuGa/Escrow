@@ -27,18 +27,16 @@
             padding: 40px 158px 31px 60px;
  
 
-            >div{
+            .contact--info--cell{
                 display: flex;
                 margin-bottom: 32px;
                 img{
                     height: 32px;
                     margin-right: 24px;
                 }
-                h5{
-                }
 
                 p{
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
                 p:first-of-type{
                     margin-bottom: 0.8rem;
