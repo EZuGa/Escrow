@@ -22,7 +22,7 @@
 
         .contact--info{
             // width: 50%;
-            
+            border-radius: 10px;
             background: linear-gradient(45.85deg, #203351 1.01%, #171C37 96.06%);
             padding: 40px 158px 31px 60px;
  
@@ -46,6 +46,8 @@
         }   
 
         .contact--form{
+            margin-top: 25px;
+
             h6{
                 margin-bottom: 32px;
                 font-size: 24px;
