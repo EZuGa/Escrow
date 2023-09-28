@@ -1,0 +1,110 @@
+
+.personal-cabinet-wrap{
+    display: flex;
+    // flex-wrap: wrap;
+    height: 100vh;
+    
+    aside{
+        border-right: 1px solid #282B3F;
+        // background: rgba(22, 24, 37, 0.70);
+        // backdrop-filter: blur(10px);
+        background: rgba(22, 24, 37, 0.70);
+        backdrop-filter: blur(10px);
+        width: 207px;
+        height: 100vh;
+        flex-shrink: 0;
+        padding: 32px 0px;
+        position: relative;
+        
+        img{
+            width: 160px;
+            margin-left: 24px;
+            margin-bottom: 77px;
+        }
+
+        nav{
+            ul{
+                li{
+                    padding: 12px 12px 12px 24px;
+                    &:hover{
+                        background: #0131F5;
+                    }
+                }
+            }
+
+        }
+
+        .signOut{
+            padding: 12px 12px 12px 24px;
+            width: 100%;
+            color: #FF5520;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            position: absolute;
+            bottom: 24px;
+            left: 0px;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        // display: inline-block;
+    }
+
+
+    .cabinet-main-wrap{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .cabinet-bar-top{
+            background: #161825;
+            backdrop-filter: blur(10px);
+
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0px 24px;
+
+            h2{
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+
+            .profile{
+                display: flex;
+                align-items: center;
+                .image{
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 8px;
+                    background-color: #FF5520;
+                }
+
+                .profile-data{
+                    background-color: #282B3F;
+                    h6{
+                        font-size: 1rem;
+                    }
+                    p{
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+
+        .cabinet-main-bottom{
+            background-color: green;
+            flex: 1;
+            padding: 32px 24px;
+
+            .vaime{
+                background-color: #FF5520;
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
+    }
+}
