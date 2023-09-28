@@ -4,8 +4,20 @@ import { LandingPageComponent } from './landing-page/landing-page/landing-page.c
 import { PersonalCabinetViewComponent } from './personal-cabinet/personal-cabinet-view/personal-cabinet-view.component';
 
 const routes: Routes = [
-  { path: '', component: LandingPageComponent},
-  { path: 'personal-cabinet', component: PersonalCabinetViewComponent }
+  {
+    path: "",
+    loadChildren: () =>
+      import("./landing-page/landing-page.module").then(
+        (m) => m.LandingPageModule,
+      ),
+  },
+  {
+    path: "personal-cabinet",
+    loadChildren: () =>
+      import("./personal-cabinet/personal-cabinet.module").then(
+        (m) => m.PersonalCabinetModule,
+      ),
+  },
 ];
 
 @NgModule({
