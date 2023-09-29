@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Route, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-personal-cabinet-view',
@@ -7,4 +9,26 @@ import { Component } from '@angular/core';
 })
 export class PersonalCabinetViewComponent {
 
+  // currentRoute!: string;
+
+  // constructor(private router: Router) {}
+
+
+  // ngOnInit(): void {
+  //   this.currentRoute = this.getChildRoute(this.router.url);
+
+  //   this.router.events
+  //   .pipe(filter(route=> route instanceof NavigationEnd))
+  //   .subscribe(router=>{
+  //     const route = (router as NavigationEnd).urlAfterRedirects;
+
+  //     this.currentRoute = this.getChildRoute(route);
+
+  //   })
+  // }
+
+
+  // private getChildRoute(route: string){
+  //   return route.substring(route.lastIndexOf("/") + 1);
+  // }
 }
