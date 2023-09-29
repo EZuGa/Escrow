@@ -1,0 +1,19 @@
+.contracts{
+    height: 100%;
+
+    .contracts-header{
+        height: 40px;
+        background-color: aqua;
+        margin-bottom: 16px;
+    }
+
+    .contracts-main{
+        height: calc(100% - 40px - 16px);
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 16px 24px;
+
+    }
+}
