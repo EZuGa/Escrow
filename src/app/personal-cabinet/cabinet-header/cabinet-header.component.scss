@@ -1,0 +1,36 @@
+.cabinet-bar-top{
+    background: #161825;
+    backdrop-filter: blur(10px);
+
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 24px;
+
+    h2{
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    .profile{
+        display: flex;
+        align-items: center;
+        .image{
+            width: 40px;
+            height: 40px;
+            margin-right: 8px;
+            background-color: #FF5520;
+        }
+
+        .profile-data{
+            background-color: #282B3F;
+            h6{
+                font-size: 1rem;
+            }
+            p{
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

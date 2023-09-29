@@ -9,6 +9,7 @@ import { CabinetContractsComponent } from './cabinet-contracts/cabinet-contracts
 import { CabinetBalanceComponent } from './cabinet-balance/cabinet-balance.component';
 import { InputWithLabelComponent } from './personal-cabinet-my-profile/input-with-label/input-with-label.component';
 import { ContractsCellComponent } from './cabinet-contracts/contracts-cell/contracts-cell.component';
+import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ContractsCellComponent } from './cabinet-contracts/contracts-cell/contr
     CabinetContractsComponent,
     CabinetBalanceComponent,
     InputWithLabelComponent,
-    ContractsCellComponent
+    ContractsCellComponent,
+    CabinetHeaderComponent
   ],
   imports: [
     CommonModule,
