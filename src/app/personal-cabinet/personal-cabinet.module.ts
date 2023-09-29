@@ -7,6 +7,7 @@ import { PersonalCabinetMyProfileComponent } from './personal-cabinet-my-profile
 import { CabinetMessagesComponent } from './cabinet-messages/cabinet-messages.component';
 import { CabinetContractsComponent } from './cabinet-contracts/cabinet-contracts.component';
 import { CabinetBalanceComponent } from './cabinet-balance/cabinet-balance.component';
+import { InputWithLabelComponent } from './personal-cabinet-my-profile/input-with-label/input-with-label.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CabinetBalanceComponent } from './cabinet-balance/cabinet-balance.compo
     PersonalCabinetMyProfileComponent,
     CabinetMessagesComponent,
     CabinetContractsComponent,
-    CabinetBalanceComponent
+    CabinetBalanceComponent,
+    InputWithLabelComponent
   ],
   imports: [
     CommonModule,

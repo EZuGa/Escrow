@@ -38,20 +38,11 @@
 
         }
 
-        .signOut{
-            padding: 12px 12px 12px 24px;
-            width: 100%;
-            color: #FF5520;
-            background-color: transparent;
-            border: none;
-            outline: none;
+        .buttonNoBorder{
             position: absolute;
             bottom: 24px;
             left: 0px;
-            text-align: left;
-            cursor: pointer;
         }
-
         // display: inline-block;
     }
 

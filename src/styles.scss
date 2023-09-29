@@ -38,6 +38,18 @@ button.buttomWhiteBorder{
         border: 1px solid #0131F5;
     }
 }
+
+button.buttonNoBorder{
+    padding: 12px 12px 12px 24px;
+    width: 100%;
+    color: #FF5520;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: left;
+    cursor: pointer;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;     background: #161825;}
 
