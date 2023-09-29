@@ -11,7 +11,8 @@ const routes: Routes = [
     {path: 'my-profile', component:PersonalCabinetMyProfileComponent},
     {path: 'messages', component: CabinetMessagesComponent},
     {path: 'contracts', component: CabinetContractsComponent},
-    {path: 'balance', component: CabinetBalanceComponent}
+    {path: 'balance', component: CabinetBalanceComponent},
+    {path: '**', redirectTo: 'my-profile'}
   ]}
 ];
 

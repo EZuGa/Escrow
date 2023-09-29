@@ -24,8 +24,12 @@
 
         nav{
             ul{
+                .routeActive{
+                    background: #0131F5;
+                }
                 li{
                     padding: 12px 12px 12px 24px;
+
                     &:hover{
                         background: #0131F5;
                     }
