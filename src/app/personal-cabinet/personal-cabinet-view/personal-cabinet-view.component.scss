@@ -1,8 +1,9 @@
 
 .personal-cabinet-wrap{
     display: flex;
-    // flex-wrap: wrap;
     height: 100vh;
+    position: relative;
+    overflow: hidden;
     
     aside{
         border-right: 1px solid #282B3F;
@@ -89,7 +90,6 @@
         }
 
         .cabinet-main-bottom{
-            background-color: green;
             flex: 1;
             padding: 32px 24px;
 
@@ -102,5 +102,56 @@
 
         }
 
+    }
+
+
+    .circle{
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        background: #0131F5;
+        filter: blur(100px);
+
+    }
+
+    .circle-one{
+        width: 921px;
+        height: 921px;
+        opacity: 0.3;
+
+
+        left: -158px;
+        bottom: -237px;
+    }
+
+    .circle-two{
+        width: 1185px;
+        height: 1185px;
+
+        border-radius: 1185px;
+        opacity: 0.1;
+        
+        left: 307px;
+        top: -544px;
+    }
+
+    .circle-three{
+        width: 804px;
+        height: 804px;
+        opacity: 0.05;
+        background: #01E6F5;
+
+        top: -189px;
+        right: -244px;
+    }
+
+    .circle-four{
+        width: 572px;
+        height: 572px;
+        opacity: 0.3;
+        filter: blur(150px);
+
+        right: 130px;
+        bottom: -75px;
     }
 }
