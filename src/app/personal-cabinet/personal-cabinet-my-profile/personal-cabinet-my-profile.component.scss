@@ -1,0 +1,23 @@
+.my-profile{
+
+    h2{
+        font-size: 32px;
+        margin-bottom: 48px;
+    }
+
+
+    .my-profile-wrap{
+        width: 100%;
+        height: 100%;
+
+        .my-profile-main{
+            .profile{
+                width: 636px;
+                height: 120px;
+            }
+            input{
+                width: 636px;
+            }
+        }
+    }
+}
