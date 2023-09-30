@@ -1,6 +1,49 @@
 .contracts-footer{
     height: 52px;
-    background-color: lime;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 24px;
+    div{
+        display: flex;
+    }
+    p{
+        padding: 8px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    .pageFrom{
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 8px 13px;
+    }
+
+    .doubleForward{
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 10px;
+            height: 13px;
+            right: 5px;
+            width: 1px;
+            background-color: white;
+        }
+    }
+
+    .doubleBackward{
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 10px;
+            height: 13px;
+            left: 5px;
+            width: 1px;
+            background-color: white;
+        }
+    }
 }
 .router{
     height: calc(100% - 52px);
