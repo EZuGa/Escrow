@@ -10,6 +10,9 @@ import { CabinetBalanceComponent } from './cabinet-balance/cabinet-balance.compo
 import { InputWithLabelComponent } from './personal-cabinet-my-profile/input-with-label/input-with-label.component';
 import { ContractsCellComponent } from './cabinet-contracts/contracts-cell/contracts-cell.component';
 import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.component';
+import { ContractsFilesComponent } from './cabinet-contracts/contracts-files/contracts-files.component';
+import { ContractsFoldersComponent } from './cabinet-contracts/contracts-folders/contracts-folders.component';
+import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files-cell/contracts-files-cell.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.componen
     CabinetBalanceComponent,
     InputWithLabelComponent,
     ContractsCellComponent,
-    CabinetHeaderComponent
+    CabinetHeaderComponent,
+    ContractsFilesComponent,
+    ContractsFoldersComponent,
+    ContractsFilesCellComponent
   ],
   imports: [
     CommonModule,

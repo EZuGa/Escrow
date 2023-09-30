@@ -39,6 +39,18 @@ button.buttomWhiteBorder{
     }
 }
 
+button.blueButton{
+    padding: 8px 24px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: #0131F5;
+    font-weight: 600;
+    line-height: 24px;
+    cursor: pointer;
+
+}
+
 button.buttonNoBorder{
     padding: 12px 12px 12px 24px;
     width: 100%;
