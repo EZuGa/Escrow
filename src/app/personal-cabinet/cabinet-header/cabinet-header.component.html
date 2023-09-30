@@ -1,5 +1,7 @@
 <div class="cabinet-bar-top">
-    <h2>asd</h2>
+    <h2 *ngIf="!isInFiles">asd</h2>
+    <h2 routerLink="personal-cabinet/contracts" *ngIf="isInFiles">&lt; Back to the folders list</h2>
+    
 
     <div class="profile">
         <div class="image"></div>
