@@ -79,13 +79,21 @@
 
         .actions{
             margin-top: 40px;
+            display: flex;
             button{
-                display: inline;
                 width: auto;
             }
             .buttomWhiteBorder{
                 padding: 16px 32px;
                 height: auto;
+                text-align: center;
+            }
+            @media screen and (max-width: 950px) {
+                flex-direction: column;
+                button{
+                    text-align: center !important;
+                    margin-bottom: 40px;
+                }
             }
         }
     }
