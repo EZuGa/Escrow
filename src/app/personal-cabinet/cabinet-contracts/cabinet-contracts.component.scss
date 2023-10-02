@@ -4,12 +4,21 @@
     align-items: center;
     justify-content: end;
     margin-right: 24px;
+
+    @media screen and (max-width: 950px) {
+        justify-content: center;
+        margin-right: 0px;
+    }
+    
     div{
         display: flex;
     }
     p{
         padding: 8px;
         margin-right: 10px;
+        @media screen and (max-width: 950px) {
+            margin-right: 3px;
+        }
         cursor: pointer;
     }
 
@@ -46,5 +55,5 @@
     }
 }
 .router{
-    height: calc(100% - 52px);
+    // height: calc(100% - 52px);
 }

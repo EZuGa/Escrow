@@ -1,13 +1,11 @@
 .contracts-cell{
     background: #161825;
     backdrop-filter: blur(32.53333282470703px);
-    width: 100%;
-    height: 100%;
     border-radius: 10px;
     cursor: pointer;
 
 
-    padding: 32px;
+    padding: 32px 32px 42px 32px; 
     .cell-top{
         display: flex;
         justify-content: space-between;
