@@ -19,6 +19,13 @@
             display: flex;
             justify-content: space-between;
             gap: 40px;
+            @media screen and (max-width: 1250px) {
+                gap: 10px;
+            }
+            @media screen and (max-width: 1050px) {
+                flex-direction: column;
+            }
+
 
             >div{
                 flex: 1;
