@@ -1,9 +1,12 @@
 
 .personal-cabinet-wrap{
     display: flex;
-    height: 100vh;
+    // height: 100vh;
     position: relative;
     overflow: hidden;
+    @media screen and (max-width: 1050px) {
+        background-color: red;
+    }
     
     aside{
         border-right: 1px solid #282B3F;
@@ -12,7 +15,7 @@
         background: rgba(22, 24, 37, 0.70);
         backdrop-filter: blur(10px);
         width: 207px;
-        height: 100vh;
+        height: min(100vh, auto);
         flex-shrink: 0;
         padding: 32px 0px;
         position: relative;
