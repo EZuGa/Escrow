@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -9,7 +9,9 @@ import { filter } from 'rxjs';
 })
 export class CabinetHeaderComponent implements OnInit {
 
-    isInFiles = false;
+  @Output() menuClick = new EventEmitter<void>();
+
+  isInFiles = false;
 
   constructor(private router: Router) {}
 

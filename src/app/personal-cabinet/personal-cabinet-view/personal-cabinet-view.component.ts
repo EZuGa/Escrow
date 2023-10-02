@@ -31,4 +31,9 @@ export class PersonalCabinetViewComponent {
   // private getChildRoute(route: string){
   //   return route.substring(route.lastIndexOf("/") + 1);
   // }
+  menuActive = false;
+
+  closeMenu(){
+    this.menuActive = false;
+  }
 }
