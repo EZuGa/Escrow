@@ -1,0 +1,20 @@
+.dialog-container{
+    background-color: #161825;
+    width: 1000px;
+    height: 720px;
+    padding: 24px;
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    gap: 70px;
+
+    img{
+        // max-width: 540px;
+    }
+
+    .auth-main{
+        // background-color: red;
+        width: 300px;
+        // align-self: center;
+    }
+}

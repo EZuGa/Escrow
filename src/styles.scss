@@ -100,7 +100,11 @@ a{
     text-decoration: none;
 }
 
-input[type=text]{
+span{
+    font-size: inherit;
+}
+
+input[type=text], input[type=password]{
     background-color: transparent;
     border: 1px solid;
     outline: none;
@@ -143,3 +147,14 @@ textarea{
   ::-webkit-scrollbar-thumb:hover {
     // background: #b30000; 
   }
+
+
+
+  //Material styles 
+
+
+  .custom-dialog{
+    // max-width: 100vw !important;
+    // width: 100vw;
+  }
+  
