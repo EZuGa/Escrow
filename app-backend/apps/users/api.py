@@ -5,11 +5,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from .services import send_verification_code, user_create, send_password_verification_code, verify_password_reset_otp
-from .models import User, Directory, File
+from .models import User, Directory, File, Message
 from .selectors import get_user
 from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, \
     SMSVerificationSerializer, DirectorySerializer, FileSerializer, ChangePasswordSerializer, EmailInputSerializer, \
-    PasswordResetSerializer
+    PasswordResetSerializer, MessageSerializer, SendMessageSerializer, BalanceSerializer
 
 
 class OTPSendAPI(APIView):
@@ -174,7 +174,46 @@ class UserResetPasswordAPI(APIView):
             user.set_password(serializer.validated_data["password"])
             user.clean()
             user.save()
-            return Response(status=status.HTTP_200_OK, data={"detail": "password successfully resetted"}
-)
+            return Response(status=status.HTTP_200_OK, data={"detail": "password successfully resetted"})
         return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail":"password cannot be resetted"})
 
+
+class SentMessagesList(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MessageSerializer
+
+    def get(self, request):
+        user = request.user
+        messages = Message.objects.filter(sender=user)
+        serializer = self.serializer_class(messages, many=True)
+        return Response(serializer.data)
+
+class ReceivedMessagesList(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MessageSerializer
+
+    def get(self, request):
+        user = request.user
+        messages = Message.objects.filter(recipient=user)
+        serializer = self.serializer_class(messages, many=True)
+        return Response(serializer.data)
+
+class SendMessage(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = SendMessageSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            message = serializer.save(sender=request.user)
+            return Response(MessageSerializer(message).data, status=201)
+        return Response(serializer.errors, status=400)
+
+class UserBalances(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = BalanceSerializer
+
+    def get(self, request):
+        user = request.user
+        serializer = self.serializer_class(user)
+        return Response(serializer.data)

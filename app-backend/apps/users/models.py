@@ -35,6 +35,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     expiration_date = models.DateTimeField(blank=True, null=True)
     identification_number = models.CharField(max_length=255, blank=True, null=True)
     who_issued_passport = models.CharField(max_length=255, blank=True, null=True)
+    balance_usd = models.FloatField(default=0)
+    balance_eur = models.FloatField(default=0)
+    balance_cny = models.FloatField(default=0)
+    balance_usdt = models.FloatField(default=0)
 
     USERNAME_FIELD = 'email'
 
@@ -79,6 +83,14 @@ class File(models.Model):
 
     def __str__(self):
         return self.name
+
+class Message(models.Model):
+    sender = models.ForeignKey(User, related_name='sent_messages', on_delete=models.CASCADE)
+    recipient = models.ForeignKey(User, related_name='received_messages', on_delete=models.CASCADE)
+    subject = models.CharField(max_length=200)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
 
 
 #TODO: file with same name in same directory and all file and folder checks

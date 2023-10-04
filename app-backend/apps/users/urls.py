@@ -1,5 +1,6 @@
 from .api import UserRegistrationAPI, UserLoginAPI, UserLogOutAPI, UserAPI, OTPSendAPI, DirectoryAPI, FileAPI, \
-    DirectoryCreateAPI, FileUploadAPI, UserChangePasswordAPI, UserGetResetPasswordCodeAPI, UserResetPasswordAPI
+    DirectoryCreateAPI, FileUploadAPI, UserChangePasswordAPI, UserGetResetPasswordCodeAPI, UserResetPasswordAPI, \
+    SentMessagesList, ReceivedMessagesList, SendMessage, UserBalances
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -23,6 +24,10 @@ user_urls = [
     path(f"change_password/", UserChangePasswordAPI.as_view(), name="user-change-password"),
     path(f"reset_password/", UserGetResetPasswordCodeAPI.as_view(), name="user-get-reset-password-code"),
     path(f"reset_password_code/", UserResetPasswordAPI.as_view(), name="user-reset-password"),
+    path('messages/sent/', SentMessagesList.as_view(), name='sent-messages'),
+    path('messages/received/', ReceivedMessagesList.as_view(), name='received-messages'),
+    path('messages/send/', SendMessage.as_view(), name='send-message'),
+    path('balances/', UserBalances.as_view(), name='user-balances'),
 
 ]
 urlpatterns = [

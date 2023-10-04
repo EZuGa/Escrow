@@ -22,3 +22,5 @@ admin.site.register(User, UserAdmin)
 admin.site.register(File,FileAdmin)
 admin.site.register(Directory, DirectoryAdmin)
 
+admin.site.register(Message)
+

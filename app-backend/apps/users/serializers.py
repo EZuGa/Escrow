@@ -2,7 +2,7 @@ from rest_framework import serializers
 from django.core.cache import cache
 
 
-from .models import User, Directory, File
+from .models import User, Directory, File, Message
 from .selectors import get_user
 
 
@@ -42,7 +42,7 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude =["password", "id", "last_login", "is_staff", "is_superuser", "record_date", "groups", "user_permissions", "update_date"]
+        exclude =["password", "id", "last_login", "is_staff", "is_superuser", "record_date", "groups", "user_permissions", "update_date", "balance_usd", "balance_eur","balance_cny","balance_usdt"]
 
 class DirectorySerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
@@ -90,3 +90,23 @@ class PasswordResetSerializer(serializers.Serializer):
 
         return attrs
 
+class MessageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message
+        fields = '__all__'
+
+
+class SendMessageSerializer(serializers.Serializer):
+    recipient_email = serializers.EmailField()
+    subject = serializers.CharField(max_length=255)
+    content = serializers.CharField()
+
+    def create(self, validated_data):
+        recipient_email = validated_data.pop('recipient_email')
+        recipient = User.objects.get(email=recipient_email)
+        return Message.objects.create(recipient=recipient, **validated_data)
+
+class BalanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['balance_usd', 'balance_eur', 'balance_cny', 'balance_usdt']
