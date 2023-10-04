@@ -4,11 +4,12 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from .services import send_verification_code, verify_sms_code, user_create
+from .services import send_verification_code, user_create, send_password_verification_code, verify_password_reset_otp
 from .models import User, Directory, File
-from .selectors import get_user_qs
-from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, UserPasswordSerializer, \
-    SMSVerificationSerializer, DirectorySerializer, FileSerializer
+from .selectors import get_user
+from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, \
+    SMSVerificationSerializer, DirectorySerializer, FileSerializer, ChangePasswordSerializer, EmailInputSerializer, \
+    PasswordResetSerializer
 
 
 class OTPSendAPI(APIView):
@@ -91,9 +92,7 @@ class DirectoryCreateAPI(APIView):
     def post(self, request):
         data = request.data.copy()
         data['user'] = request.user.id
-
         serializer = self.serializer_class(data=data)
-
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -131,21 +130,51 @@ class FileUploadAPI(APIView):
 
 class UserChangePasswordAPI(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = UserPasswordSerializer
+    serializer_class = ChangePasswordSerializer
 
-    def patch(self, request):
+    def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        user = authenticate(email=request.user.email,
-                            password=serializer.validated_data["old_password"])
-        if user:
+        user = request.user
+        if authenticate(email=user.email, password=serializer.validated_data["old_password"]):
             user.set_password(serializer.validated_data["new_password"])
-            user.clean()
             user.save()
             return Response(
-                data={"detail": "password was changed successfully"},
-                status=status.HTTP_202_ACCEPTED)
+                status=status.HTTP_200_OK,
+                data={"detail": "password was changed successfully"})
 
+        return Response(status=status.HTTP_400_BAD_REQUEST,
+                        data={"detail": "old password is incorrect"})
+
+
+class UserGetResetPasswordCodeAPI(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = EmailInputSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        code = send_password_verification_code(email=serializer.validated_data["email"])
         return Response(
-            data={"detail": "invalid password was provided"},
-            status=status.HTTP_400_BAD_REQUEST)
+            data={"code": code},
+            status=status.HTTP_200_OK)
+
+
+class UserResetPasswordAPI(APIView):
+    permission_classes = [AllowAny]
+    serializer_class = PasswordResetSerializer
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        email = serializer.validated_data["email"]
+        code = serializer.validated_data["code"]
+        if verify_password_reset_otp(code=code, email=email):
+            user = get_user(email=email)
+            user.set_password(serializer.validated_data["password"])
+            user.clean()
+            user.save()
+            return Response(status=status.HTTP_200_OK, data={"detail": "password successfully resetted"}
+)
+        return Response(status=status.HTTP_400_BAD_REQUEST, data={"detail":"password cannot be resetted"})
+

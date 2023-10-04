@@ -1,5 +1,5 @@
 from .api import UserRegistrationAPI, UserLoginAPI, UserLogOutAPI, UserAPI, OTPSendAPI, DirectoryAPI, FileAPI, \
-    DirectoryCreateAPI, FileUploadAPI
+    DirectoryCreateAPI, FileUploadAPI, UserChangePasswordAPI, UserGetResetPasswordCodeAPI, UserResetPasswordAPI
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -11,6 +11,7 @@ auth_urls = [
     path(f"sms_code/", OTPSendAPI.as_view(), name="get-sms-code"),
     path(f'refresh/', TokenRefreshView.as_view(), name='token-refresh'),
 
+
 ]
 
 user_urls = [
@@ -19,6 +20,9 @@ user_urls = [
     path('directories/<uuid:directory_id>/files/', FileAPI.as_view(), name='file-list'),
     path('directories/create/', DirectoryCreateAPI.as_view(), name='directory-create'),
     path('directories/<uuid:directory_id>/files/upload/', FileUploadAPI.as_view(), name='file-upload'),
+    path(f"change_password/", UserChangePasswordAPI.as_view(), name="user-change-password"),
+    path(f"reset_password/", UserGetResetPasswordCodeAPI.as_view(), name="user-get-reset-password-code"),
+    path(f"reset_password_code/", UserResetPasswordAPI.as_view(), name="user-reset-password"),
 
 ]
 urlpatterns = [

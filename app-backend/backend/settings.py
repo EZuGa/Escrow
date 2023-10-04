@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'rest_framework',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -120,8 +121,8 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,
     'UPDATE_LAST_LOGIN': False,
@@ -178,6 +179,13 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+AWS_ACCESS_KEY_ID = "AKIA2AET7JKXKG4ZSDMT"
+AWS_SECRET_ACCESS_KEY = "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"
+AWS_STORAGE_BUCKET_NAME = 'escrowbucketi'
+AWS_S3_REGION_NAME = 'eu-central-1'
+AWS_S3_ENDPOINT_URL = 'https://escrowbucketi.s3.eu-central-1.amazonaws.com'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
 # Static files (CSS, JavaScript, Images)

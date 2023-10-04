@@ -58,17 +58,27 @@ class Directory(models.Model):
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    path = models.CharField(max_length=500, blank=True, null=True)
 
     def __str__(self):
-        return self.name
+        return self.path
+    def save(self, *args, **kwargs):
+        if not self.path:
+            sanitized_email = self.user.email.replace("@", "_").replace(".", "_")
+            self.path = f"{sanitized_email}/{self.name}/"
+        super(Directory, self).save(*args, **kwargs)
 
+def file_upload_path(instance, filename):
+    return f"{instance.directory.path}{filename}"
 class File(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, unique=True)
     directory = models.ForeignKey(Directory, on_delete=models.CASCADE, related_name='files')
     name = models.CharField(max_length=255)
-    s3_url = models.URLField(max_length=500)
     uploaded_at = models.DateTimeField(auto_now_add=True)
-    file = models.FileField(upload_to='uploads/', null=True)
+    file = models.FileField(upload_to=file_upload_path, null=True)
 
     def __str__(self):
         return self.name
+
+
+#TODO: file with same name in same directory and all file and folder checks

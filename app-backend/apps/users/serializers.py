@@ -45,6 +45,10 @@ class UserSerializer(serializers.ModelSerializer):
         exclude =["password", "id", "last_login", "is_staff", "is_superuser", "record_date", "groups", "user_permissions", "update_date"]
 
 class DirectorySerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+
+    def get_user(self, obj):
+        return obj.user.email
     class Meta:
         model = Directory
         fields = '__all__'
@@ -55,6 +59,34 @@ class FileSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class UserPasswordSerializer(serializers.Serializer):
-    old_password = serializers.CharField(required=True, min_length=8)
-    new_password = serializers.CharField(required=True, min_length=8)
+class ChangePasswordSerializer(serializers.Serializer):
+    old_password = serializers.CharField(min_length=8)
+    new_password = serializers.CharField(min_length=8)
+
+    def validate(self, attrs):
+        if attrs["old_password"] == attrs["new_password"]:
+            raise serializers.ValidationError("new password can not be same as old password")
+
+        return attrs
+
+class EmailInputSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+    def validate(self, attrs):
+        if not get_user(email=attrs["email"]):
+            raise serializers.ValidationError("User With This Email Does Not Exists")
+
+        return attrs
+
+class PasswordResetSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    code = serializers.CharField(min_length=6)
+    password = serializers.CharField(min_length=8)
+    repeat_password = serializers.CharField(min_length=8)
+
+    def validate(self, attrs):
+        if attrs["password"] != attrs["repeat_password"]:
+            raise serializers.ValidationError("Passwords Does Not Match")
+
+        return attrs
+

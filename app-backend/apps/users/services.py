@@ -18,15 +18,20 @@ def send_password_verification_code(*, email: str):
     cache.set(email, data, 60)
     return code
 
-def verify_sms_code(*, code: str, email: str) -> bool:
-    if cache.get(email) == code:
-        cache.set(email, code, 180)
-        return True
+def verify_password_reset_otp(*, code: str, email: str) -> bool:
+    password_reset_data = cache.get(email)
+    if password_reset_data:
+        purpose = password_reset_data.get("purpose")
+        if purpose == "password_reset":
+            if password_reset_data.get("code") == code:
+                cache.delete(email)
+                return True
+
+    return False
 
 
 def user_create(**kwargs) -> User:
     return User.objects.create_user(**kwargs)
-
 
 
 
