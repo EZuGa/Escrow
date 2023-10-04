@@ -8,6 +8,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LoginComponent } from './shared/dialogs/authentication/login/login.component';
 import { RegisterComponent } from './shared/dialogs/authentication/register/register.component';
 import { AuthenticationComponent } from './shared/dialogs/authentication/authentication.component';
+import { ConfirmEmailComponent } from './shared/dialogs/authentication/confirm-email/confirm-email.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,12 +17,15 @@ import { AuthenticationComponent } from './shared/dialogs/authentication/authent
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    AuthenticationComponent
+    AuthenticationComponent,
+    ConfirmEmailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatDialogModule
   ],
   providers: [],
