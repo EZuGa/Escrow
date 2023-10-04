@@ -1,16 +1,16 @@
-<form class="register">
+<form class="register" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
     <h5>Sign Up</h5>
-    <input type="text" placeholder="Email">
-    <input type="password" placeholder="Password">
-    <input type="password" placeholder="Confirm Password">
+    <input type="text" placeholder="Email" formControlName="email">
+    <input type="password" placeholder="Password" formControlName="password">
+    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
 
     
     <label>
-        <input type="checkbox">
+        <input type="checkbox" formControlName="agreeTerms">
         <p><span>I agree to the</span> Terms of Use <span>and</span> Privacy Statement</p>
     </label>
     
-    <button class="blueButton">Sign up</button>
+    <button [disabled]="registerForm.invalid" class="blueButton">Sign up</button>
 
 
     <p class="goToLogin">Already have an account? <span>Login</span></p>
