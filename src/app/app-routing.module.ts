@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page/landing-page.component';
 import { PersonalCabinetViewComponent } from './personal-cabinet/personal-cabinet-view/personal-cabinet-view.component';
+import { canAccessCabinetGuard } from './shared/guards/can-access-cabinet.guard';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       import("./personal-cabinet/personal-cabinet.module").then(
         (m) => m.PersonalCabinetModule,
       ),
+      canMatch:[canAccessCabinetGuard]
   },
 ];
 
