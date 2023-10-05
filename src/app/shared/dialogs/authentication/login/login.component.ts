@@ -12,8 +12,8 @@ export class LoginComponent {
   @Output() changeState = new EventEmitter<CurrentState>();
 
   loginForm = this.fb.group({
-    email: [null, [Validators.required, Validators.email]],
-    password: [null, [Validators.required, Validators.minLength(8)]]
+    email: ["", [Validators.required, Validators.email]],
+    password: ["", [Validators.required, Validators.minLength(8)]]
   })
 
   constructor(private fb: FormBuilder, private authState: AuthenticationService){}
@@ -25,9 +25,14 @@ export class LoginComponent {
 
 
   authenticateUser(){
-    const user = this.loginForm.getRawValue();
+    if(this.loginForm.invalid)return;
 
+    const user = this.loginForm.getRawValue();
     console.log(user)
+    this.authState.authenticateUser(user as any)
+    .subscribe(response=>{
+      console.log(response)
+    })
   }
 
   get email(){
