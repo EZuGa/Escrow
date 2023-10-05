@@ -45,7 +45,10 @@ export class RegisterComponent implements OnInit{
         this.changeState.emit(CurrentState.CONFIRM_EMAIL);
       }
     )
+  }
 
+  goToLogin(){
+    this.changeState.emit(CurrentState.LOGIN);
   }
 
   get password(){

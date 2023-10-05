@@ -120,6 +120,10 @@ input[type=text], input[type=password]{
     margin-bottom: 16px;
 }
 
+input.invalid{
+    border: 1px solid rgb(196, 49, 49);
+}
+
 textarea{
     background-color: transparent;
     border: 1px solid;

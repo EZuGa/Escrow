@@ -15,6 +15,6 @@
     <button [disabled]="registerForm.invalid" class="blueButton">Sign up</button>
 
 
-    <p class="goToLogin">Already have an account? <span>Login</span></p>
+    <p class="goToLogin">Already have an account? <span (click)="goToLogin()">Login</span></p>
 
 </form>

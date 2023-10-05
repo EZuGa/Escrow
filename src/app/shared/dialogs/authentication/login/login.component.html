@@ -1,1 +1,12 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="authenticateUser()">
+    <img src="assets/icons/logo.svg" alt="">
+    <h5>Login</h5>
+    <input [class.invalid]="email!.invalid && email!.touched" formControlName="email" type="text" placeholder="Email">
+    <input [class.invalid]="password!.invalid && password!.touched" formControlName="password" type="password" placeholder="Password">
+    <button [disabled]="loginForm.invalid" class="blueButton">Login</button>
+
+    <p class="goToOtherPage">Forgot your password? <span>Restore</span></p>
+    <p class="goToOtherPage">Dont have an account? <span (click)="goToRegister()">Sign Up</span></p>
+
+
+</form>

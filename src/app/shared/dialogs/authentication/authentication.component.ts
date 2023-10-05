@@ -15,7 +15,7 @@ export class AuthenticationComponent {
 
   currentStateEnum = CurrentState;
 
-  currentAuthState: CurrentState = CurrentState.REGISTER;
+  currentAuthState: CurrentState = CurrentState.LOGIN;
 
 
   changeCurrentState(state: CurrentState){

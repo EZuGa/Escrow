@@ -40,5 +40,12 @@ export class AuthenticationService {
 
   }
 
+  loginUser(user:{email:string, password:string}){
+    return this.http.post(
+      `${environment.baseUrl}api/v1/user/jwt/login/`,
+      {user}
+    )
+  }
+
 
 }
