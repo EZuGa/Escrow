@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationComponent } from 'src/app/shared/dialogs/authentication/authentication.component';
 
 @Component({
   selector: 'landing-header',
@@ -6,6 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./landing-header.component.scss']
 })
 export class LandingHeaderComponent {
+
+  constructor(private dialog:MatDialog){}
+
+  openAuthDialog(){
+    this.dialog.open(
+      AuthenticationComponent,
+      {panelClass:'custom-dialog'}
+      );
+  }
 
 
 }
