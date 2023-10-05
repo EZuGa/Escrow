@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-confirm-email',
@@ -22,7 +23,7 @@ export class ConfirmEmailComponent implements OnInit{
     ])
   });
 
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder, private authService: AuthenticationService){}
 
   handleInput(index: number){
     const nextInputIndex = (index + 1).toString();
@@ -39,7 +40,12 @@ export class ConfirmEmailComponent implements OnInit{
 
   submitConfirm(){
     const resultArr: string[] = this.confirmForm.get("validateEmail")?.getRawValue();
-    const result = resultArr.join('')
+    const result = resultArr.join('');
+
+    this.authService.registerUser(+ result)
+    .subscribe(response=>{
+      console.log("response",response)
+    })
   }
 
   get validateEmailControls(){

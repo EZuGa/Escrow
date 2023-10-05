@@ -10,6 +10,7 @@ import { RegisterComponent } from './shared/dialogs/authentication/register/regi
 import { AuthenticationComponent } from './shared/dialogs/authentication/authentication.component';
 import { ConfirmEmailComponent } from './shared/dialogs/authentication/confirm-email/confirm-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

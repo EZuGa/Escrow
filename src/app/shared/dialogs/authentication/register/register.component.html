@@ -1,8 +1,10 @@
 <form class="register" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
     <h5>Sign Up</h5>
-    <input type="text" placeholder="Email" formControlName="email">
-    <input type="password" placeholder="Password" formControlName="password">
-    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+    <input [class.invalid]="email!.invalid && email!.touched" type="text" placeholder="Email" formControlName="email">
+    <ng-container formGroupName="passwords" >
+        <input [class.invalid]="password!.invalid && password!.touched"   type="password" placeholder="Password" formControlName="password">
+        <input [class.invalid]="registerForm.get('passwords')!.invalid && registerForm.get('passwords')!.get('confirmPassword')!.touched" type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+    </ng-container>
 
     
     <label>

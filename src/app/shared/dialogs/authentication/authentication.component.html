@@ -4,7 +4,7 @@
 
 
     <div class="auth-main">
-        <!-- <app-confirm-email></app-confirm-email> -->
-        <app-register></app-register>
+        <app-confirm-email *ngIf="currentAuthState === currentStateEnum.CONFIRM_EMAIL"></app-confirm-email>
+        <app-register (changeState)="changeCurrentState($event)" *ngIf="currentAuthState === currentStateEnum.REGISTER"></app-register>
     </div>
 </div>
