@@ -10,7 +10,8 @@ import { RegisterComponent } from './shared/dialogs/authentication/register/regi
 import { AuthenticationComponent } from './shared/dialogs/authentication/authentication.component';
 import { ConfirmEmailComponent } from './shared/dialogs/authentication/confirm-email/confirm-email.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { SendTokenInterceptor } from './shared/interceptors/send-token.interceptor';
 
 
 @NgModule({
@@ -30,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatDialogModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

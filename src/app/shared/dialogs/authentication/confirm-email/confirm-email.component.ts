@@ -42,10 +42,7 @@ export class ConfirmEmailComponent implements OnInit{
     const resultArr: string[] = this.confirmForm.get("validateEmail")?.getRawValue();
     const result = resultArr.join('');
 
-    this.authService.registerUser(+ result)
-    .subscribe(response=>{
-      console.log("response",response)
-    })
+    this.authService.registerUser(+ result).subscribe();
   }
 
   get validateEmailControls(){

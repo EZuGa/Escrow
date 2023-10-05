@@ -28,11 +28,8 @@ export class LoginComponent {
     if(this.loginForm.invalid)return;
 
     const user = this.loginForm.getRawValue();
-    console.log(user)
     this.authState.authenticateUser(user as any)
-    .subscribe(response=>{
-      console.log(response)
-    })
+    .subscribe()
   }
 
   get email(){
