@@ -4,6 +4,8 @@ import { Observable, tap } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from 'src/environments/environment';
 import { IAuth } from '../../interfaces/IAuth';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class AuthenticationService {
 
    private currentUser?: {email:"", password:""};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
 
 
@@ -37,8 +39,16 @@ export class AuthenticationService {
         code
       }
     ).pipe(
-      tap(response=>this.setToken(response)),
-      tap(response=>this.currentUser = undefined)
+      tap(response=>{
+
+        if(response.access){
+          this.setToken(response);
+          this.navigateToCabinet();
+        }
+
+        this.currentUser = undefined;
+
+      }),
       )
   }
 
@@ -46,7 +56,19 @@ export class AuthenticationService {
     return this.http.post<IAuth>(
       `${environment.baseUrl}api/v1/user/jwt/login/`,
       user
-    ).pipe(tap(response=>this.setToken(response)))
+    ).pipe(
+      tap(response=>{
+        if(response.access){
+          this.setToken(response);
+          this.navigateToCabinet();
+        }
+      })
+      )
+  }
+
+  private navigateToCabinet(){
+    this.router.navigateByUrl("/personal-cabinet");
+    this.dialog.closeAll();
   }
 
   private setToken(response:IAuth){
