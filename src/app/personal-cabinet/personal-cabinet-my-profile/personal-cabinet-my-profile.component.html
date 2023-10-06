@@ -3,7 +3,7 @@
         <div class="my-profile-wrap">
             <h2>Welcome to your personal cabinet!</h2>
     
-            <form class="my-profile-main">
+            <form class="my-profile-main" [formGroup]="personalDataForm">
                 <div class="column-one">
                     <div class="profile">
                         <img src="" alt="">
@@ -12,20 +12,20 @@
                             <p>giorgi@gmail.com</p>
                         </div>
                     </div>
-                    <input-with-label labelTitle="Name"></input-with-label>
-                    <input-with-label labelTitle="Last name"></input-with-label>
-                    <input-with-label labelTitle="Email"></input-with-label>
-                    <input-with-label labelTitle="Phone"></input-with-label>
-                    <input-with-label labelTitle="Gender"></input-with-label>
+                    <input-with-label labelTitle="Name" formControlName="firstname"></input-with-label>
+                    <input-with-label labelTitle="Last name" formControlName="lastname"></input-with-label>
+                    <input-with-label labelTitle="Email" formControlName="email"></input-with-label>
+                    <input-with-label labelTitle="Phone" formControlName="phone"></input-with-label>
+                    <input-with-label labelTitle="Gender" formControlName="gender"></input-with-label>
                 </div>
                 <div class="column-two">
-                    <input-with-label labelTitle="Age"></input-with-label>
-                    <input-with-label labelTitle="Social Status"></input-with-label>
-                    <input-with-label labelTitle="Nationality"></input-with-label>
-                    <input-with-label labelTitle="Country"></input-with-label>
-                    <input-with-label labelTitle="City"></input-with-label>
-                    <input-with-label labelTitle="Address"></input-with-label>
-                    <input-with-label labelTitle="Zip code"></input-with-label>
+                    <input-with-label labelTitle="Age" formControlName="age"></input-with-label>
+                    <input-with-label labelTitle="Social Status" formControlName="social_status"></input-with-label>
+                    <input-with-label labelTitle="Nationality" formControlName="nationality"></input-with-label>
+                    <input-with-label labelTitle="Country" formControlName="country"></input-with-label>
+                    <input-with-label labelTitle="City" formControlName="city"></input-with-label>
+                    <input-with-label labelTitle="Address" formControlName="address"></input-with-label>
+                    <input-with-label labelTitle="Zip code" formControlName="zip_code"></input-with-label>
                 </div>
                 <div class="column-three">
                     <div class="passporOptional">
@@ -33,16 +33,16 @@
                         <p>Optionan</p>
                     </div>
     
-                    <input-with-label labelTitle="Passport number"></input-with-label>
-                    <input-with-label labelTitle="Issue Date"></input-with-label>
-                    <input-with-label labelTitle="Expiration Date"></input-with-label>
-                    <input-with-label labelTitle="Identification Number"></input-with-label>
-                    <input-with-label labelTitle="Who issued the passport"></input-with-label>
+                    <input-with-label labelTitle="Passport number" formControlName="passport_number"></input-with-label>
+                    <input-with-label labelTitle="Issue Date" formControlName="issue_date"></input-with-label>
+                    <input-with-label labelTitle="Expiration Date" formControlName="expiration_date"></input-with-label>
+                    <input-with-label labelTitle="Identification Number" formControlName="identification_number"></input-with-label>
+                    <input-with-label labelTitle="Who issued the passport" formControlName="who_issued_passport"></input-with-label>
                 </div>
             </form>
     
             <div class="actions">
-                <button class="buttomWhiteBorder">Update information</button>
+                <button class="buttomWhiteBorder" (click)="updateUser()">{{inUpdateMode ? "Update information" : "Edit"}}</button>
                 <button class="buttonNoBorder">Delete your account </button>
             </div>
         </div>

@@ -22,7 +22,11 @@ export class LandingHeaderComponent {
 
     this.dialog.open(
       AuthenticationComponent,
-      {panelClass:'custom-dialog'}
+      {
+        panelClass:'custom-dialog',
+        maxWidth:'100vw',
+        maxHeight:'100vh'
+      }
       );
   }
 

@@ -13,6 +13,7 @@ import { CabinetHeaderComponent } from './cabinet-header/cabinet-header.componen
 import { ContractsFilesComponent } from './cabinet-contracts/contracts-files/contracts-files.component';
 import { ContractsFoldersComponent } from './cabinet-contracts/contracts-folders/contracts-folders.component';
 import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files-cell/contracts-files-cell.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -31,7 +32,9 @@ import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files
   ],
   imports: [
     CommonModule,
-    PersonalCabinetRoutingModule
+    PersonalCabinetRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PersonalCabinetModule { }

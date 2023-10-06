@@ -1,4 +1,9 @@
 <label>
     <p>{{labelTitle}}</p>
-    <input type="text">
+    <input 
+    [disabled]="disabled"
+    [(ngModel)]="value"
+    (input)="onChange($any($event).target.value)"
+    type="text" >
+    
 </label>
