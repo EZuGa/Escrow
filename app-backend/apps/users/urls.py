@@ -1,6 +1,6 @@
 from .api import UserRegistrationAPI, UserLoginAPI, UserLogOutAPI, UserAPI, OTPSendAPI, DirectoryAPI, FileAPI, \
     DirectoryCreateAPI, FileUploadAPI, UserChangePasswordAPI, UserGetResetPasswordCodeAPI, UserResetPasswordAPI, \
-    SentMessagesList, ReceivedMessagesList, SendMessage, UserBalances
+    SentMessagesList, ReceivedMessagesList, SendMessage, UserBalances, UpdateProfileInfo
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -17,6 +17,7 @@ auth_urls = [
 
 user_urls = [
     path(f"profile/", UserAPI.as_view(), name='user'),
+    path(f"profile/update/", UpdateProfileInfo.as_view(), name='update-profile'),
     path('directories/', DirectoryAPI.as_view(), name='directory-list'),
     path('directories/<uuid:directory_id>/files/', FileAPI.as_view(), name='file-list'),
     path('directories/create/', DirectoryCreateAPI.as_view(), name='directory-create'),

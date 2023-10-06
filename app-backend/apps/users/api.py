@@ -217,3 +217,26 @@ class UserBalances(APIView):
         user = request.user
         serializer = self.serializer_class(user)
         return Response(serializer.data)
+
+
+class UpdateProfileInfo(APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = UserSerializer
+
+    def put(self, request):
+        user = request.user
+        if 'email' in request.data and request.data['email'] != user.email:
+            return Response({"detail": "You cannot change your email."}, status=status.HTTP_400_BAD_REQUEST)
+        for field in request.data.keys():
+            try:
+                User._meta.get_field(field)
+            except Exception as e:
+                return Response({"detail": f"The field {e} does not exist in the user profile."},
+                                status=status.HTTP_400_BAD_REQUEST)
+        serializer = self.serializer_class(user, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

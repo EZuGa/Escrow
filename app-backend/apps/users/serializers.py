@@ -42,7 +42,7 @@ class UserLoginSerializer(serializers.Serializer):
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        exclude =["password", "id", "last_login", "is_staff", "is_superuser", "record_date", "groups", "user_permissions", "update_date", "balance_usd", "balance_eur","balance_cny","balance_usdt"]
+        exclude =["password", "id", "last_login", "is_staff", "is_superuser", "record_date", "groups", "user_permissions", "update_date", "balance_usd", "balance_eur","balance_cny","balance_usdt", "is_active"]
 
 class DirectorySerializer(serializers.ModelSerializer):
     user = serializers.SerializerMethodField()
