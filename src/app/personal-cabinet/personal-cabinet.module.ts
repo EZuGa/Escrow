@@ -14,6 +14,7 @@ import { ContractsFilesComponent } from './cabinet-contracts/contracts-files/con
 import { ContractsFoldersComponent } from './cabinet-contracts/contracts-folders/contracts-folders.component';
 import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files-cell/contracts-files-cell.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MessagesMainComponent } from './cabinet-messages/messages-main/messages-main.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CabinetHeaderComponent,
     ContractsFilesComponent,
     ContractsFoldersComponent,
-    ContractsFilesCellComponent
+    ContractsFilesCellComponent,
+    MessagesMainComponent
   ],
   imports: [
     CommonModule,
