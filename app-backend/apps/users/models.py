@@ -63,6 +63,19 @@ class Directory(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     path = models.CharField(max_length=500, blank=True, null=True)
+    ONGOING = 'ongoing'
+    FAILED = 'failed'
+    SUCCEEDED = 'succeeded'
+    STATUS_CHOICES = [
+        (ONGOING, 'Ongoing'),
+        (FAILED, 'Failed'),
+        (SUCCEEDED, 'Succeeded'),
+    ]
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default=ONGOING,
+    )
 
     def __str__(self):
         return self.path
