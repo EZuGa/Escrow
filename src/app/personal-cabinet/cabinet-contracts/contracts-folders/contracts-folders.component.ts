@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { IFolder } from 'src/app/shared/interfaces/IFolder';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
 
@@ -12,6 +12,7 @@ export class ContractsFoldersComponent implements OnInit{
 
   allFolders!: Observable<IFolder[] | undefined>;
   currentPage = 1;
+  lastPage = 1;
   
 
 
@@ -19,7 +20,12 @@ export class ContractsFoldersComponent implements OnInit{
   constructor(private contractService: ContractsService){}
 
   ngOnInit(): void {
-    this.allFolders = this.contractService.allFolders;
+    this.allFolders = this.contractService.allFolders.
+      pipe(tap(val => {
+          if(val){
+            this.lastPage = Math.ceil(val.length / 12) ;
+          }
+        }));
   }
 
 
@@ -29,7 +35,6 @@ export class ContractsFoldersComponent implements OnInit{
 
 
   changePage(page:number){
-    console.log(page)
     this.currentPage = page;
   }
 
