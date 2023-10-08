@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { takeWhile } from 'rxjs';
 import { IUserInfo } from 'src/app/shared/interfaces/IUserInfo';
 import { PersonalInfoService } from 'src/app/shared/services/personal-info/personal-info.service';
 
@@ -8,7 +9,9 @@ import { PersonalInfoService } from 'src/app/shared/services/personal-info/perso
   templateUrl: './personal-cabinet-my-profile.component.html',
   styleUrls: ['./personal-cabinet-my-profile.component.scss']
 })
-export class PersonalCabinetMyProfileComponent implements OnInit {
+export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
+
+  componentAlive$ = true;
 
   inUpdateMode = false;
 
@@ -40,14 +43,11 @@ export class PersonalCabinetMyProfileComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.personalInfoService.getPersonalData()
+    this.personalInfoService.userInfo
+    .pipe(takeWhile(val=>this.componentAlive$))
     .subscribe(val=>{
-      // this.personalData = val;
-
       this.personalDataForm.patchValue(val);
     })
-
-    this.personalDataForm.valueChanges.subscribe(val=>console.log(this.personalDataForm.get('email')?.dirty))
   }
 
 
@@ -80,6 +80,10 @@ formToggleDisabled(){
 
     controller.disabled ? controller.enable() : controller.disable()
   });
+}
+
+ngOnDestroy(): void {
+  this.componentAlive$ = false;
 }
 
   
