@@ -10,17 +10,25 @@ export class MessagesMainComponent implements OnInit, OnChanges{
 
   @Input() messages!: IMessages[];
   @Input() onReceivedPage = true;
-  messageToDisplay:IMessages | undefined;
+
+  filteredMessages!: IMessages[];
+  currentMessage:IMessages | undefined;
 
 
   ngOnChanges(changes: SimpleChanges){
-    this.messageToDisplay = undefined;
+    this.currentMessage = undefined;
+    this.filteredMessages = this.messages;
   }
 
   ngOnInit(): void {
   }
 
+  searchMessage(input:string){
+    this.filteredMessages = this.messages.filter(val=>val.content.toLocaleLowerCase().includes(input.toLocaleLowerCase()));
+    this.currentMessage = undefined;
+  }
+
   chooseMessage(message:IMessages){
-    this.messageToDisplay = message;
+    this.currentMessage = message;
   }
 }

@@ -1,8 +1,8 @@
 <div class="messsages-main-wrap">
     <div class="messages-main-left">
-        <input type="text">
+        <input type="text" (input)="searchMessage($any($event).target.value)">
         <div class="messages-left-container">
-            <div class="messages-left-cell" [class.active]="message.id === messageToDisplay?.id" *ngFor="let message of messages" (click)="chooseMessage(message)">
+            <div class="messages-left-cell" [class.active]="message.id === currentMessage?.id" *ngFor="let message of filteredMessages" (click)="chooseMessage(message)">
                 <!-- <p class="message-date">24.10.22 11:20</p> -->
                 <p class="message-date">{{message.timestamp | date : "dd.MM.YY hh:mm"}}</p>
 
@@ -16,21 +16,21 @@
     </div>
 
     <div class="messages-main-right">
-        <div class="messages-right-controls">
-            <p>October 24 2022 11:20</p>
-            <div>
-                <img class="reply" src="assets/icons/reply.svg" alt="">
-                <img class="delete" src="assets/icons/delete.svg" alt="">
+        <ng-container  *ngIf="currentMessage">
+            <div class="messages-right-controls" >
+                <p>October 24 2022 11:20</p>
+                <div>
+                    <img class="reply" src="assets/icons/reply.svg" alt="">
+                    <img class="delete" src="assets/icons/delete.svg" alt="">
+                </div>
             </div>
-        </div>
-        <div class="messages-right-text">
-            <h5>Message Title</h5>
-            <pre>
-                {{messageToDisplay?.content}}
-            </pre>
-
-
-        </div>
+            <div class="messages-right-text">
+                <h5>{{currentMessage.subject}}</h5>
+                <pre>
+                    {{currentMessage.content}}
+                </pre>
+            </div>
+        </ng-container>
     </div>
 </div>
 
