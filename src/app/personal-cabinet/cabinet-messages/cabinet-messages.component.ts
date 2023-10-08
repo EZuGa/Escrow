@@ -21,12 +21,12 @@ export class CabinetMessagesComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.messageService.getSentMessages().subscribe(messages=>{
-      this.sentMessages = messages
+    this.messageService.sentdMesasges.subscribe(messages=>{
+      this.sentMessages = messages!
     });
 
-    this.messageService.getReceivedMessages().subscribe(messages=>{
-      this.receivedMessages = messages;
+    this.messageService.receivedMesasges.subscribe(messages=>{
+      this.receivedMessages = messages!;
     });
   }
 

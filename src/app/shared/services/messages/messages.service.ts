@@ -13,12 +13,15 @@ export class MessagesService {
   private sentMessagesSubject = new BehaviorSubject<IMessages[] | undefined>(undefined);
 
   receivedMesasges = this.receivedMessagesSubject.asObservable();
-  sentdMesasges = this.receivedMessagesSubject.asObservable();
+  sentdMesasges = this.sentMessagesSubject.asObservable();
 
 
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getReceivedMessages();
+    this.getSentMessages();
+   }
 
 
 
@@ -34,9 +37,15 @@ export class MessagesService {
 
   getReceivedMessages(){
     return this.http.get<IMessages[]>(`${environment.baseUrl}api/v1/user/messages/received/`)
+    .subscribe(val=>{
+      this.receivedMessagesSubject.next(val);
+    })
   }
 
   getSentMessages(){
     return this.http.get<IMessages[]>(`${environment.baseUrl}api/v1/user/messages/sent/`)
+    .subscribe(val=>{
+      this.sentMessagesSubject.next(val);
+    })
   }
 }
