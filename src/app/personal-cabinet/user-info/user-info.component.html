@@ -1,0 +1,7 @@
+<div class="{{'profile-' + size}}" *ngIf="personalData | async as data">
+    <img class="image" src="assets/images/defaultUser.webp">
+    <div class="profile-data">
+        <h6>{{data.firstname + " " + data.lastname}}</h6>
+        <p>{{data.email}}</p>
+    </div>
+</div>

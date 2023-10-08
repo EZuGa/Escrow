@@ -12,9 +12,7 @@ export class CabinetBalanceComponent implements OnInit{
 
 
   ngOnInit(): void {
-    console.log("ABS")
-    this.balanceService.getBalances()
-    .subscribe(val=>{console.log("BALNACES")})
+    this.balanceService.getBalances().subscribe(val=>{})
   }
 
 }

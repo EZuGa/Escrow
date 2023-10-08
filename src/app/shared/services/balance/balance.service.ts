@@ -11,7 +11,6 @@ export class BalanceService {
 
 
   getBalances(){
-    console.log("BALANCE1")
     return this.http.get(`${environment.baseUrl}api/v1/user/balances/`)
   }
 }

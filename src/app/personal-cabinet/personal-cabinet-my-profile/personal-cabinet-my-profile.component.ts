@@ -52,8 +52,6 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
       this.personalDataForm.get('expiration_date')?.patchValue(this.formatDate(val.expiration_date));
       this.personalDataForm.get('issue_date')?.patchValue(this.formatDate(val.issue_date));
     })
-
-    this.personalDataForm.valueChanges.subscribe(val=>console.log(val))
   }
 
   private formatDate(date:string) {
@@ -72,8 +70,6 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
 updateUser(){
   if(this.inUpdateMode){
     const brave = this.personalDataForm.getRawValue();
-
-    console.log(brave)
 
     const abraka = {
       ...brave,

@@ -32,34 +32,6 @@
             }
 
             .column-one{
-                .profile{
-                    // width: 636px;
-                    height: 120px;
-                    margin-bottom: 32px;
-                    margin-top: 8px;
-                    display: flex;
-
-                    img{
-                        width: 120px;
-                        height: 120px;
-                        background-color: aquamarine;
-                        border-radius: 50%;
-                        margin-right: 12px;
-                    }
-
-                    .profile-text{
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: end;
-                        h5{
-                            margin-bottom: 12px;
-                            font-size: 24px;
-                        }
-                        p{
-                            opacity: 0.5;
-                        }
-                    }
-                }
     
             }
 

@@ -18,7 +18,6 @@ export class MessagesMainComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    console.log(this.messages)
   }
 
   chooseMessage(message:IMessages){

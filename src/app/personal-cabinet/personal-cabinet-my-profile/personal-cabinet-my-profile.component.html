@@ -5,13 +5,7 @@
     
             <form class="my-profile-main" [formGroup]="personalDataForm">
                 <div class="column-one">
-                    <div class="profile">
-                        <img src="" alt="">
-                        <div class="profile-text">
-                            <h5>Giorgi Ezugbaia</h5>
-                            <p>giorgi@gmail.com</p>
-                        </div>
-                    </div>
+                    <app-user-info size="big"></app-user-info>
                     <input-with-label labelTitle="Name" formControlName="firstname"></input-with-label>
                     <input-with-label labelTitle="Last name" formControlName="lastname"></input-with-label>
                     <input-with-label labelTitle="Email" formControlName="email"></input-with-label>

@@ -26,13 +26,6 @@ export class CabinetMessagesComponent implements OnInit{
     });
 
     this.messageService.getReceivedMessages().subscribe(messages=>{
-      console.log(messages[0].timestamp)
-      const b = new Date(messages[0].timestamp);
-
-      console.log(`${b.getDay()}.${b.getMonth()}.${b.getUTCFullYear().toString().substr(-2)} ${b.getTime()}`)
-
-      console.log()
-
       this.receivedMessages = messages;
     });
   }

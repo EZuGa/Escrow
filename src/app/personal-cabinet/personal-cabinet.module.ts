@@ -19,6 +19,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { UserInfoComponent } from './user-info/user-info.component';
 
 
 
@@ -35,7 +36,8 @@ import { MatInputModule } from '@angular/material/input';
     ContractsFilesComponent,
     ContractsFoldersComponent,
     ContractsFilesCellComponent,
-    MessagesMainComponent
+    MessagesMainComponent,
+    UserInfoComponent
   ],
   imports: [
     CommonModule,
