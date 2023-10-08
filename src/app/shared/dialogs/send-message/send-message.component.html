@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <div class="header">
+        <h6>New message</h6>
+        <img routerLink="/" id="closeNav" src="assets/icons/close.svg" alt="">
+    </div>
+
+    <div class="main-content" mat-dialog-content>
+        <!-- <p class="recipient">Recipient</p> -->
+        <p class="subject">Subject</p>
+        <!-- <input class="subject" type="text"> -->
+
+        <textarea #message></textarea>
+
+    </div>
+
+    <div class="bottom">
+        <button (click)="sendMessage()" class="buttomWhiteBorder">Send Message</button>
+    </div>
+</div>

@@ -25,14 +25,14 @@ export class MessagesService {
 
 
 
-  sendMessage(){
+  sendMessage(message:string){
     this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`,
     {
-      content:'es unda mogsvloda',
+      content: message,
       recipient_email: 'g@gmail.com',
-      subject: 'Mogivida?'
+      subject: "Subject"
     })
-    // .subscribe();
+    .subscribe();
   }
 
   getReceivedMessages(){

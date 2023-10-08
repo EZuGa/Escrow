@@ -1,4 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { SendMessageComponent } from 'src/app/shared/dialogs/send-message/send-message.component';
 import { IMessages } from 'src/app/shared/interfaces/IMessages';
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
 
@@ -15,7 +17,7 @@ export class CabinetMessagesComponent implements OnInit{
   sentMessages!: IMessages[];
 
 
-  constructor(private messageService: MessagesService){}
+  constructor(private messageService: MessagesService, private dialog: MatDialog){}
 
 
 
@@ -31,7 +33,12 @@ export class CabinetMessagesComponent implements OnInit{
   }
 
   sendMessage(){
-    // this.messageService.sendMessage();
+    this.dialog.open(
+      SendMessageComponent,
+      {
+        width: '80%',
+      }
+      );
   }
   
 
