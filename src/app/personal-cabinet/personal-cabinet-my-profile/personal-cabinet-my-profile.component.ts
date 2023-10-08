@@ -17,26 +17,27 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
 
   // personalData!:IUserInfo;
   personalDataForm: FormGroup = this.fb.group({
-    email: [{value: '', disabled: true}, Validators.required],
     firstname: [{value:'', disabled:true}],
-    address: [{value:'', disabled:true}],
+    lastname: [{value:'', disabled:true}],
+    email: [{value: '', disabled: true}, Validators.required],
+    phone: [{value:'', disabled:true}],
+    gender: [{value:"", disabled:true}],
+
 
     age: [{value:null, disabled:true}],
-    city: [{value:'', disabled:true}],
-    country: [{value:'', disabled:true}],
-    expiration_date: [{value:null, disabled:true}],
-    gender: [{value:"", disabled:true}],
-    identification_number: [{value:'', disabled:true}],
-    issue_date: [{value:null, disabled:true}],
-    lastname: [{value:'', disabled:true}],
+    social_status: [{value:'', disabled:true}],
     nationality: [{value:'', disabled:true}],
+    country: [{value:'', disabled:true}],
+    city: [{value:'', disabled:true}],
+    address: [{value:'', disabled:true}],
+    zip_code: [{value:'', disabled:true}], 
 
 
     passport_number: [{value:'', disabled:true}],
-    phone: [{value:'', disabled:true}],
-    social_status: [{value:'', disabled:true}],
+    issue_date: [{value:null, disabled:true}],
+    expiration_date: [{value:null, disabled:true}],
+    identification_number: [{value:'', disabled:true}],
     who_issued_passport: [{value:'', disabled:true}],
-    zip_code: [{value:'', disabled:true}], 
   });
 
   constructor(private personalInfoService: PersonalInfoService, private fb: FormBuilder){}
@@ -47,7 +48,24 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
     .pipe(takeWhile(val=>this.componentAlive$))
     .subscribe(val=>{
       this.personalDataForm.patchValue(val);
+
+      this.personalDataForm.get('expiration_date')?.patchValue(this.formatDate(val.expiration_date));
+      this.personalDataForm.get('issue_date')?.patchValue(this.formatDate(val.issue_date));
     })
+
+    this.personalDataForm.valueChanges.subscribe(val=>console.log(val))
+  }
+
+  private formatDate(date:string) {
+    if(!date)return;
+
+    const d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    const year = d.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    return [year, month, day].join('-');
   }
 
 
@@ -55,16 +73,13 @@ updateUser(){
   if(this.inUpdateMode){
     const brave = this.personalDataForm.getRawValue();
 
+    console.log(brave)
+
     const abraka = {
       ...brave,
     }
 
-    this.personalInfoService.updatePersonalData(abraka as any)
-    .subscribe()
-    
-  }else{
-    // this.personalDataForm.get("firstname")!.enable();
-
+    this.personalInfoService.updatePersonalData(abraka).subscribe()
   }
 
   this.formToggleDisabled();

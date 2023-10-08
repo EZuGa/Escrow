@@ -15,6 +15,11 @@ import { ContractsFoldersComponent } from './cabinet-contracts/contracts-folders
 import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files-cell/contracts-files-cell.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagesMainComponent } from './cabinet-messages/messages-main/messages-main.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 
 @NgModule({
@@ -36,7 +41,11 @@ import { MessagesMainComponent } from './cabinet-messages/messages-main/messages
     CommonModule,
     PersonalCabinetRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class PersonalCabinetModule { }

@@ -34,8 +34,8 @@
                     </div>
     
                     <input-with-label labelTitle="Passport number" formControlName="passport_number"></input-with-label>
-                    <input-with-label labelTitle="Issue Date" formControlName="issue_date"></input-with-label>
-                    <input-with-label labelTitle="Expiration Date" formControlName="expiration_date"></input-with-label>
+                    <input-with-label labelTitle="Issue Date" formControlName="issue_date" type="date"></input-with-label>
+                    <input-with-label labelTitle="Expiration Date" formControlName="expiration_date" type="date"></input-with-label>
                     <input-with-label labelTitle="Identification Number" formControlName="identification_number"></input-with-label>
                     <input-with-label labelTitle="Who issued the passport" formControlName="who_issued_passport"></input-with-label>
                 </div>
@@ -46,6 +46,12 @@
                 <button class="buttonNoBorder">Delete your account </button>
             </div>
         </div>
+
+        <!-- <mat-form-field>
+            <input matInput [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field> -->
     
     </div>
 </div>

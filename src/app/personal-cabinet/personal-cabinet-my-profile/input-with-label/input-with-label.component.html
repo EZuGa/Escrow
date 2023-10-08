@@ -4,6 +4,6 @@
     [disabled]="disabled"
     [(ngModel)]="value"
     (input)="onChange($any($event).target.value)"
-    type="text" >
+    [type]="type" >
     
 </label>
