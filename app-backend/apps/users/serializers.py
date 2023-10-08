@@ -53,6 +53,12 @@ class DirectorySerializer(serializers.ModelSerializer):
         model = Directory
         fields = '__all__'
 
+class DirectoryCreateSerializer(serializers.Serializer):
+    name = serializers.CharField(max_length=255)
+
+    def create(self, validated_data):
+        return Directory.objects.create(**validated_data)
+
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File

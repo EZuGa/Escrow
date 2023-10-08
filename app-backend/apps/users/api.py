@@ -9,7 +9,7 @@ from .models import User, Directory, File, Message
 from .selectors import get_user
 from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, \
     SMSVerificationSerializer, DirectorySerializer, FileSerializer, ChangePasswordSerializer, EmailInputSerializer, \
-    PasswordResetSerializer, MessageSerializer, SendMessageSerializer, BalanceSerializer
+    PasswordResetSerializer, MessageSerializer, SendMessageSerializer, BalanceSerializer, DirectoryCreateSerializer
 
 
 class OTPSendAPI(APIView):
@@ -87,17 +87,25 @@ class DirectoryAPI(APIView):
 
 class DirectoryCreateAPI(APIView):
     permission_classes = [IsAuthenticated]
-    serializer_class = DirectorySerializer
+    serializer_class = DirectoryCreateSerializer
 
     def post(self, request):
-        data = request.data.copy()
-        data['user'] = request.user.id
-        serializer = self.serializer_class(data=data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer = self.serializer_class(data=request.data)
 
+        if serializer.is_valid():
+            directory_name = serializer.validated_data['name']
+
+            # Check if directory with the given name already exists for the user
+            existing_directory = Directory.objects.filter(user=request.user, name=directory_name).first()
+            if existing_directory:
+                return Response({"detail": "Directory with this name already exists."},
+                                status=status.HTTP_400_BAD_REQUEST)
+
+            # Create the directory and set the user attribute
+            directory = serializer.save(user=request.user)
+            return Response({"id": directory.id, "name": directory.name}, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FileAPI(APIView):
     permission_classes = [IsAuthenticated]
