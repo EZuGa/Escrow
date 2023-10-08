@@ -12,6 +12,7 @@ import { ConfirmEmailComponent } from './shared/dialogs/authentication/confirm-e
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SendTokenInterceptor } from './shared/interceptors/send-token.interceptor';
+import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { SendTokenInterceptor } from './shared/interceptors/send-token.intercept
     HttpClientModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HandleUnauthorizedInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

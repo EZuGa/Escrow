@@ -13,7 +13,6 @@ export class SendTokenInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(httpRequest: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    console.log(httpRequest);
     const token = localStorage.getItem("auth_token");
 
     if(!token || httpRequest.url.includes("jwt")) {
