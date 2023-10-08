@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
 
 @Component({
   selector: 'app-cabinet-contracts',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./cabinet-contracts.component.scss']
 })
 export class CabinetContractsComponent {
+
+
+  constructor(contractService: ContractsService){}
 
 }

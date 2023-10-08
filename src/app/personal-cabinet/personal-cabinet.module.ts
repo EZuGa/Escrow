@@ -20,6 +20,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/contracts-footer.component';
 
 
 
@@ -37,7 +38,8 @@ import { UserInfoComponent } from './user-info/user-info.component';
     ContractsFoldersComponent,
     ContractsFilesCellComponent,
     MessagesMainComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    ContractsFooterComponent
   ],
   imports: [
     CommonModule,

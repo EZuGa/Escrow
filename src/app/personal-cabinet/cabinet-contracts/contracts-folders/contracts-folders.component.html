@@ -1,10 +1,17 @@
 <div class="contracts-wrap">
     <div class="contracts">
         <div class="contracts-header">
+            <button class="blueButton" (click)="createFolder()">+ New Folder</button>
         </div>
     
         <div  class="contracts-main">
-            <contracts-cell routerLink="files" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]"></contracts-cell>
+            <ng-container *ngIf="allFolders | async as folders">
+                <contracts-cell *ngFor="let folder of folders.slice((currentPage-1) * 12, currentPage * 12)" [folder]="folder" routerLink="files"></contracts-cell>
+            </ng-container>
         </div>
     </div>
 </div>
+<app-contracts-footer [lastPage]="4" (changePage)="changePage($event)"></app-contracts-footer>
+
+
+<!-- 0-12  12-24  26-38 -->

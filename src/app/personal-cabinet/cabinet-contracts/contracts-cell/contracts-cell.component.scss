@@ -13,9 +13,21 @@
         margin-bottom: 24px;
     }
 
-    h6{
+    .folder-name{
+        display: table;
+        table-layout: fixed;
+        width: 100%;
         margin-bottom: 17px;
+
+
+        h6{
+            display: table-cell;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
     }
+
     .cell-bottom{
         display: flex;
         justify-content: space-between;
@@ -26,6 +38,7 @@
         p{
             display: flex;
             align-items: center;
+            text-transform: capitalize;
             span{
                 background-color: rebeccapurple;
                 width: 16px;
