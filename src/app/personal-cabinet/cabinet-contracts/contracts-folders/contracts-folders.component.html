@@ -1,17 +1,23 @@
 <div class="contracts-wrap">
     <div class="contracts">
         <div class="contracts-header">
+            <form [formGroup]="folderFilter" class="folderFilter">
+                <input formControlName="dateFrom" type="date">
+                <span>-</span>
+                <input formControlName="dateTo" type="date">
+                <input type="text">
+                <button (click)="applyFilter()" class="blueButton">Apply</button>
+                <button class="buttonNoBorder">Clear</button>
+            </form>
             <button class="blueButton" (click)="createFolder()">+ New Folder</button>
         </div>
     
         <div  class="contracts-main">
-            <ng-container *ngIf="allFolders | async as folders">
-                <contracts-cell *ngFor="let folder of folders.slice((currentPage-1) * 12, currentPage * 12)" [folder]="folder" routerLink="files"></contracts-cell>
-            </ng-container>
+                <contracts-cell *ngFor="let folder of foldersToRender" [folder]="folder" routerLink="files"></contracts-cell>
         </div>
     </div>
 </div>
-<app-contracts-footer [lastPage]="lastPage" (changePage)="changePage($event)"></app-contracts-footer>
+<app-contracts-footer *ngIf="lastPage > 1" [lastPage]="lastPage" (changePage)="changePage($event)"></app-contracts-footer>
 
 
 <!-- 0-12  12-24  26-38 -->

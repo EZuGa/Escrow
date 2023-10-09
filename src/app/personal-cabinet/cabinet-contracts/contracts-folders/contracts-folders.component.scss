@@ -7,8 +7,34 @@
 
     .contracts-header{
         height: 40px;
-        background-color: aqua;
+        // background-color: aqua;
         margin-bottom: 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .folderFilter{
+            display: flex;
+
+            span{
+                line-height: 40px;
+                text-align: center;
+                margin-right: 8px;
+            }
+
+            input{
+                margin-bottom: 0px;
+                margin-right: 8px;
+
+            }
+
+            button{
+                padding: 0x;
+                height: 40px;
+                margin-right: 8px;
+            }
+        }
     }
 
     .contracts-main{
@@ -28,3 +54,4 @@
         }
     }
 }
+
