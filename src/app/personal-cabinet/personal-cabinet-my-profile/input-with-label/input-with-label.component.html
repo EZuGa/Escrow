@@ -1,9 +1,19 @@
-<label>
+<label >
     <p>{{labelTitle}}</p>
     <input 
+    *ngIf="type !== 'select'; else inputOptions"
     [disabled]="disabled"
     [(ngModel)]="value"
     (input)="onChange($any($event).target.value)"
     [type]="type" >
-    
+
+    <ng-template #inputOptions>
+        <mat-form-field *ngIf="type === 'select'" class="customMaterial">
+            <mat-select [(ngModel)]="value" [disabled]="disabled">
+                <mat-option (click)="onChange(item)" [value]="item" *ngFor="let item of options">
+                    {{item}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ng-template>
 </label>

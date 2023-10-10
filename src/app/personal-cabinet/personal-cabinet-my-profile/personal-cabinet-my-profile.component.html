@@ -10,7 +10,8 @@
                     <input-with-label labelTitle="Last name" formControlName="lastname"></input-with-label>
                     <input-with-label labelTitle="Email" formControlName="email"></input-with-label>
                     <input-with-label labelTitle="Phone" formControlName="phone"></input-with-label>
-                    <input-with-label labelTitle="Gender" formControlName="gender"></input-with-label>
+                    <input-with-label labelTitle="Gender" formControlName="gender" type="select" [options]="['male','female']"></input-with-label>
+    
                 </div>
                 <div class="column-two">
                     <input-with-label labelTitle="Age" formControlName="age"></input-with-label>

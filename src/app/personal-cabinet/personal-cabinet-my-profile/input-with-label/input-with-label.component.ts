@@ -16,7 +16,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class InputWithLabelComponent implements ControlValueAccessor {
 
   @Input() labelTitle!: string;
-  @Input() type: "text" | "date" = "text";
+  @Input() type: "text" | "date" | "select" = "text";
+  @Input() options: string[] = [];
 
   value!: string;
   disabled = false;

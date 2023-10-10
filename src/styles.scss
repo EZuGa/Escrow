@@ -183,3 +183,32 @@ textarea{
     }
   }
   
+
+    .mat-form-field.customMaterial{
+        width: 100%;
+    }
+
+
+
+    .mat-mdc-form-field-type-mat-select .mat-mdc-text-field-wrapper{
+        background-color: transparent !important;
+        color: white;
+        border: 1px solid;
+        height: 42px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 12px !important;
+        border-radius: 5px !important;
+
+    
+        .mat-mdc-select-placeholder{
+            color: white ;
+        }
+    
+  }
+
+
+.cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel{
+    background-color: rgba(22, 24, 37) !important;
+}

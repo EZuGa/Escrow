@@ -21,7 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/contracts-footer.component';
-
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -49,7 +49,8 @@ import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/c
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class PersonalCabinetModule { }

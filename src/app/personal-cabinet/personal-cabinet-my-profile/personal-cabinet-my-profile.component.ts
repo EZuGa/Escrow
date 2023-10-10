@@ -21,7 +21,7 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
     lastname: [{value:'', disabled:true}],
     email: [{value: '', disabled: true}, Validators.required],
     phone: [{value:'', disabled:true}],
-    gender: [{value:"", disabled:true}],
+    gender: [{value:'', disabled:true}],
 
 
     age: [{value:null, disabled:true}],
