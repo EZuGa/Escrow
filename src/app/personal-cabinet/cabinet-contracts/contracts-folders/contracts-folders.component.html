@@ -2,10 +2,32 @@
     <div class="contracts">
         <div class="contracts-header">
             <form [formGroup]="folderFilter" class="folderFilter">
-                <input formControlName="dateFrom" type="date">
+
+                <mat-form-field class="customForm">
+                    <mat-label>MM/DD/YYYY</mat-label>
+                    <input formControlName="dateFrom"  matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
                 <span>-</span>
-                <input formControlName="dateTo" type="date">
-                <input type="text">
+                
+                <mat-form-field class="customForm">
+                    <mat-label>MM/DD/YYYY</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="dateTo">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="customMaterial">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option *ngFor="let item of ['ongoing' , 'failed', 'succeeded']" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
                 <button (click)="applyFilter()" class="blueButton">Apply</button>
                 <button class="buttonNoBorder">Clear</button>
             </form>

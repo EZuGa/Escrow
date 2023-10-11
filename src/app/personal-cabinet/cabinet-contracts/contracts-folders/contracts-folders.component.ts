@@ -18,7 +18,8 @@ export class ContractsFoldersComponent implements OnInit{
 
   folderFilter = this.fb.group({
       dateFrom: [''],
-      dateTo: ['']
+      dateTo: [''],
+      status: ['']
   }) 
   
 
@@ -40,11 +41,6 @@ export class ContractsFoldersComponent implements OnInit{
 
   applyFilter(){
     const filterValues = this.folderFilter.getRawValue();
-    // console.log(filterValues);
-
-
-    // console.log()
-
 
     const filteredData = this.allFolders?.filter(val=> {
       // console.log((!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at)), (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at)))
@@ -55,11 +51,8 @@ export class ContractsFoldersComponent implements OnInit{
       )
     });
 
-    // console.log(filteredData?.length)
-
     this.currentPage = 1;
     this.lastPage = Math.ceil(filteredData!.length / 12) ;
-
 
     this.foldersToRender = filteredData?.slice(0,12);
   }

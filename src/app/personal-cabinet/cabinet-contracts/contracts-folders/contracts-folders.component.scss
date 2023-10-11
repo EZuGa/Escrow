@@ -2,6 +2,10 @@
     padding: 32px 24px;
 
 }
+mat-form-field{
+    margin: 0px 8px
+}
+
 .contracts{
     height: 100%;
 
@@ -20,7 +24,6 @@
             span{
                 line-height: 40px;
                 text-align: center;
-                margin-right: 8px;
             }
 
             input{
@@ -33,6 +36,7 @@
                 padding: 0x;
                 height: 40px;
                 margin-right: 8px;
+                margin-left: 8px;
             }
         }
     }
