@@ -184,7 +184,7 @@ textarea{
   }
   
 
-    .mat-form-field.customMaterial{
+  .mat-form-field, .mat-form-field.customMaterial{
         width: 100%;
     }
 
@@ -211,4 +211,48 @@ textarea{
 
 .cdk-overlay-pane:not(.mat-mdc-select-panel-above) div.mat-mdc-select-panel{
     background-color: rgba(22, 24, 37) !important;
+}
+
+// .mat-mdc-form-field-has-icon-suffix .mat-mdc-text-field-wrapper{
+//     background: transparent;
+//     border: 1px solid;
+//     border-radius: 5px;
+//     height: 42px;
+// }
+
+
+mat-form-field{
+    width: 100% !important;
+    color: white;
+
+    input{
+        color: white !important;
+    }
+}
+
+mat-form-field.customForm .mat-mdc-text-field-wrapper {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    height: 42px;
+    border-radius: 5px;
+    color: white;;
+}
+
+.mat-datepicker-content-container{
+    background-color: rgba(22, 24, 37) !important;
+    color: white !important;
+
+    // .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical){
+    //     // border-color: white;
+    // }
+}
+.mat-datepicker-popup{
+    span, td, button{
+        color: white !important;
+    }
+}
+.mat-mdc-form-field-subscript-wrapper{
+    height: 16px;
 }

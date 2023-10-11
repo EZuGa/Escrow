@@ -85,4 +85,6 @@ export class ContractsFoldersComponent implements OnInit{
     .slice((this.currentPage-1) * 12, this.currentPage * 12)
   }
 
+
+  //ყველაზე კაი ვარიანტი - foldersToRender გადააკეთე filteredFolder -ზე და ჰტმ-ში გააკეთე სლაისი
 }
