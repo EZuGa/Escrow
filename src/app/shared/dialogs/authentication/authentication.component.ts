@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 export enum CurrentState {
   LOGIN,
   REGISTER,
-  CONFIRM_EMAIL
+  CONFIRM_EMAIL,
+  FORGOT_PASSWORD,
 }
 
 @Component({
@@ -12,10 +13,11 @@ export enum CurrentState {
   styleUrls: ['./authentication.component.scss']
 })
 export class AuthenticationComponent {
+  get StateEnum(){
+    return CurrentState;
+  }
 
-  currentStateEnum = CurrentState;
-
-  currentAuthState: CurrentState = CurrentState.LOGIN;
+  currentAuthState: CurrentState = CurrentState.FORGOT_PASSWORD;
 
 
   changeCurrentState(state: CurrentState){

@@ -66,6 +66,10 @@ export class AuthenticationService {
       )
   }
 
+  forgotCode(email: any){
+    return this.http.post(`${environment.baseUrl}api/v1/user/reset_password/`, email)
+  }
+
   private navigateToCabinet(){
     this.router.navigateByUrl("/personal-cabinet");
     this.dialog.closeAll();

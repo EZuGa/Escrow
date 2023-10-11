@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SendTokenInterceptor } from './shared/interceptors/send-token.interceptor';
 import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
+import { ForgotPasswordComponent } from './shared/dialogs/authentication/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unau
     LoginComponent,
     RegisterComponent,
     AuthenticationComponent,
-    ConfirmEmailComponent
+    ConfirmEmailComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

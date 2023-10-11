@@ -16,11 +16,15 @@ export class LoginComponent {
     password: ["", [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private fb: FormBuilder, private authState: AuthenticationService){}
+  constructor(private fb: FormBuilder, private authService: AuthenticationService){}
 
 
   goToRegister(){
     this.changeState.emit(CurrentState.REGISTER);
+  }
+
+  goToForgot(){
+    this.changeState.emit(CurrentState.FORGOT_PASSWORD);
   }
 
 
@@ -28,7 +32,7 @@ export class LoginComponent {
     if(this.loginForm.invalid)return;
 
     const user = this.loginForm.getRawValue();
-    this.authState.authenticateUser(user as any)
+    this.authService.authenticateUser(user as any)
     .subscribe()
   }
 

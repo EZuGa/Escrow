@@ -5,6 +5,6 @@
     <input [class.invalid]="password!.invalid && password!.touched" formControlName="password" type="password" placeholder="Password">
     <button [disabled]="loginForm.invalid" class="blueButton">Login</button>
 
-    <p class="goToOtherPage">Forgot your password? <span>Restore</span></p>
+    <p class="goToOtherPage" (click)="goToForgot()">Forgot your password? <span>Restore</span></p>
     <p class="goToOtherPage">Dont have an account? <span (click)="goToRegister()">Sign Up</span></p>
 </form>
