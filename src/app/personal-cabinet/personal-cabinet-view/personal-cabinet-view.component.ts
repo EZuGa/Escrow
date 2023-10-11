@@ -9,6 +9,8 @@ import { filter } from 'rxjs';
 })
 export class PersonalCabinetViewComponent {
 
+  constructor(private router: Router){}
+
   // currentRoute!: string;
 
   // constructor(private router: Router) {}
@@ -35,5 +37,11 @@ export class PersonalCabinetViewComponent {
 
   closeMenu(){
     this.menuActive = false;
+  }
+
+
+  signOut(){
+    localStorage.clear();
+    this.router.navigateByUrl('');
   }
 }
