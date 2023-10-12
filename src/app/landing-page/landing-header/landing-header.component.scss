@@ -66,6 +66,7 @@ header {
 
             .menu{
                 cursor: pointer;
+                padding: 20px;
                 display: none;
                 @media screen and (max-width: 950px) {
                     display: block;
