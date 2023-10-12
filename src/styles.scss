@@ -13,6 +13,18 @@
     box-sizing: border-box;
 }
 
+.hamburger{
+    height: fit-content;
+    cursor: pointer;
+    .bar{
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 5px auto;
+      background-color: white;
+    }
+}
+
 .container{
     width: min(1200px, 100% - 2 * 1rem);
     margin-inline: auto;
@@ -147,6 +159,7 @@ textarea{
     resize: none;
     margin-bottom: 32px;
 }
+
 
 ::-webkit-scrollbar {
     width: 10px;

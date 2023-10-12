@@ -75,3 +75,43 @@ header {
         }
     }
 }
+
+
+
+
+        .bar:nth-child(1){
+            animation: 0.3s topBar;
+
+        }
+        .bar:nth-child(2){
+            animation: 0.3s middleBar;
+        }
+        .bar:nth-child(3){
+            animation: 0.3s bottomBar;
+
+        }
+
+      @keyframes middleBar {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+      }
+      @keyframes bottomBar {
+        0%{
+            transform: translateY(-6px) rotate(-45deg);
+        }
+        100%{
+        transform: translateY(0px) rotate(0deg);
+        }
+      }
+      @keyframes topBar {
+        0%{
+            transform: translateY(8px) rotate(45deg);
+        }
+        100%{
+        transform: translateY(0px) rotate(0deg);
+        }
+      }
