@@ -1,3 +1,4 @@
+import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
 
 export enum CurrentState {
@@ -20,6 +21,7 @@ export class AuthenticationComponent {
 
   currentAuthState: CurrentState = CurrentState.LOGIN;
 
+  constructor(private dialog:Dialog){}
 
 
   changeCurrentState(state: CurrentState){
@@ -28,6 +30,7 @@ export class AuthenticationComponent {
 
   closeDialog(){
     // this.dialogRef.close();
+    this.dialog.closeAll();
   }
 
 
