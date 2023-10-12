@@ -39,18 +39,18 @@
         <div class="contact--form">
             <!-- <h6>Feel free to drop us a line.</h6> -->
 
-            <form>
-                <input type="text" placeholder="Full Name">
-                <input type="text" placeholder="Email">
-                <input type="text" placeholder="Phone">
+            <form [formGroup]="sendMailForm">
+                <input [class.invalid]="sendMailForm.get('fullName')!.invalid && sendMailForm.get('fullName')!.touched" type="text" placeholder="Full Name" formControlName="fullName">
+                <input [class.invalid]="sendMailForm.get('email')!.invalid && sendMailForm.get('email')!.touched" type="text" placeholder="Email" formControlName="email">
+                <input [class.invalid]="sendMailForm.get('phone')!.invalid && sendMailForm.get('phone')!.touched" type="text" placeholder="Phone" formControlName="phone">
 
-                <textarea placeholder="Message" value=""></textarea>
+                <textarea [class.invalid]="sendMailForm.get('message')!.invalid && sendMailForm.get('message')!.touched" placeholder="Message" formControlName="message"></textarea>
                 <label>
-                    <input type="checkbox" >
+                    <input type="checkbox" formControlName="checkbox">
                     By submitting I consent to process my personal data
                 </label>
 
-                <button class="buttomWhiteBorder">Submit</button>
+                <button (click)="submit()" [disabled]="sendMailForm.invalid" class="buttomWhiteBorder">Submit</button>
             </form>
 
 

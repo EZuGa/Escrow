@@ -14,6 +14,7 @@ import { OurServicesCellComponent } from './our-services/our-services-cell/our-s
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { StepsComponent } from './steps/steps.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   LandingHeaderComponent,
@@ -36,7 +37,8 @@ const components = [
   ],
   imports: [
     CommonModule,
-    LandingPageRoutingModule
+    LandingPageRoutingModule,
+    ReactiveFormsModule
   ],
   exports:[
   ]

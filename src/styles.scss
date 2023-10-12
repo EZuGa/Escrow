@@ -33,6 +33,14 @@ button.buttomWhiteBorder{
     transition: all 500ms;
     cursor: pointer;
 
+    &:disabled{
+        &:disabled{
+            background-color: gray;
+            cursor: default;
+            border: 1px solid gray;
+        }
+    }
+
     &:hover{
         background: #0131F5;
         border: 1px solid #0131F5;
@@ -124,7 +132,7 @@ input[type=text], input[type=password], input[type=date]{
     filter: invert(1);
 }
 
-input.invalid{
+input.invalid, textarea.invalid{
     border: 1px solid rgb(196, 49, 49);
 }
 
