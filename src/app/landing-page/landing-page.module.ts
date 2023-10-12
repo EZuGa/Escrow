@@ -23,6 +23,7 @@ import { ForgotPasswordComponent } from '../shared/dialogs/authentication/forgot
 import { LoginComponent } from '../shared/dialogs/authentication/login/login.component';
 import { NewPasswordComponent } from '../shared/dialogs/authentication/new-password/new-password.component';
 import { RegisterComponent } from '../shared/dialogs/authentication/register/register.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const components = [
   LandingHeaderComponent,
@@ -48,6 +49,7 @@ const components = [
 @NgModule({
   declarations: [
     ...components,
+    WelcomeComponent,
   ],
   imports: [
     CommonModule,
