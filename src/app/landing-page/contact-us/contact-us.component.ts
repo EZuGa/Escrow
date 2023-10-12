@@ -29,7 +29,7 @@ export class ContactUsComponent {
     const { checkbox, ...formData } = this.sendMailForm.getRawValue();
     from(emailjs.send("service_pkrysyt","template_7rv5oiw",formData,"wSk38ZlTWAJVXXSVt"))
     .pipe(finalize(()=>this.isLoading = false))
-    .subscribe()
+    .subscribe(()=>{this.sendMailForm.reset()})
   }
 
 }
