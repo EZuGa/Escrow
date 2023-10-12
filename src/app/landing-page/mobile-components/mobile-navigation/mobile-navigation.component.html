@@ -9,9 +9,9 @@
         <ul>
             <li><img src="assets/icons/logo.svg" alt=""></li>
             <li routerLink="" fragment="about-us">About us</li>
-            <li>Our Services</li>
-            <li>Your Benefits</li>
-            <li>Contact</li>
+            <li routerLink="" fragment="our-services">Our Services</li>
+            <li routerLink="" fragment="our-benefits">Your Benefits</li>
+            <li routerLink="" fragment="contact">Contact</li>
         </ul>
     </nav>
 
@@ -22,5 +22,5 @@
         <li>RU</li>
     </ul>
 
-    <button class="buttomWhiteBorder">Login</button>
+    <button (click)="openAuthDialog()" class="buttomWhiteBorder">Login</button>
 </div>

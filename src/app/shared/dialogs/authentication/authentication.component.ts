@@ -21,8 +21,13 @@ export class AuthenticationComponent {
   currentAuthState: CurrentState = CurrentState.LOGIN;
 
 
+
   changeCurrentState(state: CurrentState){
     this.currentAuthState = state;
+  }
+
+  closeDialog(){
+    // this.dialogRef.close();
   }
 
 
