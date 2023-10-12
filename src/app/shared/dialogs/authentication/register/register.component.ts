@@ -2,15 +2,18 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 import { CurrentState } from '../authentication.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit{
+export class RegisterComponent {
 
   @Output() changeState = new EventEmitter<CurrentState>();
+
+  isLoading = false;
 
   
   passwordConfirming(c: AbstractControl): { invalid: boolean } | null {
@@ -20,7 +23,6 @@ export class RegisterComponent implements OnInit{
       return null;
     }
   }
-
 
   registerForm: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
@@ -34,13 +36,13 @@ export class RegisterComponent implements OnInit{
 
   constructor(private fb:FormBuilder, private authService: AuthenticationService){}
 
-  ngOnInit(): void {
-    
-  }
 
   submitRegister(){
+    this.isLoading = true;
 
-    this.authService.startRegistration({ email: this.email!.value, password: this.password!.value }).subscribe(
+    this.authService.startRegistration({ email: this.email!.value, password: this.password!.value })
+    .pipe(finalize(()=>this.isLoading = false))
+    .subscribe(
       confirmCode =>{
         this.changeState.emit(CurrentState.CONFIRM_EMAIL);
       }

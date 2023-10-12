@@ -1,4 +1,4 @@
 <button [disabled]="disabled" class="blueButton" >
-    <span *ngIf="!isLoading">{{text}}</span>
+    <ng-content *ngIf="!isLoading"></ng-content>
     <mat-spinner *ngIf="isLoading" [diameter]="30" [color]="'accent'"></mat-spinner>
 </button>

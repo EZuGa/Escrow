@@ -9,5 +9,5 @@ export class ButtonComponent {
 
   @Input() disabled = false;
   @Input() isLoading = false;
-  @Input() text = "";
+
 }

@@ -12,7 +12,7 @@
         <p><span>I agree to the</span> Terms of Use <span>and</span> Privacy Statement</p>
     </label>
     
-    <button [disabled]="registerForm.invalid" class="blueButton">Sign up</button>
+    <app-button [disabled]="registerForm.invalid" [isLoading]="isLoading" >Sign up</app-button>
 
 
     <p class="goToLogin">Already have an account? <span (click)="goToLogin()">Login</span></p>
