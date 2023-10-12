@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn,
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 import { CurrentState } from '../authentication.component';
 import { finalize } from 'rxjs';
+import { confirmPassword } from 'src/app/shared/custom_validators/confirmPassword';
 
 @Component({
   selector: 'app-register',
@@ -15,21 +16,12 @@ export class RegisterComponent {
 
   isLoading = false;
 
-  
-  passwordConfirming(c: AbstractControl): { invalid: boolean } | null {
-    if (c.get('password')!.value !== c.get('confirmPassword')!.value) {
-        return {invalid: true};
-    }else{
-      return null;
-    }
-  }
-
   registerForm: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.email]],
     passwords: this.fb.group({
       password: [null, Validators.minLength(8)],
-      confirmPassword: [null, Validators.minLength(8)],
-    },{validator: this.passwordConfirming}),
+      repeat_password: [null, Validators.minLength(8)],
+    },{validator: confirmPassword}),
     agreeTerms: [null, Validators.requiredTrue]
   });
 

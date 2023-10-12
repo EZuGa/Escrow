@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
+import { confirmPassword } from 'src/app/shared/custom_validators/confirmPassword';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 
 @Component({
@@ -9,30 +11,22 @@ import { AuthenticationService } from 'src/app/shared/services/authentication/au
 })
 export class NewPasswordComponent {
 
-  // newPasswordForm = new FormGroup({
-  //   password: new FormControl('', Validators.required),
-  //   repeat_password: new FormControl('', Validators.required)
-  // });
+  isLoading = false;
 
   newPasswordForm = this.fb.group({
-    password: [''],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     repeat_password:[''],
-  })
+  },{validators: [confirmPassword]})
 
   
 
-  constructor(private fb: NonNullableFormBuilder, private authService: AuthenticationService){
-
-    setTimeout(()=>{
-      this.newPasswordForm.valueChanges.subscribe(val=>{
-        console.log(val)
-      })
-    })
-
-  }
+  constructor(private fb: NonNullableFormBuilder, private authService: AuthenticationService){}
 
   changePassword(){
+    this.isLoading = true;
     this.authService.restorePassword(this.newPasswordForm.getRawValue())
+    .pipe(finalize(()=>this.isLoading = false))
+    .subscribe()
   }
 
 }

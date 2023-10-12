@@ -86,10 +86,11 @@ export class AuthenticationService {
       ...passwords
     }
 
-    this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
-    .subscribe(val=>{console.log("OPA")});
+    const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
 
     this.updatePassInfo = undefined;
+
+    return response;
   }
 
   private navigateToCabinet(){
