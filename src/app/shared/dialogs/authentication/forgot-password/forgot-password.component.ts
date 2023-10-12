@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 import { CurrentState } from '../authentication.component';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-forgot-password',
@@ -12,6 +13,8 @@ export class ForgotPasswordComponent {
 
   @Output() changeState = new EventEmitter();
 
+  isLoading = false;
+
   forgotForm: FormGroup = this.fb.group({
     email: ['', [Validators.email, Validators.required]]
   });
@@ -19,7 +22,9 @@ export class ForgotPasswordComponent {
   constructor(private fb: FormBuilder, private authService: AuthenticationService){}
 
   forgotCode(){
+    this.isLoading = true;
     this.authService.forgotCode(this.forgotForm.getRawValue())
+    .pipe(finalize(()=>this.isLoading = false))
     .subscribe(val=>{
       this.changeState.emit(CurrentState.NEW_PASSWORD);
     })
