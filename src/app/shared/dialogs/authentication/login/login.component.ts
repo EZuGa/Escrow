@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CurrentState } from '../authentication.component';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent {
   @Output() changeState = new EventEmitter<CurrentState>();
+
+  isLoading = false;
 
   loginForm = this.fb.group({
     email: ["", [Validators.required, Validators.email]],
@@ -32,7 +35,10 @@ export class LoginComponent {
     if(this.loginForm.invalid)return;
 
     const user = this.loginForm.getRawValue();
+    this.isLoading = true;
+    
     this.authService.authenticateUser(user as any)
+    .pipe(finalize(()=>this.isLoading = false))
     .subscribe()
   }
 

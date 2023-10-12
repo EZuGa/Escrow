@@ -255,3 +255,11 @@ mat-form-field.customForm .mat-mdc-text-field-wrapper {
 .mat-mdc-form-field-subscript-wrapper{
     height: 16px;
 }
+
+
+.mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
+ .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+     stroke: white !important;
+ }
+
+
