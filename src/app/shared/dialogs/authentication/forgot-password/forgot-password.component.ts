@@ -25,4 +25,12 @@ export class ForgotPasswordComponent {
     })
   }
 
+  goToLogin(){
+    this.changeState.emit(CurrentState.LOGIN);
+  }
+
+  goToRegister(){
+    this.changeState.emit(CurrentState.REGISTER);
+  }
+
 }
