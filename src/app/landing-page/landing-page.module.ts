@@ -15,6 +15,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { FooterComponent } from './footer/footer.component';
 import { StepsComponent } from './steps/steps.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedComponentsModule } from '../shared/components/shared-components.module';
 
 const components = [
   LandingHeaderComponent,
@@ -28,7 +29,7 @@ const components = [
   OurServicesCellComponent,
   ContactUsComponent,
   FooterComponent,
-  StepsComponent
+  StepsComponent,
 ];
 
 @NgModule({
@@ -38,7 +39,9 @@ const components = [
   imports: [
     CommonModule,
     LandingPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    SharedComponentsModule
   ],
   exports:[
   ]

@@ -39,7 +39,7 @@
         <div class="contact--form">
             <!-- <h6>Feel free to drop us a line.</h6> -->
 
-            <form [formGroup]="sendMailForm">
+            <form [formGroup]="sendMailForm" (ngSubmit)="submit()">
                 <input [class.invalid]="sendMailForm.get('fullName')!.invalid && sendMailForm.get('fullName')!.touched" type="text" placeholder="Full Name" formControlName="fullName">
                 <input [class.invalid]="sendMailForm.get('email')!.invalid && sendMailForm.get('email')!.touched" type="text" placeholder="Email" formControlName="email">
                 <input [class.invalid]="sendMailForm.get('phone')!.invalid && sendMailForm.get('phone')!.touched" type="text" placeholder="Phone" formControlName="phone">
@@ -49,8 +49,7 @@
                     <input type="checkbox" formControlName="checkbox">
                     By submitting I consent to process my personal data
                 </label>
-
-                <button (click)="submit()" [disabled]="sendMailForm.invalid" class="buttomWhiteBorder">Submit</button>
+                <app-button [disabled]="sendMailForm.invalid" [isLoading]="isLoading">Submit</app-button>
             </form>
 
 

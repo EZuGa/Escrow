@@ -15,8 +15,7 @@ import { SendTokenInterceptor } from './shared/interceptors/send-token.intercept
 import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
 import { ForgotPasswordComponent } from './shared/dialogs/authentication/forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './shared/dialogs/authentication/new-password/new-password.component';
-import { ButtonComponent } from './shared/components/button/button.component';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { SharedComponentsModule } from './shared/components/shared-components.module';
 
 
 @NgModule({
@@ -28,7 +27,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ConfirmEmailComponent,
     ForgotPasswordComponent,
     NewPasswordComponent,
-    ButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +36,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     FormsModule,
     MatDialogModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+
+    SharedComponentsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true },

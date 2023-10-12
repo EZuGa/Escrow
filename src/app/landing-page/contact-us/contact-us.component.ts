@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { finalize, from } from 'rxjs';
 
 
 @Component({
@@ -18,15 +19,17 @@ export class ContactUsComponent {
     checkbox:[false, [Validators.requiredTrue]],
   })
 
+  isLoading = false;
+
   constructor(private fb: FormBuilder){}
 
 
   submit(){
-    console.log("SUVMIT");
-
+    this.isLoading = true;
     const { checkbox, ...formData } = this.sendMailForm.getRawValue();
-
-    emailjs.send("service_pkrysyt","template_7rv5oiw",formData,"wSk38ZlTWAJVXXSVt");
+    from(emailjs.send("service_pkrysyt","template_7rv5oiw",formData,"wSk38ZlTWAJVXXSVt"))
+    .pipe(finalize(()=>this.isLoading = false))
+    .subscribe()
   }
 
 }

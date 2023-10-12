@@ -10,4 +10,8 @@ export class ButtonComponent {
   @Input() disabled = false;
   @Input() isLoading = false;
 
+  onClick(event:any){
+    if(this.isLoading){event.preventDefault()}
+  }
+
 }
