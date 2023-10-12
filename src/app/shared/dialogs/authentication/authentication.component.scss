@@ -1,16 +1,16 @@
 .dialog-container{
     background-color: #161825;
-    // width: 1000px;
-    // height: 720px;
     padding: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 70px;
     border-radius: 30px;
+    padding-right: 70px;
     @media screen and (max-width:950px) {
         width: 100vw;
         height: 100vh;
+        padding-right: 24px;
     }
 
     img{

@@ -5,6 +5,7 @@ export enum CurrentState {
   REGISTER,
   CONFIRM_EMAIL,
   FORGOT_PASSWORD,
+  NEW_PASSWORD
 }
 
 @Component({
@@ -17,7 +18,7 @@ export class AuthenticationComponent {
     return CurrentState;
   }
 
-  currentAuthState: CurrentState = CurrentState.FORGOT_PASSWORD;
+  currentAuthState: CurrentState = CurrentState.LOGIN;
 
 
   changeCurrentState(state: CurrentState){

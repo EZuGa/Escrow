@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
+import { CurrentState } from '../authentication.component';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,6 +9,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication/au
   styleUrls: ['./forgot-password.component.scss']
 })
 export class ForgotPasswordComponent {
+
+  @Output() changeState = new EventEmitter();
 
   forgotForm: FormGroup = this.fb.group({
     email: ['', [Validators.email, Validators.required]]
@@ -18,7 +21,7 @@ export class ForgotPasswordComponent {
   forgotCode(){
     this.authService.forgotCode(this.forgotForm.getRawValue())
     .subscribe(val=>{
-      console.log(val)
+      this.changeState.emit(CurrentState.NEW_PASSWORD);
     })
   }
 

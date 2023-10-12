@@ -3,10 +3,11 @@
     <img src="assets/images/auth.webp" alt="">
 
 
-    <div class="auth-">
+    <div class="auth-main">
         <app-confirm-email *ngIf="currentAuthState === StateEnum.CONFIRM_EMAIL"></app-confirm-email>
         <app-register (changeState)="changeCurrentState($event)" *ngIf="currentAuthState === StateEnum.REGISTER"></app-register>
         <app-login (changeState)="changeCurrentState($event)"  *ngIf="currentAuthState === StateEnum.LOGIN"></app-login>
-        <app-forgot-password *ngIf="currentAuthState === StateEnum.FORGOT_PASSWORD"></app-forgot-password>
+        <app-forgot-password (changeState)="changeCurrentState($event)" *ngIf="currentAuthState === StateEnum.FORGOT_PASSWORD"></app-forgot-password>
+        <app-new-password  *ngIf="currentAuthState === StateEnum.NEW_PASSWORD"></app-new-password>
     </div>
 </div>

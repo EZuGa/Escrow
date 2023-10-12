@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SendTokenInterceptor } from './shared/interceptors/send-token.interceptor';
 import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
 import { ForgotPasswordComponent } from './shared/dialogs/authentication/forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './shared/dialogs/authentication/new-password/new-password.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { ForgotPasswordComponent } from './shared/dialogs/authentication/forgot-
     RegisterComponent,
     AuthenticationComponent,
     ConfirmEmailComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    NewPasswordComponent
   ],
   imports: [
     BrowserModule,

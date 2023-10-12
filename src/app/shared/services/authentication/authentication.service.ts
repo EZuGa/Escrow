@@ -12,7 +12,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AuthenticationService {
 
-   private currentUser?: {email:"", password:""};
+  private currentUser?: {email:string, password:string};
+
+  private updatePassInfo?: {email: string, code:string, password?:string, repeat_password?: string}
 
   constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
@@ -31,25 +33,24 @@ export class AuthenticationService {
     return this.smsAuthentication(user.email)
   }
 
-  registerUser(code:number){
-    return this.http.post<IAuth>(
+  registerUser(code:number){ 
+    const response = this.http.post<IAuth>(
       `${environment.baseUrl}api/v1/user/jwt/register/`,
       {
         ...this.currentUser,
         code
       }
     ).pipe(
-      tap(response=>{
-
-        if(response.access){
+      tap(response => {
+        if (response.access) {
           this.setToken(response);
           this.navigateToCabinet();
         }
-
-        this.currentUser = undefined;
-
       }),
-      )
+    )
+
+    this.currentUser = undefined;
+    return response;
   }
 
   authenticateUser(user:{email:string, password:string}){
@@ -67,7 +68,28 @@ export class AuthenticationService {
   }
 
   forgotCode(email: any){
-    return this.http.post(`${environment.baseUrl}api/v1/user/reset_password/`, email)
+    return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, email)
+    .pipe(tap((val)=>{
+      this.updatePassInfo = {
+        ...email,
+        code:val.code,
+        password:'',
+        repeat_password:''
+      }
+    }))
+  }
+
+  restorePassword(passwords: {password:string, repeat_password:string}){
+
+    this.updatePassInfo = {
+      ...this.updatePassInfo!,
+      ...passwords
+    }
+
+    this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
+    .subscribe(val=>{console.log("OPA")});
+
+    this.updatePassInfo = undefined;
   }
 
   private navigateToCabinet(){
