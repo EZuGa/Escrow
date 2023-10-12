@@ -1,5 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+
 
 @Component({
   selector: 'contact-us',
@@ -20,7 +22,11 @@ export class ContactUsComponent {
 
 
   submit(){
-    console.log("SUVMIT")
+    console.log("SUVMIT");
+
+    const { checkbox, ...formData } = this.sendMailForm.getRawValue();
+
+    emailjs.send("service_pkrysyt","template_7rv5oiw",formData,"wSk38ZlTWAJVXXSVt");
   }
 
 }
