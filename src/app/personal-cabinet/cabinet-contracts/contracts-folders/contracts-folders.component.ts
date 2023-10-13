@@ -58,6 +58,11 @@ export class ContractsFoldersComponent implements OnInit{
     this.foldersToRender = filteredData?.slice(0,12);
   }
 
+  clearFilter(){
+    this.folderFilter.reset();
+    this.foldersToRender = [...this.allFolders!];
+  }
+
 
   createFolder(){
     this.contractService.createFolder().subscribe();
