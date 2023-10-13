@@ -33,4 +33,9 @@ export class ContractsService {
     this.folder++;
     return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: "Folder "+ this.folder})
   }
+
+  createFile(){
+    // g_gmail_com/Photos/
+    return this.http.get(`${environment.baseUrl}api/v1/user/directories/f0d33af1-f8ab-468a-80ce-c6089cffaa27/files/`)
+  }
 }

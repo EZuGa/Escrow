@@ -6,7 +6,7 @@ import { ServicePageComponent } from './service-page/service-page.component';
 
 const routes: Routes = [
   {path:'', component: LandingPageComponent},
-  {path:'our-services', component: ServicePageComponent},
+  {path:'our-services/:service_name', component: ServicePageComponent},
   {path:'navigation', component: MobileNavigationComponent},
 ];
 

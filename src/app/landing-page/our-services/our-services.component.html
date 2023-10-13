@@ -2,17 +2,6 @@
     <h5>Our Services</h5>
 
     <div class="services--wrap">
-        <our-services-cell title="Escrow Service"></our-services-cell>
-        <our-services-cell title="Auction representation"></our-services-cell>
-        <our-services-cell title="Depositary services"></our-services-cell>
-
-        <our-services-cell title="Investment and Asset management"></our-services-cell>
-        <our-services-cell title="Cryptocurrency Flexibility"></our-services-cell>
-        <our-services-cell title="Accounting and Audit"></our-services-cell>
-
-        <our-services-cell title="Legal Service"></our-services-cell>
-        <our-services-cell title="Logistik and storage"></our-services-cell>
-        <our-services-cell title="Referral program"></our-services-cell>
-
+        <our-services-cell (click)="clickService(service)" *ngFor="let service of allServices" [title]="service.name"></our-services-cell>
     </div>
 </div>
