@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/contracts-footer.component';
 import { MatSelectModule } from '@angular/material/select';
+import { CreateFolderComponent } from '../shared/dialogs/create-folder/create-folder.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -39,10 +41,12 @@ import { MatSelectModule } from '@angular/material/select';
     ContractsFilesCellComponent,
     MessagesMainComponent,
     UserInfoComponent,
-    ContractsFooterComponent
+    ContractsFooterComponent,
+    CreateFolderComponent
   ],
   imports: [
     CommonModule,
+    MatDialogModule,
     PersonalCabinetRoutingModule,
     ReactiveFormsModule,
     FormsModule,
@@ -50,7 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
-  ]
+    MatSelectModule,
+    
+  ],
 })
 export class PersonalCabinetModule { }
