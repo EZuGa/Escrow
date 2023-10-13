@@ -1,8 +1,8 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, tap } from 'rxjs';
+import { Observable, takeWhile, tap } from 'rxjs';
 import { CreateFolderComponent } from 'src/app/shared/dialogs/create-folder/create-folder.component';
 import { IFolder } from 'src/app/shared/interfaces/IFolder';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
@@ -12,7 +12,9 @@ import { ContractsService } from 'src/app/shared/services/contracts/contracts.se
   templateUrl: './contracts-folders.component.html',
   styleUrls: ['./contracts-folders.component.scss']
 })
-export class ContractsFoldersComponent implements OnInit{
+export class ContractsFoldersComponent implements OnInit, OnDestroy{
+
+  componentAlive$ = true;
 
   allFolders!: IFolder[] | undefined;
   foldersToRender!: IFolder[] | undefined;
@@ -32,7 +34,9 @@ export class ContractsFoldersComponent implements OnInit{
 
   ngOnInit(): void {
     this.contractService.allFolders.
-      pipe(tap(val => {
+      pipe(
+        takeWhile(v=>this.componentAlive$),
+        tap(val => {
           if(val){
             this.lastPage = Math.ceil(val.length / 12) ;
             this.allFolders = val;
@@ -67,8 +71,6 @@ export class ContractsFoldersComponent implements OnInit{
 
 
   createFolder(){
-    // this.contractService.createFolder().subscribe();
-
     this.dialog.open(CreateFolderComponent)
   }
 
@@ -90,6 +92,10 @@ export class ContractsFoldersComponent implements OnInit{
 
   chooseFolder(folder:IFolder){
     this.router.navigate(['personal-cabinet','contracts',folder.id])
+  }
+
+  ngOnDestroy(): void {
+    this.componentAlive$ = false;
   }
 
 

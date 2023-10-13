@@ -1,5 +1,6 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { takeWhile } from 'rxjs';
 import { SendMessageComponent } from 'src/app/shared/dialogs/send-message/send-message.component';
 import { IMessages } from 'src/app/shared/interfaces/IMessages';
 import { MessagesService } from 'src/app/shared/services/messages/messages.service';
@@ -9,7 +10,9 @@ import { MessagesService } from 'src/app/shared/services/messages/messages.servi
   templateUrl: './cabinet-messages.component.html',
   styleUrls: ['./cabinet-messages.component.scss']
 })
-export class CabinetMessagesComponent implements OnInit{
+export class CabinetMessagesComponent implements OnInit, OnDestroy{
+
+  componentAlive$ = true;
 
   onReceivedPage = true;
 
@@ -23,11 +26,19 @@ export class CabinetMessagesComponent implements OnInit{
 
   ngOnInit(): void {
 
-    this.messageService.sentdMesasges.subscribe(messages=>{
+    this.messageService.sentdMesasges
+    .pipe(
+      takeWhile(v=>this.componentAlive$)
+    )
+    .subscribe(messages=>{
       this.sentMessages = messages!
     });
 
-    this.messageService.receivedMesasges.subscribe(messages=>{
+    this.messageService.receivedMesasges
+    .pipe(
+      takeWhile(v=>this.componentAlive$)
+    )
+    .subscribe(messages=>{
       this.receivedMessages = messages!;
     });
   }
@@ -41,5 +52,7 @@ export class CabinetMessagesComponent implements OnInit{
       );
   }
   
-
+  ngOnDestroy(): void {
+    this.componentAlive$ = false;
+  }
 }
