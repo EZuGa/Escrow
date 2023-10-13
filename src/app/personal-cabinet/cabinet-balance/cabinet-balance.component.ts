@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BalanceService } from 'src/app/shared/services/balance/balance.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { BalanceService } from 'src/app/shared/services/balance/balance.service'
 })
 export class CabinetBalanceComponent implements OnInit{
 
+  balances!: Observable<any>;
+
   constructor(private balanceService: BalanceService){}
 
 
   ngOnInit(): void {
-    this.balanceService.getBalances().subscribe(val=>{})
+   this.balances = this.balanceService.balances;
   }
 
 }
