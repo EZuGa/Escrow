@@ -8,7 +8,6 @@ const routes: Routes = [
   {path:'', component: LandingPageComponent},
   {path:'our-services', component: ServicePageComponent},
   {path:'navigation', component: MobileNavigationComponent},
-  {path:'**', redirectTo:''}
 ];
 
 @NgModule({
