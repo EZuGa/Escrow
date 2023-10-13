@@ -284,3 +284,11 @@ mat-form-field.customForm .mat-mdc-text-field-wrapper {
  }
 
 
+
+
+
+ drag-scroll{
+    ::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+ }

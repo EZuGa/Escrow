@@ -1,9 +1,32 @@
 .header-background{
     height: 400px;
-    background-color: red;
     background-image: url('../../../assets/images/services-background.webp');
 
     .service-chooser{
-        background-color: rebeccapurple;
+        margin-top: 200px;
+
+        .horizontal-scroll{
+            display: flex;
+            gap: 24px;
+
+            // width: 406px;
+            // background-color: antiquewhite;
+            overflow-x: scroll;
+            width: fit-content;
+
+
+            p{
+                border-bottom: 1px solid #FFF;
+                padding: 10px;
+                // margin-right: 10px;
+                
+            }
+        }
     }
+}
+
+drag-scroll{
+    width: 40%;
+    margin: 0 auto;
+
 }
