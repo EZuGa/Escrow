@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IFolder } from '../../interfaces/IFolder';
 import { IFile } from '../../interfaces/IFile';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,10 @@ export class ContractsService {
   allFolders = this.allFoldersSubject.asObservable();
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private dialog:MatDialog) {
     this.getAllFolders();
    }
 
-
-   folder = 23
 
   private getAllFolders(){
 
@@ -30,13 +29,11 @@ export class ContractsService {
 
   }
 
-  createFolder(){
-    this.folder++;
-    return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: "Folder "+ this.folder})
+  createFolder(folderName: string){
+    return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: folderName})
   }
 
   getFiles(folderID:string){
-    // g_gmail_com/Photos/
     return this.http.get<IFile[]>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
   }
 }

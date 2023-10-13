@@ -18,12 +18,9 @@ export class ContractsFilesComponent implements OnInit{
 
   ngOnInit(): void {
     const fileID = this.route.snapshot.paramMap.get('file_name');
-
-    this.allFiles = this.contractsService.getFiles(fileID!);
-
-
-
-    
+    this.allFiles = this.contractsService.getFiles(fileID!);  
   }
+
+
 
 }

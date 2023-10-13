@@ -15,15 +15,11 @@ import { ContractsFoldersComponent } from './cabinet-contracts/contracts-folders
 import { ContractsFilesCellComponent } from './cabinet-contracts/contracts-files-cell/contracts-files-cell.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MessagesMainComponent } from './cabinet-messages/messages-main/messages-main.component';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/contracts-footer.component';
-import { MatSelectModule } from '@angular/material/select';
 import { CreateFolderComponent } from '../shared/dialogs/create-folder/create-folder.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { SharedComponentsModule } from '../shared/components/shared-components.module';
+import { MaterialModule } from '../shared/material/material.module';
 
 
 @NgModule({
@@ -46,16 +42,11 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   imports: [
     CommonModule,
-    MatDialogModule,
     PersonalCabinetRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatSelectModule,
-    
+    SharedComponentsModule,
+    MaterialModule
   ],
 })
 export class PersonalCabinetModule { }

@@ -1,5 +1,8 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { ContractsService } from '../../services/contracts/contracts.service';
+import { finalize } from 'rxjs';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-folder',
@@ -7,16 +10,23 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./create-folder.component.scss']
 })
 export class CreateFolderComponent {
+
+  isLoading = false;
+
+  folderName = new FormControl('', Validators.required)
   
 
-  constructor(private dialogRef: MatDialogRef<CreateFolderComponent>){}
+  constructor(private contractsService: ContractsService){}
 
-  createFolder(opa:any){
-    // console.log(opa)
+  createFolder(){
+    const folderName = this.folderName.value;
+    this.isLoading = true;
 
-    console.log(this.dialogRef)
-
-    // this.dialogRef.close()
+    this.contractsService.createFolder(folderName!)
+    .pipe(finalize(()=>this.isLoading = false))
+    .subscribe(res=>{
+      this.folderName.reset();
+    });
   }
 
 }
