@@ -15,11 +15,23 @@ mat-form-field{
         margin-bottom: 16px;
 
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: space-between;
 
         .folderFilter{
             display: flex;
+            align-items: flex-start;
+
+            @media screen and (max-width: 1150px) {
+                display: none;
+            }
+            
+            .customForm{
+                max-width: 180px;
+            }
+            .customMaterial{
+                max-width: 120px;
+            }
 
             span{
                 line-height: 40px;
@@ -28,15 +40,18 @@ mat-form-field{
 
             input{
                 margin-bottom: 0px;
-                margin-right: 8px;
+                // margin-right: 2px;
 
             }
 
             button{
                 padding: 0x;
                 height: 40px;
-                margin-right: 8px;
-                margin-left: 8px;
+                // margin-right: 2px;
+                // margin-left: 2px;
+            }
+            .buttonNoBorder{
+                width: 100px;
             }
         }
     }
