@@ -27,9 +27,9 @@ export class ServicePageComponent implements OnInit{
 
       setTimeout(()=>{  
         document.getElementById(currentPath)?.scrollIntoView({
-          behavior: 'auto',
+          behavior: 'smooth',
           block: 'center',
-          inline: 'center'
+          inline: 'center',
       })
       })
     })
