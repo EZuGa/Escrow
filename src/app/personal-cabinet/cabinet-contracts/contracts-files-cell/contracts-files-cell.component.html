@@ -1,8 +1,8 @@
 <div class="files-cell">
     <div class="filePdf" src="" alt=""></div>
     <div class="fileInfo">
-        <p>Uploaded at: Sep 17, 2023</p>
-        <h6>File name</h6>
+        <p>Uploaded at: {{file.uploaded_at | date}}</p>
+        <h6>{{file.name}}</h6>
         <img class="imageDownload" src="assets/icons/downloadFile.svg" alt="">
     </div>
 </div>

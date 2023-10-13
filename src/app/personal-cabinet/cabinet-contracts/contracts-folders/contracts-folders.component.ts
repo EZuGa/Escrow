@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { IFolder } from 'src/app/shared/interfaces/IFolder';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
@@ -25,7 +26,7 @@ export class ContractsFoldersComponent implements OnInit{
 
 
 
-  constructor(private contractService: ContractsService, private fb: FormBuilder){}
+  constructor(private contractService: ContractsService, private fb: FormBuilder, private router: Router){}
 
   ngOnInit(): void {
     this.contractService.allFolders.
@@ -76,6 +77,10 @@ export class ContractsFoldersComponent implements OnInit{
       )
     })
     .slice((this.currentPage-1) * 12, this.currentPage * 12)
+  }
+
+  chooseFolder(folder:IFolder){
+    this.router.navigate(['personal-cabinet','contracts',folder.id])
   }
 
 

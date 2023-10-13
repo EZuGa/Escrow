@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IFile } from 'src/app/shared/interfaces/IFile';
 
 @Component({
   selector: 'contracts-files-cell',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./contracts-files-cell.component.scss']
 })
 export class ContractsFilesCellComponent {
+
+  @Input() file!: IFile;
 
 }

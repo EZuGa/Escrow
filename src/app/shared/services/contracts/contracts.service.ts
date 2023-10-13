@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IFolder } from '../../interfaces/IFolder';
+import { IFile } from '../../interfaces/IFile';
 
 @Injectable({
   providedIn: 'root'
@@ -34,8 +35,8 @@ export class ContractsService {
     return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: "Folder "+ this.folder})
   }
 
-  createFile(){
+  getFiles(folderID:string){
     // g_gmail_com/Photos/
-    return this.http.get(`${environment.baseUrl}api/v1/user/directories/f0d33af1-f8ab-468a-80ce-c6089cffaa27/files/`)
+    return this.http.get<IFile[]>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
   }
 }

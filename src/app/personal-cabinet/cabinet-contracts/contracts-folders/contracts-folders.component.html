@@ -35,7 +35,7 @@
         </div>
     
         <div  class="contracts-main">
-                <contracts-cell *ngFor="let folder of foldersToRender" [folder]="folder" routerLink="files"></contracts-cell>
+                <contracts-cell (click)="chooseFolder(folder)" *ngFor="let folder of foldersToRender" [folder]="folder"></contracts-cell>
         </div>
     </div>
 </div>

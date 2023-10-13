@@ -9,7 +9,7 @@
     </div>
 
     <div class="files-grid">
-        <contracts-files-cell *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]"></contracts-files-cell>
+        <contracts-files-cell *ngFor="let file of allFiles | async" [file]="file"></contracts-files-cell>
     </div>
 
  </div>

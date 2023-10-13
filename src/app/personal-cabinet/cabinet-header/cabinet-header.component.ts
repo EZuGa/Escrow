@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'cabinet-header',
@@ -15,20 +14,13 @@ export class CabinetHeaderComponent implements OnInit {
 
   isInFiles = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
 
   ngOnInit(): void {
     this.isInFiles = this.isInFilesCheck(this.router.url);
     this.header = this.getHeader(this.router.url)
-
-    this.router.events
-    .pipe(filter(route=> route instanceof NavigationEnd))
-    .subscribe(router=>{
-      const route = (router as NavigationEnd).urlAfterRedirects;
-      this.header = this.getHeader(route);
-      this.isInFiles = this.isInFilesCheck(route);
-    })
+    //shesacvlelia
   }
 
   private isInFilesCheck(currentRoute: string){

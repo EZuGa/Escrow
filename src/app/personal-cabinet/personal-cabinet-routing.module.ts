@@ -14,7 +14,7 @@ const routes: Routes = [
     {path: 'messages', component: CabinetMessagesComponent},
     {path: 'contracts', component: CabinetContractsComponent, children: [
       {path:"", component: ContractsFoldersComponent},
-      {path:"files", component: ContractsFilesComponent}
+      {path:":file_name", component: ContractsFilesComponent}
     ]},
     {path: 'balance', component: CabinetBalanceComponent},
     {path: '**', redirectTo: 'my-profile'}
