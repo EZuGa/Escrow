@@ -27,9 +27,9 @@
         padding-right: 24px;
     }
 
-    img{
-        // max-width: 540px;
+    img.mainImage{
         width: calc(100% - 300px - 70px);
+        height: 672px;
 
         @media screen and (max-width:950px) {
             display: none;
