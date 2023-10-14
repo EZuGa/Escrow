@@ -1,6 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable, takeWhile, tap } from 'rxjs';
 import { CreateFolderComponent } from 'src/app/shared/dialogs/create-folder/create-folder.component';
@@ -30,7 +31,7 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
 
 
-  constructor(private contractService: ContractsService, private fb: FormBuilder, private router: Router, private dialog: Dialog){}
+  constructor(private contractService: ContractsService, private fb: FormBuilder, private router: Router, private dialog: MatDialog){}
 
   ngOnInit(): void {
     this.contractService.allFolders.
@@ -71,7 +72,7 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
 
   createFolder(){
-    this.dialog.open(CreateFolderComponent)
+    this.dialog.open(CreateFolderComponent);
   }
 
 

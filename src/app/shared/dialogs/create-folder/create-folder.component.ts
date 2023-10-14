@@ -1,5 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ContractsService } from '../../services/contracts/contracts.service';
 import { finalize } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
@@ -16,7 +16,7 @@ export class CreateFolderComponent {
   folderName = new FormControl('', Validators.required)
   
 
-  constructor(private contractsService: ContractsService){}
+  constructor(private contractsService: ContractsService, private dialogRef: MatDialogRef<CreateFolderComponent>){}
 
   createFolder(){
     const folderName = this.folderName.value;
@@ -25,7 +25,7 @@ export class CreateFolderComponent {
     this.contractsService.createFolder(folderName!)
     .pipe(finalize(()=>this.isLoading = false))
     .subscribe(res=>{
-      this.folderName.reset();
+      this.dialogRef.close();
     });
   }
 
