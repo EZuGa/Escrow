@@ -18,7 +18,7 @@ const routes: Routes = [
     ]},
     {path: 'balance', component: CabinetBalanceComponent},
     {path: '**', redirectTo: 'my-profile'}
-  ]}
+  ]},
 ];
 
 @NgModule({

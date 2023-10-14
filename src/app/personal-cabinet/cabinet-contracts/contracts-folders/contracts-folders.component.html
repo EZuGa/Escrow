@@ -1,8 +1,9 @@
 <div class="contracts-wrap">
     <div class="contracts">
         <div class="contracts-header">
-            <form [formGroup]="folderFilter" class="folderFilter">
+            <img (click)="toggleMobileFilter()" src="assets/icons/mobile-filter.svg" alt="+" class="mobile-search" >
 
+            <form [formGroup]="folderFilter" class="folderFilter" [class.mobileFilterActive]="mobileFilterActive ? 'mobileFilterActive' : ''">
                 <mat-form-field class="customForm">
                     <mat-label>MM/DD/YYYY</mat-label>
                     <input formControlName="dateFrom"  matInput [matDatepicker]="picker">

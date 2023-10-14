@@ -22,6 +22,8 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
   currentPage = 1;
   lastPage = 1;
 
+  mobileFilterActive = false;
+
   folderFilter = this.fb.group({
       dateFrom: [''],
       dateTo: [''],
@@ -63,11 +65,15 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
     this.lastPage = Math.ceil(filteredData!.length / 12) ;
 
     this.foldersToRender = filteredData?.slice(0,12);
+
+    this.mobileFilterActive = false;
   }
 
   clearFilter(){
     this.folderFilter.reset();
     this.foldersToRender = [...this.allFolders!];
+
+    this.mobileFilterActive = false;
   }
 
 
@@ -93,6 +99,10 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
   chooseFolder(folder:IFolder){
     this.router.navigate(['personal-cabinet','contracts',folder.id])
+  }
+
+  toggleMobileFilter(){
+    this.mobileFilterActive = !this.mobileFilterActive;
   }
 
   ngOnDestroy(): void {
