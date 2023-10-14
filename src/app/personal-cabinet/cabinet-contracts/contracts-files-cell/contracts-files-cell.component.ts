@@ -10,4 +10,8 @@ export class ContractsFilesCellComponent {
 
   @Input() file!: IFile;
 
+  getData(){
+    window.open(this.file.file, '_blank');
+  }
+
 }

@@ -36,4 +36,15 @@ export class ContractsService {
   getFiles(folderID:string){
     return this.http.get<IFile[]>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
   }
+
+  uploadFile(file:File, folderId:string, fileName:string){
+    
+    const formData = new FormData();
+
+    formData.append("file", file);
+    formData.append("name", fileName)
+
+    this.http.post(`${environment.baseUrl}api/v1/user/directories/${folderId}/files/upload/`, formData)
+    .subscribe()
+  }
 }

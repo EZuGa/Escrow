@@ -5,7 +5,8 @@
             <p><span></span> Completed</p>
             <h6>Folder Name</h6>
         </div>
-        <button class="blueButton">+ Upload Documents</button>
+        <input  #file type="file" style="display: none;" (change)="uploadFile($event)">
+        <button class="blueButton" (click)="file.click()">+ Upload Documents</button>
     </div>
 
     <div class="files-grid">
