@@ -72,14 +72,14 @@ export class AuthenticationService {
     .pipe(tap((val)=>{
       this.updatePassInfo = {
         ...email,
-        code:val.code,
+        code:'',
         password:'',
         repeat_password:''
       }
     }))
   }
 
-  restorePassword(passwords: {password:string, repeat_password:string}){
+  restorePassword(passwords: {password:string, repeat_password:string, code: string}){
 
     this.updatePassInfo = {
       ...this.updatePassInfo!,
@@ -93,7 +93,7 @@ export class AuthenticationService {
     return response;
   }
 
-  private navigateToCabinet(){
+    navigateToCabinet(){
     this.router.navigateByUrl("/personal-cabinet");
     this.dialog.closeAll();
   }

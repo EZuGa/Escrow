@@ -16,6 +16,7 @@ export class NewPasswordComponent {
   newPasswordForm = this.fb.group({
     password: ['', [Validators.required, Validators.minLength(8)]],
     repeat_password:[''],
+    code: ['', Validators.required]
   },{validators: [confirmPassword]})
 
   
@@ -26,7 +27,9 @@ export class NewPasswordComponent {
     this.isLoading = true;
     this.authService.restorePassword(this.newPasswordForm.getRawValue())
     .pipe(finalize(()=>this.isLoading = false))
-    .subscribe()
+    .subscribe(val=>{
+      this.authService.navigateToCabinet()
+    })
   }
 
 }
