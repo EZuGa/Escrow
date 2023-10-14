@@ -58,6 +58,7 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
       && 
       (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at))
       )
+      &&(!filterValues.status || val.status === filterValues.status)
     });
 
     this.currentPage = 1;
@@ -91,6 +92,7 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
       && 
       (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at))
       )
+      &&(!filterValues.status || val.status === filterValues.status)
     })
     .slice((this.currentPage-1) * 12, this.currentPage * 12)
   }
