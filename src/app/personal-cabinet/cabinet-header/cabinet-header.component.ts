@@ -34,7 +34,6 @@ export class CabinetHeaderComponent implements OnInit {
   }
 
   private getHeader(route:string){
-    console.log(route)
     switch(route){
       case "/personal-cabinet/my-profile":
         return "My profile"

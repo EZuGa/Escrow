@@ -29,8 +29,7 @@ export class MessagesService {
   sendMessage(message:{content:string,subject: string, recipient_email?:string}){
     message.recipient_email = '';
 
-    this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
-    .subscribe();
+    return this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
   }
 
   getReceivedMessages(){

@@ -5,12 +5,12 @@
     </div>
 
     <form class="main-content" [formGroup]="messageForm" mat-dialog-content>
-        <input formControlName="subject" class="subject" type="text" placeholder="Subject">
+        <input [class.invalid]="" formControlName="subject" class="subject" type="text" placeholder="Subject">
 
-        <textarea formControlName="content"></textarea>
+        <textarea placeholder="Message" formControlName="content"></textarea>
     </form>
 
     <div class="bottom">
-        <button (click)="sendMessage()" class="buttomWhiteBorder">Send Message</button>
+        <app-button [isLoading]="isLoading" [disabled]="messageForm.invalid" (click)="sendMessage()">SendMessage</app-button>
     </div>
 </div>

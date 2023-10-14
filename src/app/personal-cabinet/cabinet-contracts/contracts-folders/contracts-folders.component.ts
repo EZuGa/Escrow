@@ -53,7 +53,6 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
     const filterValues = this.folderFilter.getRawValue();
 
     const filteredData = this.allFolders?.filter(val=> {
-      // console.log((!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at)), (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at)))
       return (
       (!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at))
       && 
@@ -87,7 +86,6 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
     this.currentPage = page;
     this.foldersToRender = this.allFolders!.filter(val=> {
-      // console.log((!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at)), (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at)))
       return (
       (!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at))
       && 
