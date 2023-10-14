@@ -24,6 +24,7 @@ import { RegisterComponent } from '../shared/dialogs/authentication/register/reg
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ServicePageComponent } from './service-page/service-page.component';
 import { DragScrollModule } from 'ngx-drag-scroll';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { DragScrollModule } from 'ngx-drag-scroll';
     CommonModule,
     LandingPageRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule,    
+    MatDialogModule,   
+    MatSnackBarModule, 
     SharedComponentsModule,
     DragScrollModule
   ],

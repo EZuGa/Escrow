@@ -10,6 +10,8 @@ import { FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@ang
 })
 export class SendMessageComponent {
 
+  
+
   messageForm = this.fb.group({
     content: ['', Validators.required],
     subject: ['', Validators.required]

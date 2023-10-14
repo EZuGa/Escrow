@@ -292,3 +292,19 @@ mat-form-field.customForm .mat-mdc-text-field-wrapper {
         display: none;  /* Safari and Chrome */
     }
  }
+
+
+ //snackbar
+ .mat-mdc-snack-bar-container {
+    // &.green-snackbar {
+    //   --mdc-snackbar-container-color: rgba(21, 119, 21, 0.61);
+    //   --mat-mdc-snack-bar-button-color: red;
+    //   --mdc-snackbar-supporting-text-color: white;
+    // }
+
+    &.alert-snackbar{
+        --mdc-snackbar-container-color: rgb(185, 52, 52);
+        // --mat-mdc-snack-bar-button-color: red;
+        --mdc-snackbar-supporting-text-color: white;
+    }
+  }
