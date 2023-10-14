@@ -9,6 +9,7 @@ import { SendTokenInterceptor } from './shared/interceptors/send-token.intercept
 import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DisplayMessageInterceptor } from './shared/interceptors/display-message.interceptor';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: HandleUnauthorizedInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HandleUnauthorizedInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: DisplayMessageInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
