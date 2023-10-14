@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UploadFileComponent } from 'src/app/shared/dialogs/upload-file/upload-file.component';
 import { IFile } from 'src/app/shared/interfaces/IFile';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
 
