@@ -66,8 +66,10 @@
             position: absolute;
             bottom: 24px;
             left: 0px;
+            @media screen and (max-width: 950px) {
+                text-align: center;
+            }
         }
-        // display: inline-block;
     }
 
 
