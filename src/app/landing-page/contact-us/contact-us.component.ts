@@ -24,7 +24,6 @@ export class ContactUsComponent {
   isLoading = false;
 
   constructor(private fb: FormBuilder, private snackbar: SnackbarManagmentService){
-    this.submit();
   }
 
 
