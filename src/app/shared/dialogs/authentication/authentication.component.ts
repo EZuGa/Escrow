@@ -19,7 +19,7 @@ export class AuthenticationComponent {
     return CurrentState;
   }
 
-  currentAuthState: CurrentState = CurrentState.LOGIN;
+  currentAuthState: CurrentState = CurrentState.CONFIRM_EMAIL;
 
   constructor(private dialog:Dialog){}
 

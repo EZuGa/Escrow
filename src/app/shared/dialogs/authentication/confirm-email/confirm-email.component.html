@@ -4,7 +4,10 @@
     <p >To continue, please enter the six-digit code that we sent you to u*****@gmail.com</p>
 
     <div  class="inputWrap" formArrayName="validateEmail">
-        <input #inputEl (input)="handleInput(i)" type="text" maxlength="1" [formControlName]="i" *ngFor="let inputCell of validateEmailControls; index as i">
+        <ng-container *ngFor="let inputCell of validateEmailControls; index as i">
+            <input #inputEl (keydown)="keydown($event, i)" type="text" maxlength="1" [formControlName]="i">
+            <span *ngIf="i !== 5">-</span>
+        </ng-container>
     </div>
 
     <button class="blueButton">Confirm</button>

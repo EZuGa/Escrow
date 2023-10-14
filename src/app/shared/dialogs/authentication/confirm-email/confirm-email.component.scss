@@ -7,56 +7,29 @@ form{
     text-align: center;
 }
 
-// .inputWrap{
-//     background-color: red;
-//     position: relative;
-//     display: block;
-
-//     .box{
-//         position: absolute;
-//         content: '';
-//         width: 42px;
-//         height: 42px;
-//         border-radius: 6px;
-//         border: 1px solid #EEE;
-//         top: 0;
-//         left: 0;
-
-//         &:nth-of-type(2){
-//             left: 51px;
-//         }
-//         &:nth-of-type(3){
-//             left: 102px;
-//         }
-//         &:nth-of-type(4){
-//             left: 153px;
-//         }
-//         &:nth-of-type(5){
-//             left: 204px;
-//         }
-//         &:nth-of-type(6){
-//             left: 255px;
-//         }
-//     }
-// }
-
-// input{
-//     background-color: transparent;
-//     // color: black;
-//     width: 100%;
-//     height: 42px;
-//     letter-spacing: 46px;
-//     border: none;
-//     outline: none;
-//     padding: 0px 16px;
-//     position: relative;
-// }
 
 .blueButton{
     width: 100%;
 }
 .inputWrap{
     display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+    span{
+      margin: 0px 3px;
+    }
+
+    input{
+      margin-bottom: 0px;
+      padding: 0;
+      padding-left:15px;
+    }
+}
+
+input::after{
+  content: '-';
 }
 
 /* Chrome, Safari, Edge, Opera */

@@ -25,12 +25,17 @@ export class ConfirmEmailComponent implements OnInit{
 
   constructor(private fb:FormBuilder, private authService: AuthenticationService){}
 
-  handleInput(index: number){
-    const nextInputIndex = (index + 1).toString();
-    const nextInput = this.confirmForm.get('validateEmail')?.get(nextInputIndex);
-    // if(nextInput?.pristine){
-      this.inputEls.get(index + 1)?.nativeElement.focus();
-    // }
+  keydown(event: any, index: number){
+    if((+event.key >= 0 && +event.key <= 9)){
+      setTimeout(()=>{this.inputEls.get(index + 1)?.nativeElement.focus()})  
+    }else if(event.key === "Backspace"){
+      if(event.target.value === ''){
+        setTimeout(()=>{this.inputEls.get(index - 1)?.nativeElement.focus()})  
+      }
+    }
+    else{
+      event.preventDefault();
+    }
   }
 
 
