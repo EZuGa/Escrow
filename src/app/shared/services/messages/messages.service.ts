@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IMessages } from '../../interfaces/IMessages';
 import { BehaviorSubject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +19,17 @@ export class MessagesService {
 
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private dialog: MatDialog) {
     this.getReceivedMessages();
     this.getSentMessages();
    }
 
 
 
-  sendMessage(message:string){
-    this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`,
-    {
-      content: message,
-      recipient_email: 'g@gmail.com',
-      subject: "Subject"
-    })
+  sendMessage(message:{content:string,subject: string, recipient_email?:string}){
+    message.recipient_email = '';
+
+    this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
     .subscribe();
   }
 

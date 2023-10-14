@@ -7,9 +7,16 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0px 40px;
-        // background-color: red;
+        padding: 20px 40px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+        h6{
+            margin-bottom: 0px;
+        }
+
+        img{
+            cursor: pointer;
+        }
     }
 
 
@@ -28,9 +35,7 @@
         }
 
         .subject{
-            padding: 13px 0px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-
+            // border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
     }
     .bottom{

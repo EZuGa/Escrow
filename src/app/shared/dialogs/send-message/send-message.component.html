@@ -1,17 +1,14 @@
 <div class="wrapper">
     <div class="header">
         <h6>New message</h6>
-        <img routerLink="/" id="closeNav" src="assets/icons/close.svg" alt="">
+        <img (click)="closeDialog()" routerLink="/" id="closeNav" src="assets/icons/close.svg" alt="">
     </div>
 
-    <div class="main-content" mat-dialog-content>
-        <!-- <p class="recipient">Recipient</p> -->
-        <p class="subject">Subject</p>
-        <!-- <input class="subject" type="text"> -->
+    <form class="main-content" [formGroup]="messageForm" mat-dialog-content>
+        <input formControlName="subject" class="subject" type="text" placeholder="Subject">
 
-        <textarea #message></textarea>
-
-    </div>
+        <textarea formControlName="content"></textarea>
+    </form>
 
     <div class="bottom">
         <button (click)="sendMessage()" class="buttomWhiteBorder">Send Message</button>

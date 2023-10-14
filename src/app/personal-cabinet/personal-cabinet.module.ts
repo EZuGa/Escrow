@@ -20,6 +20,7 @@ import { ContractsFooterComponent } from './cabinet-contracts/contracts-footer/c
 import { CreateFolderComponent } from '../shared/dialogs/create-folder/create-folder.component';
 import { SharedComponentsModule } from '../shared/components/shared-components.module';
 import { MaterialModule } from '../shared/material/material.module';
+import { SendMessageComponent } from '../shared/dialogs/send-message/send-message.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { MaterialModule } from '../shared/material/material.module';
     MessagesMainComponent,
     UserInfoComponent,
     ContractsFooterComponent,
-    CreateFolderComponent
+    CreateFolderComponent,
+    SendMessageComponent
   ],
   imports: [
     CommonModule,
