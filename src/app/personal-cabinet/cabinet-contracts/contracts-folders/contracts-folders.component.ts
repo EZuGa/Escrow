@@ -40,6 +40,17 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
   ngOnInit(): void {
     this.getAllFolders();
+    this.filterByWord();
+  }
+
+  filterByWord(){
+    this.contractService.searchedWord
+    .pipe(takeWhile(v=>this.componentAlive$))
+    .subscribe(keyword=>{
+      this.foldersToRender = this.allFolders?.filter(val=>val.name.toLocaleLowerCase().includes(keyword.toLocaleLowerCase()));
+
+      this.resetPaging();
+    })
   }
 
 

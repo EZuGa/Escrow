@@ -7,6 +7,20 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 24px;
+    
+    .header-main{
+        display: flex;
+        align-items: center;
+        
+        .folderSearch{
+            margin-left: 24px;
+            input{
+                margin-bottom: 0;
+                width: 300px;
+                margin-right: 8px;
+            }
+        }
+    }
 
     h2{
         font-size: 1.2rem;

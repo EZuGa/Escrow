@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil, takeWhile } from 'rxjs';
+import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
 
 @Component({
   selector: 'cabinet-header',
@@ -15,7 +16,7 @@ export class CabinetHeaderComponent implements OnInit {
 
   header: string = "";
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private contractService: ContractsService,) {}
 
 
   ngOnInit(): void {
@@ -46,6 +47,11 @@ export class CabinetHeaderComponent implements OnInit {
     }
 
     return "Files"
+  }
+
+  searchFolder(text: string){
+    console.log(text)
+    this.contractService.searchedWord.next(text);
   }
 
   ngOnDestroy(): void {

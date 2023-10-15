@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IFolder } from '../../interfaces/IFolder';
 import { IFile } from '../../interfaces/IFile';
@@ -14,6 +14,7 @@ export class ContractsService {
   private allFoldersSubject = new BehaviorSubject<IFolder[] | undefined>(undefined);
   allFolders = this.allFoldersSubject.asObservable();
 
+  searchedWord:Subject<string> = new Subject();
 
   constructor(private http: HttpClient, private dialog:MatDialog) {
     this.getAllFolders();
