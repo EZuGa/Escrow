@@ -7,7 +7,7 @@
         <h6>{{folder.name}}</h6>
     </div>
     <div class="cell-bottom">
-        <p><span></span>{{folder.status}}</p>
+        <p><span [class]="folder.status"></span>{{folder.status}}</p>
         <p class="lastUpdate">Last update: {{folder.created_at | date}}</p>
     </div>
 </div>

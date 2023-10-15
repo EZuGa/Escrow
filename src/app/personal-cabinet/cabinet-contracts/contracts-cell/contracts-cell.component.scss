@@ -46,6 +46,16 @@
                 display: inline-block;
                 margin-right: 8px;
                 border-radius: 50%;
+
+                &.ongoing{
+                    background-color: #0131F5;
+                }
+                &.succeeded{
+                    background-color: #01F537;
+                }
+                &.failed{
+                    background-color: #FF5520;
+                }
             }
         }
 
