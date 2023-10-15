@@ -19,6 +19,8 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
   allFolders!: IFolder[] | undefined;
   foldersToRender!: IFolder[] | undefined;
+
+
   currentPage = 1;
   lastPage = 1;
 
@@ -34,68 +36,12 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
 
   constructor(private contractService: ContractsService, private fb: FormBuilder, private router: Router, private dialog: MatDialog){}
+  
 
   ngOnInit(): void {
-    this.contractService.allFolders.
-      pipe(
-        takeWhile(v=>this.componentAlive$),
-        tap(val => {
-          if(val){
-            this.lastPage = Math.ceil(val.length / 12) ;
-            this.allFolders = val;
-            this.foldersToRender = this.allFolders.slice( 0, 12);
-          }
-    })).subscribe();
+    this.getAllFolders();
   }
 
-
-  applyFilter(){
-    const filterValues = this.folderFilter.getRawValue();
-
-    const filteredData = this.allFolders?.filter(val=> {
-      return (
-      (!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at))
-      && 
-      (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at))
-      )
-      &&(!filterValues.status || val.status === filterValues.status)
-    });
-
-    this.currentPage = 1;
-    this.lastPage = Math.ceil(filteredData!.length / 12) ;
-
-    this.foldersToRender = filteredData?.slice(0,12);
-
-    this.mobileFilterActive = false;
-  }
-
-  clearFilter(){
-    this.folderFilter.reset();
-    this.foldersToRender = [...this.allFolders!];
-
-    this.mobileFilterActive = false;
-  }
-
-
-  createFolder(){
-    this.dialog.open(CreateFolderComponent);
-  }
-
-
-  changePage(page:number){
-    const filterValues = this.folderFilter.getRawValue();
-
-    this.currentPage = page;
-    this.foldersToRender = this.allFolders!.filter(val=> {
-      return (
-      (!filterValues.dateFrom || new Date(filterValues.dateFrom!) <= new Date(val.created_at))
-      && 
-      (!filterValues.dateTo || new Date(filterValues.dateTo!) >= new Date(val.created_at))
-      )
-      &&(!filterValues.status || val.status === filterValues.status)
-    })
-    .slice((this.currentPage-1) * 12, this.currentPage * 12)
-  }
 
   chooseFolder(folder:IFolder){
     this.router.navigate(['personal-cabinet','contracts',folder.id])
@@ -104,6 +50,63 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
   toggleMobileFilter(){
     this.mobileFilterActive = !this.mobileFilterActive;
   }
+
+  createFolder(){
+    this.dialog.open(CreateFolderComponent);
+  }
+
+
+  clearFilter(){
+    this.folderFilter.reset();
+    this.foldersToRender = [...this.allFolders!];
+    this.resetPaging();
+  }
+
+  getAllFolders(){
+    this.contractService.allFolders.
+    pipe(
+      takeWhile(v=>this.componentAlive$),
+      tap(val => {
+        if(val){
+          this.allFolders = val;
+          this.foldersToRender = [...this.allFolders];
+          this.resetPaging();
+        }
+  })).subscribe();
+  }
+
+  applyFilter(){
+    const filterValues = this.folderFilter.getRawValue();
+    this.foldersToRender = this.allFolders?.filter(val=> {
+      return (
+        (!filterValues.dateFrom || new Date(val.updated_at).setHours(0,0,0,0) >= new Date(filterValues.dateFrom).setHours(0,0,0,0))
+        &&
+        (!filterValues.dateTo || new Date(val.updated_at).setHours(0,0,0,0) <= new Date(filterValues.dateTo).setHours(0,0,0,0))
+        &&
+        (!filterValues.status || filterValues.status === val.status)
+        )
+    })
+
+    this.resetPaging();
+  }
+
+  resetPaging(){
+    this.lastPage = Math.ceil(this.foldersToRender!.length / 12) ;
+    this.currentPage = 1;
+    this.mobileFilterActive = false;
+  }
+
+
+  nextPage(){
+    console.log('next')
+    this.currentPage++;
+  }
+
+  perviousPage(){
+    console.log('perv')
+    this.currentPage--;
+  }
+
 
   ngOnDestroy(): void {
     this.componentAlive$ = false;

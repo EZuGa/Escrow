@@ -1,28 +1,31 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-contracts-footer',
   templateUrl: './contracts-footer.component.html',
   styleUrls: ['./contracts-footer.component.scss']
 })
-export class ContractsFooterComponent {
+export class ContractsFooterComponent implements OnChanges{
 
-  @Output() changePage = new EventEmitter<number>();
+  @Output() nextPage = new EventEmitter<void>();
+  @Output() perviousPage = new EventEmitter<void>();
 
-  @Input() lastPage = 5;
 
-  currentPage = 1;
+  @Input() lastPage = 1;
+
+  @Input() currentPage = 1;
+
+  ngOnChanges(changes: SimpleChanges){
+  }
 
   fowrad(){
     if(this.currentPage === this.lastPage)return;
-    this.currentPage++;
-    this.changePage.emit(this.currentPage);
+    this.nextPage.emit();
   }
 
   backward(){
     if(this.currentPage === 1)return;
-    this.currentPage--;
-    this.changePage.emit(this.currentPage);
+    this.perviousPage.emit();
   }
 
 }

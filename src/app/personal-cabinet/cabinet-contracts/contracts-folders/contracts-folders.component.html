@@ -36,11 +36,11 @@
         </div>
     
         <div  class="contracts-main">
-                <contracts-cell (click)="chooseFolder(folder)" *ngFor="let folder of foldersToRender" [folder]="folder"></contracts-cell>
+                <contracts-cell (click)="chooseFolder(folder)" *ngFor="let folder of foldersToRender?.slice((this.currentPage-1) * 12, this.currentPage * 12)" [folder]="folder"></contracts-cell>
         </div>
     </div>
 </div>
-<app-contracts-footer *ngIf="lastPage > 1" [lastPage]="lastPage" (changePage)="changePage($event)"></app-contracts-footer>
+<app-contracts-footer *ngIf="lastPage > 1"  [lastPage]="lastPage" [currentPage]="currentPage" (perviousPage)="perviousPage()" (nextPage)="nextPage()"></app-contracts-footer>
 
 
 <!-- 0-12  12-24  26-38 -->
