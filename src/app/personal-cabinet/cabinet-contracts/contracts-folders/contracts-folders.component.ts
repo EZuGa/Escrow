@@ -98,12 +98,10 @@ export class ContractsFoldersComponent implements OnInit, OnDestroy{
 
 
   nextPage(){
-    console.log('next')
     this.currentPage++;
   }
 
   perviousPage(){
-    console.log('perv')
     this.currentPage--;
   }
 
