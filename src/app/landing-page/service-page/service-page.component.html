@@ -1,19 +1,18 @@
 <div class="header-background">
     <landing-header></landing-header>
 
-    <div class="service-chooser">
-        <h1>{{currentService.name}}</h1>
-
-        <drag-scroll>
+    <div class="service-chooser container">
+            <h1>{{currentService.name}}</h1>
             <div class="horizontal-scroll">
                 <p [class.active]="service.name === currentService.name" [id]="service.name" (click)="chooseService(service)" *ngFor="let service of ourServices">{{service.name}}</p>
             </div>
-        </drag-scroll>
     </div>
 </div>
 <div class="content container">
     <h5>{{currentService.name}}</h5>
     <p>{{currentService.description}}</p>
 </div>
+
+<contact-us></contact-us>
 
 <app-footer></app-footer>
