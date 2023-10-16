@@ -23,7 +23,6 @@ import { NewPasswordComponent } from '../shared/dialogs/authentication/new-passw
 import { RegisterComponent } from '../shared/dialogs/authentication/register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ServicePageComponent } from './service-page/service-page.component';
-import { DragScrollModule } from 'ngx-drag-scroll';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
@@ -56,7 +55,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,   
     MatSnackBarModule, 
     SharedComponentsModule,
-    DragScrollModule
   ],
   exports:[
   ]
