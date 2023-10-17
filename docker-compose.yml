@@ -17,6 +17,19 @@ services:
       - main
     restart: on-failure
 
+  frontend:
+    container_name: mudo_fe
+    build:
+      context: client
+    volumes:
+      - "./client:/app"
+    command: [ "ng", "serve", "--host", "0.0.0.0" ]
+    ports:
+      - "4200:4200"
+    networks:
+      - main
+    restart: on-failure
+
   nginx:
     container_name: mudo_nginx
     image: nginx:alpine
