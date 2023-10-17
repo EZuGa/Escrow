@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'storages',
     'drf_yasg',
-    'corsheaders'
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -193,6 +193,7 @@ AWS_STORAGE_BUCKET_NAME = 'escrowbucketi'
 AWS_S3_REGION_NAME = 'eu-central-1'
 AWS_S3_ENDPOINT_URL = 'https://escrowbucketi.s3.eu-central-1.amazonaws.com'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+MAILERSEND_API_KEY = ""
 
 
 #TODO : KEYS TO ENV

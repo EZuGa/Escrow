@@ -97,18 +97,23 @@ class PasswordResetSerializer(serializers.Serializer):
         return attrs
 
 class MessageSerializer(serializers.ModelSerializer):
+    sender = serializers.SerializerMethodField()
+    recipient = serializers.SerializerMethodField()
+    def get_sender(self, obj):
+        return obj.sender.email
+    def get_recipient(self, obj):
+        return obj.recipient.email
     class Meta:
         model = Message
         fields = '__all__'
 
 
 class SendMessageSerializer(serializers.Serializer):
-    recipient_email = serializers.EmailField()
     subject = serializers.CharField(max_length=255)
     content = serializers.CharField()
 
     def create(self, validated_data):
-        recipient_email = validated_data.pop('recipient_email')
+        recipient_email = "data@gmail.com" #TODO change this
         recipient = User.objects.get(email=recipient_email)
         return Message.objects.create(recipient=recipient, **validated_data)
 
