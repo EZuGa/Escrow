@@ -1,0 +1,41 @@
+.messages-wrap{
+    padding: 32px 24px;
+
+    .messages{
+        padding: 24px;
+        background: rgba(22, 24, 37, 0.7);
+        
+
+        .main-container{
+            width: 100%;
+        }
+
+
+        .message-top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+
+            div{
+                display: flex;
+                h6{
+                    margin-right: 40px;
+                    font-size: 18px;
+                    padding-bottom: 10px;
+                    border-bottom: 2px solid transparent;
+                    cursor: pointer;
+                    &.active{
+                        border-bottom: 2px solid #0131F5;
+                    }
+                }
+            }
+
+            button.buttomWhiteBorder{
+                width: auto;
+                height: 40px;
+                padding: 0px 24px;
+            }
+        }
+    }
+}

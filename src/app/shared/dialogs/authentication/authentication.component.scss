@@ -1,0 +1,45 @@
+.dialog-container{
+    background-color: #161825;
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    border-radius: 30px;
+    padding-right: 70px;
+    position: relative;
+
+    .close{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        width: 24px;
+        display: none;
+        cursor: pointer;
+        @media screen and (max-width:950px) {
+            display: block;
+        }
+    }
+
+    @media screen and (max-width:950px) {
+        width: 100vw;
+        height: 100vh;
+        padding-right: 24px;
+    }
+
+    img.mainImage{
+        width: calc(100% - 300px - 70px);
+        height: 672px;
+
+        @media screen and (max-width:950px) {
+            display: none;
+        }
+    }
+
+    .auth-main{
+        // background-color: red;
+        width: 300px;
+        min-width: 300px;
+        // align-self: center;
+    }
+}

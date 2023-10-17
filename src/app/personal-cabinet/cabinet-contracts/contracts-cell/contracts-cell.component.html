@@ -1,0 +1,13 @@
+<div class="contracts-cell">
+    <div class="cell-top">
+        <img src="assets/icons/Folder.svg" alt="">
+        <img src="assets/icons/threeDots.svg" alt="">
+    </div>
+    <div class="folder-name">
+        <h6>{{folder.name}}</h6>
+    </div>
+    <div class="cell-bottom">
+        <p><span [class]="folder.status"></span>{{folder.status}}</p>
+        <p class="lastUpdate">Last update: {{folder.created_at | date}}</p>
+    </div>
+</div>

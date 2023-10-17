@@ -1,0 +1,20 @@
+<form class="register" [formGroup]="registerForm" (ngSubmit)="submitRegister()">
+    <h5>Sign Up</h5>
+    <input [class.invalid]="email!.invalid && email!.touched" type="text" placeholder="Email" formControlName="email">
+    <ng-container formGroupName="passwords" >
+        <input [class.invalid]="password!.invalid && password!.touched"   type="password" placeholder="Password" formControlName="password">
+        <input [class.invalid]="registerForm.get('passwords')!.invalid && registerForm.get('passwords')!.get('repeat_password')!.touched" type="password" placeholder="Confirm Password" formControlName="repeat_password">
+    </ng-container>
+
+    
+    <label>
+        <input type="checkbox" formControlName="agreeTerms">
+        <p><span>I agree to the</span> Terms of Use <span>and</span> Privacy Statement</p>
+    </label>
+    
+    <app-button [disabled]="registerForm.invalid" [isLoading]="isLoading" >Sign up</app-button>
+
+
+    <p class="goToLogin">Already have an account? <span (click)="goToLogin()">Login</span></p>
+
+</form>

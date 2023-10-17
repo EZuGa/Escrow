@@ -1,0 +1,20 @@
+.container{
+    padding: 120px 0px 40px 0px;
+    h5{
+        text-align: center;
+    }
+    .services--wrap{
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    our-services-cell{
+        width: calc((100% - 48px) / 3);
+        @media screen and (max-width: 1050px) {
+            width: calc((100% - 48px) / 2);
+        }
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
+    }
+}

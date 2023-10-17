@@ -1,0 +1,35 @@
+<div class="personal-cabinet-wrap">
+    <aside [class]="menuActive ? 'menuActive' : ''">
+        <img src="assets/icons/logo.svg" alt="Logo">
+        <img (click)="closeMenu()" id="closeNav" src="assets/icons/close.svg" alt="">
+        <nav>
+            <ul>
+                <li (click)="closeMenu()" routerLink="my-profile" routerLinkActive="routeActive">My profile</li>
+                <li (click)="closeMenu()" routerLink="messages" routerLinkActive="routeActive">Messages</li>
+                <li (click)="closeMenu()" routerLink="contracts" routerLinkActive="routeActive">Contracts</li>
+                <li (click)="closeMenu()" routerLink="balance" routerLinkActive="routeActive">Balance</li>
+            </ul>
+        </nav>
+
+        <button class="buttonNoBorder" (click)="signOut()">Sign out</button>
+    </aside>
+
+    <div class="cabinet-main-wrap">
+
+        <cabinet-header (menuClick)="menuActive = true"></cabinet-header>
+
+        <div class="cabinet-main-bottom">
+                <router-outlet></router-outlet>
+        </div>
+        <!-- <div class="cabinet-footer"></div> -->
+
+
+    </div>
+
+
+    <div class="circle circle-one"></div>
+    <div class="circle circle-two"></div>
+    <div class="circle circle-three"></div>
+    <div class="circle circle-four"></div>
+
+</div>

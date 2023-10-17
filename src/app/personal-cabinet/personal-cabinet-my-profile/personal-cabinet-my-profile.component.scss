@@ -1,0 +1,76 @@
+
+.cabinet-wrap{
+    padding: 32px 24px;
+}
+.my-profile{
+    background: rgba(22, 24, 37, 0.7);
+    border-radius: 10px;
+    h2{
+        font-size: 32px;
+        margin-bottom: 40px;
+    }
+
+
+    .my-profile-wrap{
+        width: 100%;
+        height: 100%;
+
+        .my-profile-main{
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            @media screen and (max-width: 1250px) {
+                gap: 10px;
+            }
+            @media screen and (max-width: 1050px) {
+                flex-direction: column;
+            }
+
+
+            >div{
+                flex: 1;
+            }
+
+            .column-one{
+    
+            }
+
+
+            .column-three{
+                .passporOptional{
+                    height: 120px;
+                    margin-bottom: 32px;
+                    margin-top: 8px;
+                    display: flex;
+                    flex-direction: column;
+                    // align-items: flex-end;
+                    justify-content: end;
+                    @media screen and (max-width: 950px) {
+                        height: 0px;
+                    }
+                }
+            }
+        }
+
+        .actions{
+            margin-top: 40px;
+            display: flex;
+            button{
+                width: auto;
+            }
+            .buttomWhiteBorder{
+                padding: 16px 32px;
+                height: auto;
+                text-align: center;
+                width: 232px;
+            }
+            @media screen and (max-width: 950px) {
+                flex-direction: column;
+                button{
+                    text-align: center !important;
+                    margin-bottom: 40px;
+                }
+            }
+        }
+    }
+}

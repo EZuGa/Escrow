@@ -1,0 +1,20 @@
+<label>
+    <p>{{labelTitle}}</p>
+    <input *ngIf="type === 'text'" [disabled]="disabled" [(ngModel)]="value"
+        (input)="onChange($any($event).target.value)" [type]="type">
+
+    <mat-form-field *ngIf="type === 'select'" class="customMaterial">
+        <mat-select [(ngModel)]="value" [disabled]="disabled">
+            <mat-option (click)="onChange(item)" [value]="item" *ngFor="let item of options">
+                {{item}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="type=== 'date'" class="customForm">
+        <mat-label>MM/DD/YYYY</mat-label>
+        <input [ngModel]="value" (dateChange)="onChange($any($event).target.value)" [disabled]="disabled" matInput [matDatepicker]="picker">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+</label>

@@ -1,0 +1,15 @@
+
+.goToMessage{
+    position: fixed;
+    right: 80px;
+    bottom: 40px;
+    z-index: 200;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 50%;
+    cursor: pointer;
+    img{
+        transform: translateY(2px);
+    }
+}
+

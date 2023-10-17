@@ -1,0 +1,15 @@
+label{
+    display: flex;
+    flex-direction: column;
+
+    p{
+        opacity: 0.5;
+        font-size: 14px;
+        line-height: 18px;
+        margin-bottom: 4px;
+    }
+}
+
+.mat-option{
+    text-transform: capitalize;
+}

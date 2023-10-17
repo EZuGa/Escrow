@@ -1,0 +1,53 @@
+.header-background{
+    // height: 400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../../../assets/images/services-background.webp');
+
+    .service-chooser{
+        margin-top: 100px;
+        text-align: center;
+
+        h1{
+            font-size: 2.625rem;
+            margin-bottom: 24px;
+        }
+        
+
+        .horizontal-scroll{
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+
+            overflow-x: scroll;
+            width: fit-content;
+
+
+            p{
+                padding: 10px;
+                cursor: pointer;
+                opacity: 0.5;
+                // margin-right: 10px;
+
+                &.active{
+                    border-bottom: 1px solid #FFF;
+                    opacity: 1;
+                }
+                
+            }
+        }
+    }
+}
+
+.content{
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 100px;
+    p{
+        max-width: 788px;
+        margin: 0 auto;
+        font-size: 1.125rem;
+        line-height: 1.9rem;
+    }
+}

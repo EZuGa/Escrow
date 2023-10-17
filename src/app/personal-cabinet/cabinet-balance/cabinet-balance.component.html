@@ -1,0 +1,93 @@
+<div class="balance-wrap">
+
+    <div class="balance">
+        <div class="balance-left" *ngIf="balances | async as balance">
+            <div class="fiat-currency-wrap">
+                <h3>Fiat Currency</h3>
+                <div class="data-wrap">
+                    <p class="currency currency-usd">USD</p>
+                    <p class="amount">{{balance.balance_usd}}</p>
+                    <!-- <div class="lastMonth">
+                        <div class="lastMonth-income">
+                            <p class="lastMonth-title">Last month income</p>
+                            <p class="lastMonth-amount">892.26</p>
+                        </div>
+                        <div class="lastMonth-out">
+                            <p class="lastMonth-title">Last month out come</p>
+                            <p class="lastMonth-amount">38.26</p>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="data-wrap">
+                    <p class="currency currency-eur">EUR</p>
+                    <p class="amount">{{balance.balance_eur}}</p>
+                    <!-- <div class="lastMonth">
+                        <div class="lastMonth-income">
+                            <p class="lastMonth-title">Last month income</p>
+                            <p class="lastMonth-amount">892.26</p>
+                        </div>
+                        <div class="lastMonth-out">
+                            <p class="lastMonth-title">Last month out come</p>
+                            <p class="lastMonth-amount">38.26</p>
+                        </div>
+                    </div> -->
+                </div>
+                <div class="data-wrap">
+                    <p class="currency currency-cny">CNY</p>
+                    <p class="amount">{{balance.balance_cny}}</p>
+                    <!-- <div class="lastMonth">
+                        <div class="lastMonth-income">
+                            <p class="lastMonth-title">Last month income</p>
+                            <p class="lastMonth-amount">892.26</p>
+                        </div>
+                        <div class="lastMonth-out">
+                            <p class="lastMonth-title">Last month out come</p>
+                            <p class="lastMonth-amount">38.26</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="crypto-currency-wrap">
+                <h3>Crypto Currency</h3>
+                <div class="data-wrap">
+                    <p class="currency currency-usdt">USDT</p>
+                    <p class="amount">{{balance.balance_usdt}}</p>
+                    <!-- <div class="lastMonth">
+                        <div class="lastMonth-income">
+                            <p class="lastMonth-title">Last month income</p>
+                            <p class="lastMonth-amount">892.26</p>
+                        </div>
+                        <div class="lastMonth-out">
+                            <p class="lastMonth-title">Last month out come</p>
+                            <p class="lastMonth-amount">38.26</p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+        </div>
+<!-- 
+        <div class="balance-right">
+            <div class="transacitons-header">
+                <h3>Transactions</h3>
+                <p class="setPeriod"><img src="assets/icons/calendar.svg" alt=""> Set Period</p>
+            </div>
+            <div class="chooseCurrency">
+                <p>USD</p>
+                <p class="active">EUR</p>
+                <p>CNY</p>
+                <p>USDT</p>
+            </div>
+
+            <div class="chart">
+                <div class="chart-cell" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]">
+                    <p class="result">Income</p>
+                    <p class="amount green">+$ 200</p>
+                    <p class="time">2023-10-12 20:03</p>
+                </div>
+            </div>
+        </div> -->
+
+    </div>
+
+</div>

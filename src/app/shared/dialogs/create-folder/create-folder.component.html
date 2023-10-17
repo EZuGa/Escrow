@@ -1,0 +1,5 @@
+<form class="wrapper" (ngSubmit)="createFolder()">
+    <img src="assets/icons/Folder.svg" alt="">
+    <input [formControl]="folderName" type="text" placeholder="Folder Name">
+    <app-button [disabled]="folderName.invalid" [isLoading]="isLoading">Create Folder</app-button>
+</form>

@@ -1,0 +1,16 @@
+<div class="cabinet-bar-top">
+    <div class="header-main">
+        <h2 *ngIf="header !=='Files'">{{header}}</h2>
+        <h2 routerLink="/personal-cabinet/contracts" *ngIf="header === 'Files'">&lt; Back to the folders list</h2>
+    
+        <div class="folderSearch">
+            <input type="text" placeholder="Let's find..." #search>
+            <button class="blueButton" (click)="searchFolder(search.value)">Search</button>
+        </div>
+    </div>
+    
+
+    <app-user-info></app-user-info>
+
+    <img (click)="menuClick.emit()" class="menu" src="assets/icons/menu.svg" alt="">
+</div>

@@ -1,0 +1,16 @@
+<div class="messages-wrap">
+    <div class="messages">
+        <div class="message-top">
+            <div>
+                <h6 (click)="onReceivedPage = true" [class.active]="onReceivedPage">Received</h6>
+                <h6 (click)="onReceivedPage = false" [class.active]="!onReceivedPage">Sent</h6>
+            </div>
+            <button (click)="sendMessage()" class="buttomWhiteBorder">+ Send us a message</button>
+        </div>
+
+        <div class="main-container">
+            <app-messages-main [onReceivedPage]="onReceivedPage" [messages]="onReceivedPage ? receivedMessages : sentMessages "></app-messages-main>
+        </div>
+    </div>
+
+</div>

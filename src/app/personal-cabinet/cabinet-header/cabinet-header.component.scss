@@ -1,0 +1,38 @@
+.cabinet-bar-top{
+    background: #161825;
+    backdrop-filter: blur(10px);
+
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 24px;
+    
+    .header-main{
+        display: flex;
+        align-items: center;
+        
+        .folderSearch{
+            margin-left: 24px;
+            input{
+                margin-bottom: 0;
+                width: 300px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    h2{
+        font-size: 1.2rem;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    .menu{
+        display: none;
+        @media screen and (max-width: 950px) {
+            display: block;
+        }
+    }
+
+}

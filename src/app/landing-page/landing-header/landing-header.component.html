@@ -1,0 +1,33 @@
+<header>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <img src="assets/icons/logo.svg" alt="Escrow">
+                <!-- <h1>Escrow</h1> -->
+            </div>
+            <div class="header--main">
+                <ul>
+                    <li><a href="#about-us">About us</a></li>
+                    <li><a href="#our-services">Our services</a></li>
+                    <li><a href="#our-benefits">Our benefits</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <p class="languagePicker">
+                    <span>EN</span>
+                    <img src="assets/icons/dropdown.svg" alt="">
+                </p>
+
+                <button class="buttomWhiteBorder" (click)="openAuthDialog()">Login</button>
+            </div>
+
+            <!-- <img routerLink="/navigation" class="menu" src="assets/icons/menu.svg" alt="">-->
+             <div class="hamburger menu" routerLink="/navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </div>
+        </div>
+    </div>
+</header> 
+

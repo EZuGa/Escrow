@@ -1,0 +1,56 @@
+.contracts-footer{
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 24px;
+
+    @media screen and (max-width: 950px) {
+        justify-content: center;
+        margin-right: 0px;
+    }
+    
+    div{
+        display: flex;
+    }
+    p{
+        padding: 8px;
+        margin-right: 10px;
+        @media screen and (max-width: 950px) {
+            margin-right: 3px;
+        }
+        cursor: pointer;
+    }
+
+    .pageFrom{
+        border: 1px solid;
+        border-radius: 10px;
+        padding: 8px 13px;
+    }
+
+    .doubleForward{
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 10px;
+            height: 13px;
+            right: 5px;
+            width: 1px;
+            background-color: white;
+        }
+    }
+
+    .doubleBackward{
+        position: relative;
+        &::after{
+            content: '';
+            position: absolute;
+            top: 10px;
+            height: 13px;
+            left: 5px;
+            width: 1px;
+            background-color: white;
+        }
+    }
+}

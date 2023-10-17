@@ -1,0 +1,67 @@
+.contracts-cell{
+    background: #161825;
+    backdrop-filter: blur(32.53333282470703px);
+    border-radius: 10px;
+    cursor: pointer;
+
+
+    padding: 32px 32px 42px 32px; 
+    .cell-top{
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 24px;
+    }
+
+    .folder-name{
+        display: table;
+        table-layout: fixed;
+        width: 100%;
+        margin-bottom: 17px;
+
+
+        h6{
+            display: table-cell;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+    }
+
+    .cell-bottom{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        p{
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            span{
+                background-color: rebeccapurple;
+                width: 16px;
+                height: 16px;
+                display: inline-block;
+                margin-right: 8px;
+                border-radius: 50%;
+
+                &.ongoing{
+                    background-color: #0131F5;
+                }
+                &.succeeded{
+                    background-color: #01F537;
+                }
+                &.failed{
+                    background-color: #FF5520;
+                }
+            }
+        }
+
+        p.lastUpdate{
+            font-size: 12px;
+            opacity: 0.5;
+        }
+    }
+}

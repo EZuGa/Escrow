@@ -1,0 +1,27 @@
+img{
+    width: 100%;
+}
+
+.password{
+    margin-bottom: 24px;
+}
+
+.goToOtherPage{
+    &:first-of-type{
+        margin-top: 24px;
+    }
+
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    text-align: center;
+
+    span{
+        color: white;
+        cursor: pointer;
+    }
+}
+
+form{
+    text-align: center;
+}

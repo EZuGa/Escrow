@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="header">
+        <h6>New message</h6>
+        <img (click)="closeDialog()" id="closeNav" src="assets/icons/close.svg" alt="">
+    </div>
+
+    <form class="main-content" [formGroup]="messageForm" mat-dialog-content>
+        <input [class.invalid]="" formControlName="subject" class="subject" type="text" placeholder="Subject">
+
+        <textarea placeholder="Message" formControlName="content"></textarea>
+    </form>
+
+    <div class="bottom">
+        <app-button [isLoading]="isLoading" [disabled]="messageForm.invalid" (click)="sendMessage()">SendMessage</app-button>
+    </div>
+</div>

@@ -1,0 +1,147 @@
+
+.personal-cabinet-wrap{
+    display: flex;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    
+    aside{
+        border-right: 1px solid #282B3F;
+        // background: rgba(22, 24, 37, 0.70);
+        // backdrop-filter: blur(10px);
+        background: rgba(22, 24, 37, 0.70);
+        backdrop-filter: blur(10px);
+        width: 207px;
+        flex-shrink: 0;
+        padding: 32px 0px;
+        position: relative;
+
+        #closeNav{
+            width: 24px;
+            position: absolute;
+            right: 16px;
+            top: 16px;
+            display: none;
+            @media screen and (max-width: 950px) {
+                display: block;
+            }
+        }
+
+        @media screen and (max-width: 950px) {
+            display: none;
+            position: absolute;
+            z-index: 10;
+            width: 100vw;
+            height: 100vh;
+            text-align: center;
+            &.menuActive{
+                display: block;
+            }    
+        }
+        
+        
+        img{
+            width: 160px;
+            margin-left: 24px;
+            margin-bottom: 77px;
+        }
+
+        nav{
+            ul{
+                .routeActive{
+                    background: #0131F5;
+                }
+                li{
+                    padding: 12px 12px 12px 24px;
+
+                    &:hover{
+                        background: #0131F5;
+                    }
+                }
+            }
+
+        }
+
+        .buttonNoBorder{
+            position: absolute;
+            bottom: 24px;
+            left: 0px;
+            @media screen and (max-width: 950px) {
+                text-align: center;
+            }
+        }
+    }
+
+
+    .cabinet-main-wrap{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+        .cabinet-main-bottom{
+            overflow-y: auto;
+
+            // flex: 1;
+            // padding: 32px 24px 0px 32px;
+
+
+        }
+
+        .cabinet-footer{
+            height: 52px;
+            background-color: rgba(16, 16, 16, 0.5);
+        }
+
+    }
+
+
+    .circle{
+        border-radius: 50%;
+        position: absolute;
+        z-index: -1;
+        background: #0131F5;
+        filter: blur(100px);
+
+    }
+
+    .circle-one{
+        width: 921px;
+        height: 921px;
+        opacity: 0.3;
+
+
+        left: -158px;
+        bottom: -237px;
+    }
+
+    .circle-two{
+        width: 1185px;
+        height: 1185px;
+
+        border-radius: 1185px;
+        opacity: 0.1;
+        
+        left: 307px;
+        top: -544px;
+    }
+
+    .circle-three{
+        width: 804px;
+        height: 804px;
+        opacity: 0.05;
+        background: #01E6F5;
+
+        top: -189px;
+        right: -244px;
+    }
+
+    .circle-four{
+        width: 572px;
+        height: 572px;
+        opacity: 0.3;
+        filter: blur(150px);
+
+        right: 130px;
+        bottom: -75px;
+    }
+}

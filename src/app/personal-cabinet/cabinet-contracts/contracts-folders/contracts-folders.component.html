@@ -1,0 +1,46 @@
+<div class="contracts-wrap">
+    <div class="contracts">
+        <div class="contracts-header">
+            <img (click)="toggleMobileFilter()" src="assets/icons/mobile-filter.svg" alt="+" class="mobile-search" >
+
+            <form [formGroup]="folderFilter" class="folderFilter" [class.mobileFilterActive]="mobileFilterActive ? 'mobileFilterActive' : ''">
+                <mat-form-field class="customForm">
+                    <mat-label>MM/DD/YYYY</mat-label>
+                    <input formControlName="dateFrom"  matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <span>-</span>
+                
+                <mat-form-field class="customForm">
+                    <mat-label>MM/DD/YYYY</mat-label>
+                    <input matInput [matDatepicker]="picker2" formControlName="dateTo">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="customMaterial">
+                    <mat-label>Status</mat-label>
+                    <mat-select formControlName="status">
+                        <mat-option *ngFor="let item of ['ongoing' , 'failed', 'succeeded']" [value]="item">
+                            {{item}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <button (click)="applyFilter()" class="blueButton">Apply</button>
+                <button (click)="clearFilter()" class="buttonNoBorder">Clear</button>
+            </form>
+            <button class="blueButton" (click)="createFolder()">+ New Folder</button>
+        </div>
+    
+        <div  class="contracts-main">
+                <contracts-cell (click)="chooseFolder(folder)" *ngFor="let folder of foldersToRender?.slice((this.currentPage-1) * 12, this.currentPage * 12)" [folder]="folder"></contracts-cell>
+        </div>
+    </div>
+</div>
+<app-contracts-footer *ngIf="lastPage > 1"  [lastPage]="lastPage" [currentPage]="currentPage" (perviousPage)="perviousPage()" (nextPage)="nextPage()"></app-contracts-footer>
+
+
+<!-- 0-12  12-24  26-38 -->

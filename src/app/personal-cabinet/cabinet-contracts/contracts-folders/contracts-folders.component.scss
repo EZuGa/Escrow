@@ -1,0 +1,116 @@
+.contracts-wrap{
+    padding: 32px 24px;
+
+}
+mat-form-field{
+    margin: 0px 8px
+}
+
+.contracts{
+    height: 100%;
+
+    .contracts-header{
+        height: 40px;
+        // background-color: aqua;
+        margin-bottom: 16px;
+
+        display: flex;
+        // align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        .mobile-search{
+            padding: 10px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid;
+            display: none;
+            border-radius: 8px;
+            cursor: pointer;
+            @media screen and (max-width: 1150px) {
+                display: block;
+            }
+        }
+
+        .folderFilter{
+            display: flex;
+            align-items: flex-start;
+
+            
+            .customForm{
+                max-width: 180px;
+            }
+            .customMaterial{
+                max-width: 120px;
+            }
+
+            span{
+                line-height: 40px;
+                text-align: center;
+            }
+
+            input{
+                margin-bottom: 0px;
+                // margin-right: 2px;
+
+            }
+
+            button{
+                padding: 0x;
+                height: 40px;
+                // margin-right: 2px;
+                // margin-left: 2px;
+            }
+            .buttonNoBorder{
+                width: 100px;
+            }
+
+            @media screen and (max-width: 1150px) {
+                display: none;
+                position: absolute;
+                top: 50px;
+                z-index: 10;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                padding: 20px;
+                border-radius: 10px;
+                background-color: rgb(22, 24, 37);
+
+                &.mobileFilterActive{
+                    display: block !important;
+                }
+                
+                .customForm{
+                    max-width: 100%;
+                }
+                .customMaterial{
+                    max-width: 100%;
+                }
+
+                span{
+                    display: none;
+                }
+
+            }
+        }
+    }
+
+    .contracts-main{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        // grid-template-rows: min-content 1fr;
+        gap: 16px 24px;
+        @media screen and (max-width: 1150px) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+        }
+
+        @media screen and (max-width: 950px) {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+        }
+    }
+}
+
