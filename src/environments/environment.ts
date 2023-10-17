@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl: 'http://3.71.181.6/'
+    baseUrl: 'http://3.71.228.6/'
 }
