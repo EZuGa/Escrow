@@ -195,7 +195,6 @@ AWS_S3_ENDPOINT_URL = 'https://escrowbucketi.s3.eu-central-1.amazonaws.com'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MAILERSEND_API_KEY = ""
 
-
 #TODO : KEYS TO ENV
 
 # Static files (CSS, JavaScript, Images)

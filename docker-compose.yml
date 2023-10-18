@@ -23,7 +23,7 @@ services:
       context: client
     volumes:
       - "./client:/app"
-    command: [ "ng", "serve", "--host", "0.0.0.0" ]
+      - frontend-dist:/app/dist/escrow
     ports:
       - "4200:4200"
     networks:
@@ -35,13 +35,24 @@ services:
     image: nginx:alpine
     ports:
       - "80:80"
+      - "443:443"
     depends_on:
       - backend
     volumes:
+      - frontend-dist:/usr/share/nginx/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf:/etc/letsencrypt/:ro
     restart: unless-stopped
     networks:
       - main
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+
 
   db:
     container_name: mudo_db
@@ -56,6 +67,7 @@ services:
       - POSTGRES_PASSWORD=mysekretpassword
       - POSTGRES_USER=mudo-user
       - POSTGRES_DB=mudo-db
+  
   redis:
     container_name: mudo_redis
     image: redis:alpine
@@ -64,7 +76,6 @@ services:
     networks:
       - main
 
-
 networks:
   main:
     driver: bridge
@@ -72,3 +83,5 @@ networks:
 volumes:
   pg-data:
   redis-data:
+  frontend-dist:
+
