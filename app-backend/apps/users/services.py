@@ -1,6 +1,6 @@
 import random
 from django.core.cache import cache
-
+from .send_email import send_email
 from .models import User
 def generate_code() -> str:
     return ''.join(random.choices([str(i) for i in range(10)], k=6))
@@ -14,7 +14,7 @@ def send_verification_code(*, email: str):
 def send_password_verification_code(*, email: str):
     code = generate_code()
     data = {"purpose": "password_reset", "code": code}
-    # send_email(message_to=email, message_text=code)
+    send_email(code=code, email=email)
     cache.set(email, data, 60)
     return code
 
