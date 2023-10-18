@@ -11,8 +11,9 @@ header {
             align-items: center;
             .logo{
                 img{
-                    @media screen and (max-width: 950px) {
-                        width: 157px;
+                    @media screen and (min-width: 950px) {
+                        width: 220px;
+                        height: 48px;
                     }
                 }
                 h1{
