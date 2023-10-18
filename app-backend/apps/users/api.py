@@ -10,6 +10,7 @@ from .selectors import get_user
 from .serializers import UserRegistrationSerializer, UserLoginSerializer, UserSerializer, \
     SMSVerificationSerializer, DirectorySerializer, FileSerializer, ChangePasswordSerializer, EmailInputSerializer, \
     PasswordResetSerializer, MessageSerializer, SendMessageSerializer, BalanceSerializer, DirectoryCreateSerializer
+from .send_email import send_email
 
 
 class OTPSendAPI(APIView):
@@ -20,8 +21,9 @@ class OTPSendAPI(APIView):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         code = send_verification_code(email=serializer.validated_data["email"])
+        send_email(code=code, email=serializer.validated_data["email"])
         return Response(
-            data={"code": code},
+            data={"detail": "code has been sent Susccessfuly"},
             status=status.HTTP_200_OK)
 
 
@@ -164,7 +166,7 @@ class UserGetResetPasswordCodeAPI(APIView):
         serializer.is_valid(raise_exception=True)
         code = send_password_verification_code(email=serializer.validated_data["email"])
         return Response(
-            data={"code": code},
+            data={"detail":"code has been sent successfully"},
             status=status.HTTP_200_OK)
 
 

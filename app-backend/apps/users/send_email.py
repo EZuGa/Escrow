@@ -5,25 +5,33 @@ from mailersend import emails
 mailer = emails.NewEmail(settings.MAILERSEND_API_KEY)
 
 
-def send_email(email, subject, template, **kwargs):
+def send_email(code, email):
     mail_body = {}
     mail_from = {
-        "name": "Your Name",
-        "email": "your@domain.com",
+        "name": "Escrow and Trust",
+        "email": "support@escrowandtrust.net",
     }
 
     recipients = [
         {
-            "name": "Your Client",
-            "email": "your@client.com",
+            "email": email,
+        }
+    ]
+    personalization = [
+        {
+            "email": email,
+            "data": {
+                "code": code,
+            }
         }
     ]
 
     mailer.set_mail_from(mail_from, mail_body)
     mailer.set_mail_to(recipients, mail_body)
-    mailer.set_subject("Hello!", mail_body)
-    mailer.set_plaintext_content("This is the text content", mail_body)
+    mailer.set_subject("Verify Your Account!", mail_body)
+    mailer.set_template("jy7zpl9n1d545vx6", mail_body)
+    mailer.set_advanced_personalization(personalization, mail_body)
 
-    # using print() will also return status code and data
     mailer.send(mail_body)
-    return {"detail": "email sent successfully"}
+    return True
+
