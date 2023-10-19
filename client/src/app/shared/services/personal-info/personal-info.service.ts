@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IUserInfo } from '../../interfaces/IUserInfo';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,6 @@ userInfo = this.userInfoSubject.asObservable();
 
   updatePersonalData(user:IUserInfo){
     return this.http.put(`${environment.baseUrl}api/v1/user/profile/update/`, user )
+    .pipe(tap(()=>{this.userInfoSubject.next(user)}))
   }
 }

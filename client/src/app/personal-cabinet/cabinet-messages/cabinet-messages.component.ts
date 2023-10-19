@@ -19,6 +19,8 @@ export class CabinetMessagesComponent implements OnInit, OnDestroy{
   receivedMessages!: IMessages[];
   sentMessages!: IMessages[];
 
+  interval : any;
+
 
   constructor(private messageService: MessagesService, private dialog: MatDialog){}
 
@@ -41,6 +43,12 @@ export class CabinetMessagesComponent implements OnInit, OnDestroy{
     .subscribe(messages=>{
       this.receivedMessages = messages!;
     });
+
+
+    this.interval = setInterval(()=>{
+      this.messageService.getReceivedMessages();
+      this.messageService.getSentMessages();
+    },30000)
   }
 
   sendMessage(){
@@ -53,6 +61,7 @@ export class CabinetMessagesComponent implements OnInit, OnDestroy{
   }
   
   ngOnDestroy(): void {
+    clearInterval(this.interval)
     this.componentAlive$ = false;
   }
 }

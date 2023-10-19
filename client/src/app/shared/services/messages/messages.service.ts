@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { IMessages } from '../../interfaces/IMessages';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
@@ -28,8 +28,8 @@ export class MessagesService {
 
   sendMessage(message:{content:string,subject: string, recipient_email?:string}){
     message.recipient_email = '';
-
     return this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
+    .pipe(tap(()=>{this.getSentMessages().subscribe()}))
   }
 
   getReceivedMessages(){

@@ -32,6 +32,7 @@ export class ContractsService {
 
   createFolder(folderName: string){
     return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: folderName})
+    .pipe(tap((v: any)=>this.getAllFolders()));
   }
 
   getFiles(folderID:string){
@@ -46,6 +47,8 @@ export class ContractsService {
     formData.append("name", fileName)
 
     this.http.post(`${environment.baseUrl}api/v1/user/directories/${folderId}/files/upload/`, formData)
-    .subscribe()
+    .subscribe((val: any)=>{
+      this.getFiles(folderId);
+    })
   }
 }
