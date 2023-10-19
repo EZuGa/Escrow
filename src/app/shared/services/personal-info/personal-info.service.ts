@@ -20,13 +20,13 @@ userInfo = this.userInfoSubject.asObservable();
 
 
   getPersonalData(){
-    return this.http.get<IUserInfo>(`${environment.baseUrl}api/v1/user/profile/`)
+    return this.http.get<IUserInfo>(`api/v1/user/profile/`)
     .subscribe(val=>{
       this.userInfoSubject.next(val);
     })
   }
 
   updatePersonalData(user:IUserInfo){
-    return this.http.put(`${environment.baseUrl}api/v1/user/profile/update/`, user )
+    return this.http.put(`api/v1/user/profile/update/`, user )
   }
 }

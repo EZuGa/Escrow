@@ -18,7 +18,7 @@ export class BalanceService {
 
 
   private getBalances(){
-    return this.http.get(`${environment.baseUrl}api/v1/user/balances/`)
+    return this.http.get(`api/v1/user/balances/`)
     .subscribe(val=>{
       this.balanceSubject.next(val);
     });

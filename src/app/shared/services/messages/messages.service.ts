@@ -29,18 +29,18 @@ export class MessagesService {
   sendMessage(message:{content:string,subject: string, recipient_email?:string}){
     message.recipient_email = '';
 
-    return this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
+    return this.http.post(`api/v1/user/messages/send/`, message)
   }
 
   getReceivedMessages(){
-    return this.http.get<IMessages[]>(`${environment.baseUrl}api/v1/user/messages/received/`)
+    return this.http.get<IMessages[]>(`api/v1/user/messages/received/`)
     .subscribe(val=>{
       this.receivedMessagesSubject.next(val);
     })
   }
 
   getSentMessages(){
-    return this.http.get<IMessages[]>(`${environment.baseUrl}api/v1/user/messages/sent/`)
+    return this.http.get<IMessages[]>(`api/v1/user/messages/sent/`)
     .subscribe(val=>{
       this.sentMessagesSubject.next(val);
     })
