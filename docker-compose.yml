@@ -24,6 +24,7 @@ services:
     volumes:
       - "./client:/app"
       - frontend-dist:/app/dist/escrow
+
     ports:
       - "4200:4200"
     networks:

@@ -12,4 +12,5 @@ RUN npm install -g @angular/cli && npm install
 COPY . .
 
 # Build the Angular app for production
-RUN ng build
+RUN ng build --output-path=/app/dist/escrow
+
