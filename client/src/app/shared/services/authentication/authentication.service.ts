@@ -22,7 +22,7 @@ export class AuthenticationService {
 
   smsAuthentication(email:string):Observable<any>{
     return this.http.post(
-      `${environment.baseUrl}api/v1/user/jwt/sms_code/`,
+      `api/v1/user/jwt/sms_code/`,
       { email }
       )
   }
@@ -35,7 +35,7 @@ export class AuthenticationService {
 
   registerUser(code:number){ 
     const response = this.http.post<IAuth>(
-      `${environment.baseUrl}api/v1/user/jwt/register/`,
+      `api/v1/user/jwt/register/`,
       {
         ...this.currentUser,
         code
@@ -55,7 +55,7 @@ export class AuthenticationService {
 
   authenticateUser(user:{email:string, password:string}){
     return this.http.post<IAuth>(
-      `${environment.baseUrl}api/v1/user/jwt/login/`,
+      `api/v1/user/jwt/login/`,
       user
     ).pipe(
       tap(response=>{
@@ -68,7 +68,7 @@ export class AuthenticationService {
   }
 
   forgotCode(email: any){
-    return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, email)
+    return this.http.post<{code: string}>(`api/v1/user/reset_password/`, email)
     .pipe(tap((val)=>{
       this.updatePassInfo = {
         ...email,
@@ -86,7 +86,7 @@ export class AuthenticationService {
       ...passwords
     }
 
-    const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
+    const response = this.http.post(`api/v1/user/reset_password_code/`,this.updatePassInfo)
 
     this.updatePassInfo = undefined;
 

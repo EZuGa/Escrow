@@ -23,7 +23,7 @@ export class ContractsService {
 
   private getAllFolders(){
 
-    this.http.get<IFolder[]>(`${environment.baseUrl}api/v1/user/directories/`)
+    this.http.get<IFolder[]>(`api/v1/user/directories/`)
     .subscribe(val=>{
       this.allFoldersSubject.next(val);
     });
@@ -31,11 +31,11 @@ export class ContractsService {
   }
 
   createFolder(folderName: string){
-    return this.http.post(`${environment.baseUrl}api/v1/user/directories/create/`,{name: folderName})
+    return this.http.post(`api/v1/user/directories/create/`,{name: folderName})
   }
 
   getFiles(folderID:string){
-    return this.http.get<IFile[]>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
+    return this.http.get<IFile[]>(`api/v1/user/directories/${folderID}/files/`)
   }
 
   uploadFile(file:File, folderId:string, fileName:string){
@@ -45,7 +45,7 @@ export class ContractsService {
     formData.append("file", file);
     formData.append("name", fileName)
 
-    this.http.post(`${environment.baseUrl}api/v1/user/directories/${folderId}/files/upload/`, formData)
+    this.http.post(`api/v1/user/directories/${folderId}/files/upload/`, formData)
     .subscribe()
   }
 }
