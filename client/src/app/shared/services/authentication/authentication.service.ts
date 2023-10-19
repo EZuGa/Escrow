@@ -18,8 +18,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
-
-
+  
   smsAuthentication(email:string):Observable<any>{
     return this.http.post(
       `api/v1/user/jwt/sms_code/`,
@@ -35,7 +34,7 @@ export class AuthenticationService {
 
   registerUser(code:number){ 
     const response = this.http.post<IAuth>(
-      `api/v1/user/jwt/register/`,
+      `${environment.baseUrl}api/v1/user/jwt/register/`,
       {
         ...this.currentUser,
         code
@@ -55,7 +54,7 @@ export class AuthenticationService {
 
   authenticateUser(user:{email:string, password:string}){
     return this.http.post<IAuth>(
-      `api/v1/user/jwt/login/`,
+      `${environment.baseUrl}api/v1/user/jwt/login/`,
       user
     ).pipe(
       tap(response=>{
@@ -68,7 +67,7 @@ export class AuthenticationService {
   }
 
   forgotCode(email: any){
-    return this.http.post<{code: string}>(`api/v1/user/reset_password/`, email)
+    return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, email)
     .pipe(tap((val)=>{
       this.updatePassInfo = {
         ...email,
@@ -86,7 +85,7 @@ export class AuthenticationService {
       ...passwords
     }
 
-    const response = this.http.post(`api/v1/user/reset_password_code/`,this.updatePassInfo)
+    const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
 
     this.updatePassInfo = undefined;
 
