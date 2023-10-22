@@ -66,7 +66,7 @@ export class AuthenticationService {
       )
   }
 
-  forgotCode(email: any){
+  restorePassword(email: any){
     return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, email)
     .pipe(tap((val)=>{
       this.updatePassInfo = {
@@ -78,7 +78,7 @@ export class AuthenticationService {
     }))
   }
 
-  restorePassword(passwords: {password:string, repeat_password:string, code: string}){
+  forgotCode(passwords: {password:string, repeat_password:string, code: string}){
 
     this.updatePassInfo = {
       ...this.updatePassInfo!,
