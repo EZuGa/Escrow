@@ -44,6 +44,7 @@ export class AuthenticationService {
         if (response.access) {
           this.setToken(response);
           this.navigateToCabinet();
+          this.dialog.closeAll();
         }
       }),
     )
