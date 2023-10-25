@@ -27,6 +27,12 @@ export class CabinetMessagesComponent implements OnInit, OnDestroy{
 
 
   ngOnInit(): void {
+    document.getElementById('cabinetWraps')!.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+  });
+
 
     this.messageService.sentdMesasges
     .pipe(

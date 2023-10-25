@@ -26,7 +26,9 @@ export class ContractsFilesComponent implements OnInit{
   }
 
   uploadFile(event:any){
+    console.log("ABC")
     const file:File = event.target.files[0];
+    console.log("AQAA", file)
     this.contractsService.uploadFile(file, this.folderID, file.name)
   }
 
