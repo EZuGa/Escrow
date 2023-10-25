@@ -74,3 +74,13 @@
         }
     }
 }
+
+.makeRoom{
+    height: 120px;
+    margin-bottom: 32px;
+    margin-top: 8px;
+    justify-content: end;
+    @media screen and (max-width: 950px) {
+        height: 0px;
+    }
+}

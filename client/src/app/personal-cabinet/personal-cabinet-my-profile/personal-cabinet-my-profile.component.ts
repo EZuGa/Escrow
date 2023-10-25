@@ -24,8 +24,8 @@ export class PersonalCabinetMyProfileComponent implements OnInit, OnDestroy {
     gender: [{value:'', disabled:true}],
 
 
-    age: [{value:null, disabled:true}],
-    social_status: [{value:'', disabled:true}],
+    // age: [{value:null, disabled:true}],
+    // social_status: [{value:'', disabled:true}],
     nationality: [{value:'', disabled:true}],
     country: [{value:'', disabled:true}],
     city: [{value:'', disabled:true}],
