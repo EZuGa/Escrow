@@ -23,7 +23,10 @@ export class SendMessageComponent {
   sendMessage(){
     this.isLoading = true;
     this.messageService.sendMessage(this.messageForm.getRawValue())
-    .pipe(finalize(()=>this.isLoading = false))
+    .pipe(finalize(()=>{
+      this.dialogRef.close();
+      this.isLoading = false
+    }))
     .subscribe();
   }
 
