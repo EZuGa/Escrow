@@ -5,3 +5,9 @@ export interface IFile{
     name:string,
     uploaded_at:string,
 }
+
+export interface IFileWrap{
+    directory_name: string,
+    directory_status: string,
+    filesArr: IFile[];
+}

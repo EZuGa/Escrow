@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { IFile } from 'src/app/shared/interfaces/IFile';
+import { Observable, map, tap } from 'rxjs';
+import { IFile, IFileWrap } from 'src/app/shared/interfaces/IFile';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';
 
 @Component({
@@ -13,6 +13,8 @@ import { ContractsService } from 'src/app/shared/services/contracts/contracts.se
 export class ContractsFilesComponent implements OnInit{
 
   allFiles!: Observable<IFile[]>;
+  FolderName = '';
+  FolderStatus = '';
 
   folderID!: string;
 
@@ -22,13 +24,16 @@ export class ContractsFilesComponent implements OnInit{
   ngOnInit(): void {
     const folderId = this.route.snapshot.paramMap.get('file_name')!;
     this.folderID = folderId;
-    this.allFiles = this.contractsService.getFiles(folderId);  
+    this.allFiles = this.contractsService.getFiles(folderId)
+    .pipe(tap((v : any)=>{
+      this.FolderName = v.directory_name;
+      this.FolderStatus = v.directory_status
+    }))
+    .pipe(map( (v: any)=>v.filesArr));  
   }
 
   uploadFile(event:any){
-    console.log("ABC")
     const file:File = event.target.files[0];
-    console.log("AQAA", file)
     this.contractsService.uploadFile(file, this.folderID, file.name)
   }
 

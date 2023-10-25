@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { IFolder } from '../../interfaces/IFolder';
-import { IFile } from '../../interfaces/IFile';
+import { IFile, IFileWrap } from '../../interfaces/IFile';
 import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
@@ -36,7 +36,7 @@ export class ContractsService {
   }
 
   getFiles(folderID:string){
-    return this.http.get<IFile[]>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
+    return this.http.get<IFileWrap>(`${environment.baseUrl}api/v1/user/directories/${folderID}/files/`)
   }
 
   uploadFile(file:File, folderId:string, fileName:string){
