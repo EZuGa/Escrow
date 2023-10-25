@@ -2,10 +2,10 @@
     <div class="my-profile cabinet-container">
         <div class="my-profile-wrap">
             <h2>Welcome to your personal cabinet!</h2>
-    
+            <app-user-info size="big"></app-user-info>
+
             <form class="my-profile-main" [formGroup]="personalDataForm">
                 <div class="column-one">
-                    <app-user-info size="big"></app-user-info>
                     <input-with-label labelTitle="Name" formControlName="firstname"></input-with-label>
                     <input-with-label labelTitle="Last name" formControlName="lastname"></input-with-label>
                     <input-with-label labelTitle="Email" formControlName="email"></input-with-label>
@@ -14,7 +14,6 @@
     
                 </div>
                 <div class="column-two">
-                    <div class="makeRoom"></div>
                     <!-- <input-with-label labelTitle="Age" formControlName="age"></input-with-label>
                     <input-with-label labelTitle="Social Status" formControlName="social_status"></input-with-label> -->
                     <input-with-label labelTitle="Nationality" formControlName="nationality"></input-with-label>
@@ -24,10 +23,6 @@
                     <input-with-label labelTitle="Zip code" formControlName="zip_code"></input-with-label>
                 </div>
                 <div class="column-three">
-                    <div class="passporOptional">
-                        <!-- <h6>Passport information</h6>
-                        <p>Optionan</p> -->
-                    </div>
     
                     <input-with-label labelTitle="Passport number" formControlName="passport_number"></input-with-label>
                     <input-with-label labelTitle="Issue Date" formControlName="issue_date" type="date"></input-with-label>
