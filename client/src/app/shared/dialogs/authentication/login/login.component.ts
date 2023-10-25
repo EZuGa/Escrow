@@ -3,6 +3,7 @@ import { CurrentState } from '../authentication.component';
 import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { finalize } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent {
     password: ["", [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService){}
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private dialogref: MatDialogRef<LoginComponent>){}
 
 
   goToRegister(){
@@ -38,7 +39,10 @@ export class LoginComponent {
     this.isLoading = true;
     
     this.authService.authenticateUser(user as any)
-    .pipe(finalize(()=>this.isLoading = false))
+    .pipe(finalize(()=>{
+      this.isLoading = false;
+      this.dialogref.close();
+    }))
     .subscribe()
   }
 

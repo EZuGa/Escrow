@@ -25,9 +25,9 @@ import { DisplayMessageInterceptor } from './shared/interceptors/display-message
     MatSnackBarModule
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: DisplayMessageInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: SendTokenInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: HandleUnauthorizedInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: DisplayMessageInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
