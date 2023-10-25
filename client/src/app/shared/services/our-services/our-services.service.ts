@@ -30,10 +30,10 @@ export class OurServicesService {
       name:"Depository Services",
       description:"Your valuable assets deserve a secure sanctuary. Our Free Zone Depository provides a fortified haven, combining security and accessibility. With state-of-the-art facilities and protocols, your assets rest in safe hands, ready for your command whenever the need arises."
     },
-    {
-      name:"Additional Services",
-      description:"Discover the full array of services we offer – they're anything but ordinary. From Logistics Services and Product Verification to Fiduciary Services, Accounting, Audit, and our deep knowledge in Real Estate, we're attuned to various aspects that suit your distinct requirements. It's not just about transactions; we're here to be your trusted partner every step of the way, ensuring your financial journey is well-guided and successful."
-    },
+    // {
+    //   name:"Additional Services",
+    //   description:"Discover the full array of services we offer – they're anything but ordinary. From Logistics Services and Product Verification to Fiduciary Services, Accounting, Audit, and our deep knowledge in Real Estate, we're attuned to various aspects that suit your distinct requirements. It's not just about transactions; we're here to be your trusted partner every step of the way, ensuring your financial journey is well-guided and successful."
+    // },
     {
       name:"Legal Service",
       description: "At Escrow and Trust, our Legal Service is your steadfast ally in navigating the complex world of legal transactions. We understand that legal matters can be daunting, which is why we offer comprehensive support to ensure your interests are safeguarded. Our team of experienced legal professionals is dedicated to providing expert guidance and ensuring that all legal aspects of your transactions are handled with precision and care. Whether it's contracts, compliance, or any legal documentation, we've got you covered. With our Legal Service, you can embark on your financial journey with confidence, knowing that your legal needs are in capable hands."
