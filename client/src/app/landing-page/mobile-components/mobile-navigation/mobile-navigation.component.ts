@@ -1,7 +1,7 @@
 import { Dialog } from '@angular/cdk/dialog';
-import { Component, HostListener, OnInit, inject } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationComponent } from 'src/app/shared/dialogs/authentication/authentication.component';
+import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'app-mobile-navigation',
@@ -10,8 +10,7 @@ import { AuthenticationComponent } from 'src/app/shared/dialogs/authentication/a
 })
 export class MobileNavigationComponent implements OnInit {
 
-  router = inject(Router);
-  dialog = inject(Dialog);
+  constructor(private authService: AuthenticationService,private router: Router){}
 
   @HostListener('window:resize', ['$event'])
     getScreenSize(event:any) {
@@ -30,21 +29,7 @@ export class MobileNavigationComponent implements OnInit {
   }
 
   openAuthDialog(){
-    const token = localStorage.getItem('auth_token');
-    
-    if(token){
-      this.router.navigateByUrl("personal-cabinet");
-      return;
-    }
-
-    this.dialog.open(
-      AuthenticationComponent,
-      {
-        panelClass:'custom-dialog',
-        maxWidth:'100vw',
-        maxHeight:'100vh'
-      }
-      );
+    this.authService.openLoginPage();
   }
 
 }

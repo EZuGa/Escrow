@@ -1,5 +1,5 @@
-import { Component, Inject, Optional } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component,  } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ContractsService } from '../../services/contracts/contracts.service';
 import { finalize } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';

@@ -14,7 +14,6 @@ import { FooterComponent } from './footer/footer.component';
 import { StepsComponent } from './steps/steps.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedComponentsModule } from '../shared/components/shared-components.module';
-import { MatDialogModule } from '@angular/material/dialog';
 import { AuthenticationComponent } from '../shared/dialogs/authentication/authentication.component';
 import { ConfirmEmailComponent } from '../shared/dialogs/authentication/confirm-email/confirm-email.component';
 import { ForgotPasswordComponent } from '../shared/dialogs/authentication/forgot-password/forgot-password.component';
@@ -23,7 +22,7 @@ import { NewPasswordComponent } from '../shared/dialogs/authentication/new-passw
 import { RegisterComponent } from '../shared/dialogs/authentication/register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ServicePageComponent } from './service-page/service-page.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MaterialModule } from '../shared/material/material.module';
 
 
 @NgModule({
@@ -52,9 +51,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CommonModule,
     LandingPageRoutingModule,
     ReactiveFormsModule,
-    MatDialogModule,   
-    MatSnackBarModule, 
     SharedComponentsModule,
+    MaterialModule
   ],
   exports:[
   ]

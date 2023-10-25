@@ -7,9 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SendTokenInterceptor } from './shared/interceptors/send-token.interceptor';
 import { HandleUnauthorizedInterceptor } from './shared/interceptors/handle-unauthorized.interceptor';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DisplayMessageInterceptor } from './shared/interceptors/display-message.interceptor';
+import { MaterialModule } from './shared/material/material.module';
 
 
 @NgModule({
@@ -21,8 +20,7 @@ import { DisplayMessageInterceptor } from './shared/interceptors/display-message
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule,
-    MatSnackBarModule
+    MaterialModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: DisplayMessageInterceptor, multi: true },

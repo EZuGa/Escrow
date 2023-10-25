@@ -20,7 +20,7 @@ export class LoginComponent {
     password: ["", [Validators.required, Validators.minLength(8)]]
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthenticationService, private dialogref: MatDialogRef<LoginComponent>){}
+  constructor(private fb: FormBuilder, private authService: AuthenticationService, private dialogRef: MatDialogRef<LoginComponent>){}
 
 
   goToRegister(){
@@ -41,7 +41,6 @@ export class LoginComponent {
     this.authService.authenticateUser(user as any)
     .pipe(finalize(()=>{
       this.isLoading = false;
-      this.dialogref.close();
     }))
     .subscribe()
   }

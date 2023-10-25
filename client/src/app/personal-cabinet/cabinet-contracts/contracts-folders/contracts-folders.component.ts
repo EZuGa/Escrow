@@ -1,9 +1,8 @@
-import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Observable, takeWhile, tap } from 'rxjs';
+import { takeWhile, tap } from 'rxjs';
 import { CreateFolderComponent } from 'src/app/shared/dialogs/create-folder/create-folder.component';
 import { IFolder } from 'src/app/shared/interfaces/IFolder';
 import { ContractsService } from 'src/app/shared/services/contracts/contracts.service';

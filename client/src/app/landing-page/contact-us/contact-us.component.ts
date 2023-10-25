@@ -1,7 +1,6 @@
-import { Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import emailjs from '@emailjs/browser';
 import { finalize, from } from 'rxjs';
 import { SnackbarManagmentService } from 'src/app/shared/services/snackbar-managment/snackbar-managment.service';
 

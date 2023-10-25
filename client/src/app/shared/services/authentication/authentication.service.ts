@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { IAuth } from '../../interfaces/IAuth';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { AuthenticationComponent } from '../../dialogs/authentication/authentication.component';
 
 @Injectable({
   providedIn: 'root'
@@ -100,6 +101,24 @@ export class AuthenticationService {
 
   private setToken(response:IAuth){
     localStorage.setItem("auth_token", response.access);
+  }
+
+  openLoginPage(){
+    const token = localStorage.getItem('auth_token');
+    
+    if(token){
+      this.router.navigateByUrl("personal-cabinet");
+      return;
+    }
+
+    this.dialog.open(
+      AuthenticationComponent,
+      {
+        panelClass:'custom-dialog',
+        maxWidth:'100vw',
+        maxHeight:'100vh'
+      }
+      );
   }
 
 

@@ -40,7 +40,7 @@ import { SendMessageComponent } from '../shared/dialogs/send-message/send-messag
     UserInfoComponent,
     ContractsFooterComponent,
     CreateFolderComponent,
-    SendMessageComponent
+    SendMessageComponent,
   ],
   imports: [
     CommonModule,

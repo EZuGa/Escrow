@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthenticationComponent } from 'src/app/shared/dialogs/authentication/authentication.component';
+import { AuthenticationService } from 'src/app/shared/services/authentication/authentication.service';
 
 @Component({
   selector: 'landing-header',
@@ -10,24 +11,10 @@ import { AuthenticationComponent } from 'src/app/shared/dialogs/authentication/a
 })
 export class LandingHeaderComponent {
 
-  constructor(private dialog:MatDialog, private router:Router){}
+  constructor(private authService: AuthenticationService){}
 
   openAuthDialog(){
-    const token = localStorage.getItem('auth_token');
-    
-    if(token){
-      this.router.navigateByUrl("personal-cabinet");
-      return;
-    }
-
-    this.dialog.open(
-      AuthenticationComponent,
-      {
-        panelClass:'custom-dialog',
-        maxWidth:'100vw',
-        maxHeight:'100vh'
-      }
-      );
+    this.authService.openLoginPage();
   }
 
 

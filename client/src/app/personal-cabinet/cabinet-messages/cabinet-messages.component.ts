@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { takeWhile } from 'rxjs';
 import { SendMessageComponent } from 'src/app/shared/dialogs/send-message/send-message.component';
