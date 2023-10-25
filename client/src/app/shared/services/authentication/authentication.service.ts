@@ -21,7 +21,7 @@ export class AuthenticationService {
   
   smsAuthentication(email:string):Observable<any>{
     return this.http.post(
-      `api/v1/user/jwt/sms_code/`,
+      `https://escrowandtrust.net/api/v1/user/jwt/sms_code/`,
       { email }
       )
   }
