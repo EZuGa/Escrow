@@ -1,6 +1,10 @@
 
 .cabinet-wrap{
     padding: 32px 24px;
+    @media screen and (max-width: 900px) {
+        padding: 32px 12px;
+    }
+
 }
 .my-profile{
     background: rgba(22, 24, 37, 0.7);
@@ -57,23 +61,21 @@
 
         .actions{
             margin-top: 40px;
-            display: flex;
-            button{
-                width: auto;
-            }
+            // display: flex;
+
             .buttomWhiteBorder{
                 padding: 16px 32px;
                 height: auto;
                 text-align: center;
                 width: 232px;
             }
-            @media screen and (max-width: 950px) {
-                flex-direction: column;
-                button{
-                    text-align: center !important;
-                    margin-bottom: 40px;
+
+            @media screen and (max-width: 900px) {
+                button.buttomWhiteBorder{
+                    width: 100%;
                 }
             }
+
         }
     }
 }
