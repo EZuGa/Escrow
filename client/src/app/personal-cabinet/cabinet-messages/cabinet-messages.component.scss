@@ -16,6 +16,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            flex-wrap: wrap;
 
             div{
                 display: flex;
@@ -35,6 +36,11 @@
                 width: auto;
                 height: 40px;
                 padding: 0px 24px;
+
+                @media screen and (max-width: 900px) {
+                    font-size: 14px;
+                    padding: 0px 16px;
+                }
             }
         }
     }
