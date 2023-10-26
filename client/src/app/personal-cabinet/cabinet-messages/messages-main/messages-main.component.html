@@ -6,10 +6,14 @@
                 <!-- <p class="message-date">24.10.22 11:20</p> -->
                 <p class="message-date">{{message.timestamp | date : "dd.MM.YY hh:mm"}}</p>
 
-                <img src="" alt="">
+                <img src="assets/images/defaultUser.webp" alt="">
                 <div class="messages-people-text">
-                    <h6>{{message.subject}}</h6>
-                    <p>{{message.content}}</p>
+                    <div>
+                        <h6>{{message.subject}}</h6>
+                    </div>
+                    <div>
+                        <p>{{message.content}}</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,9 +30,11 @@
             </div>
             <div class="messages-right-text">
                 <h5>{{currentMessage.subject}}</h5>
-                <pre>
-                    {{currentMessage.content}}
-                </pre>
+                <div class="main-text">
+                    <pre>
+                        {{currentMessage.content}}
+                    </pre>
+                </div>
             </div>
         </ng-container>
     </div>

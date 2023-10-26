@@ -10,7 +10,9 @@
     .messages-main-left{
         // flex: 1 1 0px;
         margin-right: 24px;
-        width: 40%;
+        width: calc(40% - 24px);
+
+
         @media screen and (max-width: 900px) {
             width: 100%;
         }
@@ -50,34 +52,38 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    width: 280px;
-                    @media screen and (max-width: 1200px) {
-                        width: 200px;
-                    }
-                    @media screen and (max-width: 1100px) {
-                        width: 180px;
-                    }
-                    @media screen and (max-width: 900px) {
-                        width: 100%;
-                    }
+                    background-color: green($color: #000000);
+                    // width: 280px;
     
-                    h6{
-                        margin-bottom: 0px;
-                        font-size: 16px;
-                        overflow: hidden;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                    }
 
-                    p{
-                        
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: nowrap;
-                        font-size: 12px;
-                        opacity: 0.5;
-                        margin-bottom: 8px;
-                        margin-right: 30px;
+                    div{
+                        display: table;
+                        table-layout: fixed;
+                        width: 100%;
+                        h6{
+                            margin-bottom: 0px;
+                            font-size: 16px;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                            display: table-cell;
+                            overflow-wrap: break-word;
+
+                        }
+    
+                        p{
+                            
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            white-space: nowrap;
+                            font-size: 12px;
+                            opacity: 0.5;
+                            margin-bottom: 8px;
+                            margin-right: 30px;
+                            display: table-cell;
+                            overflow-wrap: break-word;
+
+                        }
                     }
                 }
             }
@@ -85,14 +91,13 @@
     }
 
     .messages-main-right{
-        // flex: 2 1 0px;
-        // min-width: 400px;
-        // height: 630px;
-        flex-grow: 1;
+        width: 60%;
 
         padding: 24px;
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 10px;
+
+        overflow: hidden;
 
         .messages-right-controls{
             display: flex;
@@ -107,16 +112,27 @@
         }
 
         .messages-right-text{
+            width: 100%;
+
             h5{
                 margin:24px 0px;
             }
 
-            pre{
-                white-space: pre-line;
-                font-size: 12px;
-                opacity: 0.5;
-                line-height: 150%;
+            .main-text{
+                display: table;
+                table-layout: fixed;
+                width: 100%;
+                pre{
+                    display: table-cell;
+                    white-space: pre-line;
+                    overflow-wrap: break-word;
+                    font-size: 12px;
+                    opacity: 0.5;
+                    line-height: 150%;
+                }
+
             }
+
         }
     }
     

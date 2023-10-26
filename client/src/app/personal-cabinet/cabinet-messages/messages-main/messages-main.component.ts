@@ -16,7 +16,6 @@ export class MessagesMainComponent implements OnInit, OnChanges{
 
 
   ngOnChanges(changes: SimpleChanges){
-    this.currentMessage = undefined;
     this.filteredMessages = this.messages;
   }
 
