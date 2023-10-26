@@ -3,10 +3,10 @@
         <h2 *ngIf="header !=='Files'">{{header}}</h2>
         <h2 routerLink="/personal-cabinet/contracts" *ngIf="header === 'Files'">&lt; Back to the folders list</h2>
     
-        <div *ngIf="header === 'Contracts'" class="folderSearch">
+        <!-- <div *ngIf="header === 'Contracts'" class="folderSearch">
             <input type="text" placeholder="Let's find..." #search>
             <button class="blueButton" (click)="searchFolder(search.value)">Search</button>
-        </div>
+        </div> -->
     </div>
     
 
