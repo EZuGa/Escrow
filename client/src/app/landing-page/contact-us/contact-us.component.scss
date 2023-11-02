@@ -25,6 +25,9 @@
             border-radius: 10px;
             background: linear-gradient(45.85deg, #203351 1.01%, #171C37 96.06%);
             padding: 40px 158px 31px 60px;
+            @media screen and (max-width: 950px) {
+                padding: 40px 20px 31px 20px;
+            }
  
 
             .contact--info--cell{
@@ -33,10 +36,16 @@
                 img{
                     height: 32px;
                     margin-right: 24px;
+                    @media screen and (max-width: 500px) {
+                        margin-right: 12px;
+                    }
                 }
 
                 p{
                     font-size: 1rem;
+                    @media screen and (max-width: 500px) {
+                        font-size: 0.8rem;
+                    }
                 }
                 p:first-of-type{
                     margin-bottom: 0.8rem;
