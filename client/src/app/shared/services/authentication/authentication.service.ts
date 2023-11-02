@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from 'src/environments/environment';
 import { IAuth } from '../../interfaces/IAuth';
@@ -16,6 +16,8 @@ export class AuthenticationService {
   private currentUser?: {email:string, password:string};
 
   private updatePassInfo?: {email: string, code:string, password?:string, repeat_password?: string}
+
+  private forgotPasswordEmail?: string;
 
   constructor(private http: HttpClient, private router: Router, private dialog: MatDialog) { }
 
@@ -43,6 +45,7 @@ export class AuthenticationService {
     ).pipe(
       tap(response => {
         if (response.access) {
+          this.currentUser = undefined;
           this.setToken(response);
           this.navigateToCabinet();
           this.dialog.closeAll();
@@ -50,7 +53,6 @@ export class AuthenticationService {
       }),
     )
 
-    this.currentUser = undefined;
     return response;
   }
 
@@ -68,28 +70,23 @@ export class AuthenticationService {
       )
   }
 
-  restorePassword(email: any){
-    return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, email)
+  restorePassword(data: any){
+
+    const info = {
+      ...data,
+      email: this.forgotPasswordEmail
+    }
+    return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, info )
     .pipe(tap((val)=>{
-      this.updatePassInfo = {
-        ...email,
-        code:'',
-        password:'',
-        repeat_password:''
-      }
+      
+      this.forgotPasswordEmail = undefined;
     }))
   }
 
-  forgotCode(passwords: {password:string, repeat_password:string, code: string}){
-
-    this.updatePassInfo = {
-      ...this.updatePassInfo!,
-      ...passwords
-    }
-
-    const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`,this.updatePassInfo)
-
-    this.updatePassInfo = undefined;
+  forgotCode(email: {email:string}){
+    this.forgotPasswordEmail = email.email;
+    const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`, email)
+    .pipe(tap(v=>this.updatePassInfo = undefined))
 
     return response;
   }
