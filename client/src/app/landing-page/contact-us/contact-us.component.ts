@@ -32,7 +32,11 @@ export class ContactUsComponent {
     from(emailjs.send("service_pkrysyt","template_7rv5oiw",formData,"wSk38ZlTWAJVXXSVt"))
     .pipe(finalize(()=>this.isLoading = false))
     .subscribe(
-    ()=>{this.sendMailForm.reset()},
+    ()=>{
+      this.snackbar.openNotify("Sent Succesfully!")
+      this.sendMailForm.reset()
+    }
+    ,
     error=>{this.snackbar.openAlert("Could't send a message!")}
     )
   }

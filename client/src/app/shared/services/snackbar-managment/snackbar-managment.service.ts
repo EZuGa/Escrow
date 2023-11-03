@@ -6,10 +6,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SnackbarManagmentService {
 
-  constructor(private snackbar: MatSnackBar) { }
+  constructor(private snackbar: MatSnackBar) { 
+  }
 
 
-  openNotify(){}
+  openNotify(message:string){
+    this.snackbar.open(message,'X',
+    {
+      panelClass:['notify-snackbar'],
+      verticalPosition: 'top',
+      duration: 3000
+    })
+  }
 
   openAlert(message:string){
     this.snackbar.open(message,'X',

@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { IMessages } from '../../interfaces/IMessages';
 import { BehaviorSubject, tap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { SnackbarManagmentService } from '../snackbar-managment/snackbar-managment.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class MessagesService {
 
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog) {
+  constructor(private http: HttpClient, private dialog: MatDialog, private snackbar: SnackbarManagmentService) {
     this.getReceivedMessages();
     this.getSentMessages();
    }
@@ -29,7 +30,10 @@ export class MessagesService {
   sendMessage(message:{content:string,subject: string, recipient_email?:string}){
     message.recipient_email = '';
     return this.http.post(`${environment.baseUrl}api/v1/user/messages/send/`, message)
-    .pipe(tap(()=>{this.getSentMessages()}))
+    .pipe(tap(()=>{
+      this.snackbar.openNotify("Message was sent!");
+      this.getSentMessages()
+    }))
   }
 
   getReceivedMessages(){

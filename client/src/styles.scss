@@ -314,6 +314,12 @@ mat-form-field.customForm .mat-mdc-text-field-wrapper {
         // --mat-mdc-snack-bar-button-color: red;
         --mdc-snackbar-supporting-text-color: white;
     }
+
+    &.notify-snackbar{
+        --mdc-snackbar-container-color: rgb(145, 179, 32);
+        // --mat-mdc-snack-bar-button-color: red;
+        --mdc-snackbar-supporting-text-color: white;
+    }
   }
   .mat-mdc-form-field-infix{
     width:auto !important;
