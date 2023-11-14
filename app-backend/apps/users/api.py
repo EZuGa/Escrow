@@ -115,8 +115,9 @@ class FileAPI(APIView):
 
     def get(self, request, directory_id):
         files = File.objects.filter(directory__id=directory_id, directory__user=request.user)
+        directory = Directory.objects.get(id=directory_id)
         serializer = self.serializer_class(files, many=True)
-        return Response(serializer.data)
+        return Response({"data": serializer.data, "directory": directory.name, "directory_status": directory.status})
 
 
 class FileUploadAPI(APIView):
