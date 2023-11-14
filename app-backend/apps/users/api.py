@@ -204,7 +204,7 @@ class ReceivedMessagesList(APIView):
 
     def get(self, request):
         user = request.user
-        messages = Message.objects.filter(recipient=user)
+        messages = Message.objects.filter(recipient=user).order_by('-timestamp')
         serializer = self.serializer_class(messages, many=True)
         return Response(serializer.data)
 
@@ -216,7 +216,8 @@ class SendMessage(APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             message = serializer.save(sender=request.user)
-            return Response(MessageSerializer(message).data, status=201)
+            sent_messages = Message.objects.filter(sender=request.user).order_by('-timestamp')
+            return Response(MessageSerializer(sent_messages, many=True).data, status=201)
         return Response(serializer.errors, status=400)
 
 class UserBalances(APIView):
