@@ -8,9 +8,8 @@
         <input  #file type="file" style="display: none;" (change)="uploadFile($event)">
         <button class="blueButton" (click)="file.click()">+ Upload Documents</button>
     </div>
-
-    <div class="files-grid">
-        <contracts-files-cell *ngFor="let file of allFiles! | async" [file]="file"></contracts-files-cell>
+    <div class="files-grid" *ngIf="(allFiles | async) as allFIles">
+        <contracts-files-cell *ngFor="let file of allFIles" [file]="file"></contracts-files-cell>
     </div>
 
  </div>

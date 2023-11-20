@@ -29,7 +29,7 @@ export class ContractsFilesComponent implements OnInit{
       this.FolderName = v.directory_name;
       this.FolderStatus = v.directory_status
     }))
-    .pipe(map( (v: any)=>v.filesArr));  
+    .pipe(map( (v: any)=>v.data));  
   }
 
   uploadFile(event:any){
