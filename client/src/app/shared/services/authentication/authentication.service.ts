@@ -57,6 +57,7 @@ export class AuthenticationService {
   }
 
   authenticateUser(user:{email:string, password:string}){
+    user.email = user.email.toLowerCase();
     return this.http.post<IAuth>(
       `${environment.baseUrl}api/v1/user/jwt/login/`,
       user
@@ -71,10 +72,9 @@ export class AuthenticationService {
   }
 
   restorePassword(data: any){
-
     const info = {
       ...data,
-      email: this.forgotPasswordEmail
+      email: this.forgotPasswordEmail?.toLowerCase()
     }
     return this.http.post<{code: string}>(`${environment.baseUrl}api/v1/user/reset_password/`, info )
     .pipe(tap((val)=>{
@@ -84,7 +84,7 @@ export class AuthenticationService {
   }
 
   forgotCode(email: {email:string}){
-    this.forgotPasswordEmail = email.email;
+    this.forgotPasswordEmail = email.email.toLowerCase();
     const response = this.http.post(`${environment.baseUrl}api/v1/user/reset_password_code/`, email)
     .pipe(tap(v=>this.updatePassInfo = undefined))
 
